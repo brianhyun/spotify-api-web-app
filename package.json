@@ -1,7 +1,7 @@
 {
-  "name": "spotify",
+  "name": "Analyzer",
   "version": "1.0.0",
-  "description": "",
+  "description": "A dashboard displaying statistics relating to your Spotify profile.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "crypto-js": "^4.0.0",
     "ejs": "^3.1.3",
     "express": "^4.17.1"
   },

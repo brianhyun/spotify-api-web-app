@@ -2,7 +2,8 @@ const https = require('https');
 
 const express = require('express');
 
-const { auth_endpoint, client_id } = require('../utils/config');
+const state = require('../utils/state');
+const { auth_endpoint, client_id, redirect_uri } = require('../utils/config');
 
 const router = express.Router();
 
@@ -13,7 +14,9 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-	const authEndpoint = `${auth_endpoint}?client_id=${client_id}&response_type=code&redirect_uri=`;
+	// auth endpoint: https://accounts.spotify.com/authorize
+	// parameters: client_id, response_type, redirect_uri, state 
+	const authEndpoint = `${auth_endpoint}?client_id=${client_id}&response_type=code&redirect_uri=${redirect_uri}&state=${state}`;
 	https.get(authEndpoint, (response) => {
 		response.on('data', (d) => {
 		  process.stdout.write(d);
