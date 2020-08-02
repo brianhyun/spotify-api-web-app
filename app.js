@@ -22,6 +22,6 @@ app.use(callbackRouter);
 // 404 Handling
 app.use(errorController);
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
 	console.log('Example app running on port', port);
 });
