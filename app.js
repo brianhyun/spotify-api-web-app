@@ -6,7 +6,6 @@ const express = require('express');
 const indexRouter = require('./routes/index');
 const callbackRouter = require('./routes/callback');
 const errorController = require('./controllers/error');
-const { port } = require('./utils/config');
 
 const app = express(); 
 
@@ -22,6 +21,6 @@ app.use(callbackRouter);
 // 404 Handling
 app.use(errorController);
 
-app.listen(process.env.PORT || port, () => {
-	console.log('Example app running on port', port);
+app.listen(process.env.PORT || 3000, () => {
+	console.log('Example app running on port', 3000);
 });

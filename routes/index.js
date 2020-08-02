@@ -3,7 +3,6 @@ const https = require('https');
 const express = require('express');
 
 const state = require('../utils/state');
-// const { auth_endpoint, client_id, redirect_uri } = require('../utils/config');
 
 const router = express.Router();
 
