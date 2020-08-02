@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-	const authEndpoint = `${process.env.auth_endpoint}?client_id=${process.env.client_id}&response_type=code&redirect_uri=${process.env.redirect_uri}&state=${state}`;
+	const authEndpoint = `${process.env.auth_endpoint}?client_id=${process.env.client_id}&response_type=code&redirect_uri=${process.env.redirect_uri}&state=${state}&scope=playlist-read-private`;
 	https.get(authEndpoint, (response) => {
 		response.on('data', (d) => {
 			console.log(d);
