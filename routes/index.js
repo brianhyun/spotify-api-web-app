@@ -1,9 +1,6 @@
-const https = require('https');
-
 const express = require('express');
 
-const state = require('../utils/state');
-// const { auth_endpoint, client_id, redirect_uri } = require('../utils/config');
+const { auth_endpoint, client_id, redirect_uri } = require('../utils/config');
 
 const router = express.Router();
 
@@ -14,15 +11,8 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-	const authEndpoint = `${process.env.auth_endpoint}?client_id=${process.env.client_id}&response_type=code&redirect_uri=${process.env.redirect_uri}&state=${state}&scope=playlist-read-private`;
-	https.get(authEndpoint, (response) => {
-		response.on('data', (d) => {
-			console.log(d);
-			process.stdout.write(d);
-		});
-	}).on('error', (e) => {
-		console.error(e);
-	});
+	const scopes = 'user-read-playback-state user-read-currently-playing playlist-read-private user-library-read user-top-read user-read-playback-position user-read-recently-played';
+	res.redirect(`${auth_endpoint}?response_type=code&client_id=${client_id}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(redirect_uri)}`);
 });
 
-module.exports = router;
+module.exports = router; 
