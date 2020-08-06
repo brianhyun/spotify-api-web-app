@@ -31,18 +31,34 @@ router.get('/callback', (req, res, next) => {
 
 		axios.post(token_endpoint, data, options)
 		  	.then(function (response) {
-				const userProfileURL = 'https://api.spotify.com/v1/me';
-
 				const options = {
 					headers: {'Authorization': `Bearer ${response.data.access_token}`}
 				};
 
-				return axios.get(userProfileURL, options);
+				const profileURL = 'https://api.spotify.com/v1/me';
+				const playlistURL = 'https://api.spotify.com/v1/me/playlists';
+
+				const profilePromise = axios.get(profileURL, options);
+				const playlistPromise = axios.get(playlistURL, options);
+
+				return Promise.all([profilePromise, playlistPromise]);
 			})
 			.then(function (response) {
+				// Data from User's Profile
+				const profileResponse = response[0].data;
+				const displayName = profileResponse.display_name; 
+				const followers = profileResponse.followers.total;
+
+				// Data from User's Playlise
+				const playlistResponse = response[1].data;
+				const playlistLength = playlistResponse.items.length;
+
+				// Render Data
 				res.render('dashboard', {
 					pageTitle: 'Dashboard',
-					username: response.data.display_name
+					username: displayName, 
+					followers: followers,
+					playlistLength: playlistLength
 				});
 			})
 		  	.catch(function (error) {
