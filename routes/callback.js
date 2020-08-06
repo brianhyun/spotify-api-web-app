@@ -25,17 +25,29 @@ router.get('/callback', (req, res, next) => {
 			client_secret: client_secret
 		});
 
-		axios.post(token_endpoint, data, {
-				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded'
-				}
-		  	})
+		const options = {
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		};
+
+		axios.post(token_endpoint, data, options)
 		  	.then(function (response) {
-				console.log(response.data);
-		  	})
+				const userProfileURL = 'https://api.spotify.com/v1/me';
+
+				const options = {
+					headers: {'Authorization': `Bearer ${response.data.access_token}`}
+				};
+
+				return axios.get(userProfileURL, options);
+			})
+			.then(function (response) {
+				res.render('dashboard', {
+					pageTitle: 'Dashboard',
+					username: response.data.display_name
+				});
+			})
 		  	.catch(function (error) {
-				console.log(error);
-		  	});
+				console.log(error.response.data);
+			});
 	}
 });
 

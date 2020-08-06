@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-	const scopes = 'user-read-playback-state user-read-currently-playing playlist-read-private user-library-read user-top-read user-read-playback-position user-read-recently-played';
+	const scopes = 'user-read-playback-state user-read-email user-read-private user-read-currently-playing playlist-read-private user-library-read user-top-read user-read-playback-position user-read-recently-played';
 	res.redirect(`${auth_endpoint}?response_type=code&client_id=${client_id}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(redirect_uri)}`);
 });
 
