@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 
-const indexRouter = require('./routes/index');
+const loginRouter = require('./routes/login');
 const callbackRouter = require('./routes/callback');
 const errorController = require('./controllers/error');
 const { port } = require('./utils/config');
@@ -14,7 +14,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Route Handling
-app.use(indexRouter);
+app.use(loginRouter);
 app.use(callbackRouter);
 
 // 404 Handling
