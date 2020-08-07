@@ -1,5 +1,6 @@
 <%- include('partials/header') %>
 	<main class="main-dash">
+		<!-- Profile Section -->
 		<section class="main-dash__profile">
 			<img class="main-dash__profile-picture" src=<%= profileImage %> alt="profile picture">
 			<div class="main-dash__profile-content">
@@ -13,25 +14,30 @@
 				</div>
 			</div>
 		</section>
+
 		<hr>
-		<section class="main-dash__topStats">
-			<div class="main-dash__menu">
-				<h1 class="main-dash__header main-dash__header--active">Top Artists</h1>
-				<h1 class="main-dash__header">Top Tracks</h1>
-			</div>
-			<div class="main-dash__topArtists-container">
+
+		<!-- Stats Container -->
+		<section class="main-dash__top-stats-container">
+			<!-- Top Artists Section -->
+			<section class="main-dash__top-artists-container">
+				<h1 class="main-dash__top-artists-header">Top Artists</h1>
 				<% for (let i = 0; i < topArtistsArray.length; i++) { %>
-					<div class="main-dash__topArtists">
-						<a href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><img class="main-dash__topArtists-image" src=<%= topArtistsArray[i].images[1].url %> alt="artists profile picture"></a>
-						<a href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><h3 class="main-dash__topArtists-header"><%= topArtistsArray[i].name %></h3></a>	
+					<div class="main-dash__top-artist">
+						<a href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><img class="main-dash__top-artist-image" src=<%= topArtistsArray[i].images[1].url %> alt="artists profile picture"></a>
+						<a href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><h3 class="main-dash__top-artist-header"><%= topArtistsArray[i].name %></h3></a>	
 					</div>
 				<% } %>
-			</div>
-			<!-- <div class="main-dash__topTracks-container">
+			</section>
+			<!-- Top Tracks Section -->
+			<section class="main-dash__top-tracks-container">
+				<h1 class="main-dash__top-tracks-header">Top Tracks</h1>
 				<% for (let i = 0; i < topTracksArray.length; i++) { %>
-					<div class="main-dash__topTracks"><%= topTracksArray[i].name %></div>
+					<div class="main-dash__top-track">
+						<%= topTracksArray[i].name %>
+					</div>
 				<% } %>
-			</div> -->
+			</section>
 		</section>
 	</main>
 <%- include('partials/footer') %>
