@@ -1,29 +1,35 @@
 <%- include('partials/header') %>
-	<main class="dashboard-home">
-		<section class="dashboard-home__profile">
-			<img class="dashboard-home__profile-picture" src=<%= profileImage %> alt="profile picture">
-			<div class="dashboard-home__profile-content">
-				<a class="dashboard-home__username-link" href=<%= profileSrc %>><h1 class="dashboard-home__username"><%= username %></h1></a>
-				<div class="dashboard-home__profile-stats">
-					<p class="dashboard-home__stats">Followers <%= followers %></p>
-					<p class="dashboard-home__stats">Playlists <%= playlistLength %></p>
+	<main class="main-dash">
+		<section class="main-dash__profile">
+			<img class="main-dash__profile-picture" src=<%= profileImage %> alt="profile picture">
+			<div class="main-dash__profile-content">
+				<a class="main-dash__username-link" href=<%= profileSrc %> target="_blank"><h1 class="main-dash__username"><%= username %></h1></a>
+				<div class="main-dash__profile-stats">
+					<p class="main-dash__stats-item">Followers</p><span class="main-dash__stats"><%= followers %></span>
+					<div class="main-dash__stats-separator"></div>
+					<p class="main-dash__stats-item">Following</p><span class="main-dash__stats"><%= following %></span>
+					<div class="main-dash__stats-separator"></div>
+					<p class="main-dash__stats-item">Playlists</p><span class="main-dash__stats"><%= playlistCount %></span>
 				</div>
 			</div>
 		</section>
 		<hr>
-		<section class="dashboard-home__topStats">
-			<div class="dashboard-home__menu">
-				<h1 class="dashboard-home__header-topArtists">Top Artists</h1>
-				<h1 class="dashboard-home__header-topTracks">Top Tracks</h1>
+		<section class="main-dash__topStats">
+			<div class="main-dash__menu">
+				<h1 class="main-dash__header main-dash__header--active">Top Artists</h1>
+				<h1 class="main-dash__header">Top Tracks</h1>
 			</div>
-			<div class="dashboard-home__topArtists-stats">
+			<div class="main-dash__topArtists-container">
 				<% for (let i = 0; i < topArtistsArray.length; i++) { %>
-					<div class="dashboard-home__topArtists"><%= topArtistsArray[i].name %></div>
+					<div class="main-dash__topArtists">
+						<a href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><img class="main-dash__topArtists-image" src=<%= topArtistsArray[i].images[1].url %> alt="artists profile picture"></a>
+						<a href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><h3 class="main-dash__topArtists-header"><%= topArtistsArray[i].name %></h3></a>	
+					</div>
 				<% } %>
 			</div>
-			<!-- <div class="dashboard-home__topTracks-stats">
+			<!-- <div class="main-dash__topTracks-container">
 				<% for (let i = 0; i < topTracksArray.length; i++) { %>
-					<div class="dashboard-home__topTracks"><%= topTracksArray[i].name %></div>
+					<div class="main-dash__topTracks"><%= topTracksArray[i].name %></div>
 				<% } %>
 			</div> -->
 		</section>

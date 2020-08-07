@@ -39,18 +39,19 @@ router.get('/callback', (req, res, next) => {
 				const playlistURL = 'https://api.spotify.com/v1/me/playlists';
 				const topArtistsURL = 'https://api.spotify.com/v1/me/top/artists';
 				const topTracksURL = 'https://api.spotify.com/v1/me/top/tracks';
+				const followingURL = 'https://api.spotify.com/v1/me/following?type=artist';
 
 				const profilePromise = axios.get(profileURL, options);
 				const playlistPromise = axios.get(playlistURL, options);
 				const topArtistsPromise = axios.get(topArtistsURL, options);
 				const topTracksPromise = axios.get(topTracksURL, options);
+				const followingPromise = axios.get(followingURL, options);
 
-				return Promise.all([profilePromise, playlistPromise, topArtistsPromise, topTracksPromise]);
+				return Promise.all([profilePromise, playlistPromise, topArtistsPromise, topTracksPromise, followingPromise]);
 			})
 			.then(function (response) {
 				// Data from User's Profile
 				const profileResponse = response[0].data;
-				console.log(profileResponse);
 				const profileImage = profileResponse.images[0].url;
 				const displayName = profileResponse.display_name; 
 				const profileSrc = profileResponse.external_urls.spotify;
@@ -58,16 +59,19 @@ router.get('/callback', (req, res, next) => {
 
 				// Data from User's Playlist
 				const playlistResponse = response[1].data;
-				const playlistLength = playlistResponse.items.length;
+				const playlistCount = playlistResponse.items.length;
 
 				// Data from User's Top Artists
 				const topArtistsResponse = response[2].data;
 				const topArtistsArray = topArtistsResponse.items;
-				console.log(topArtistsArray[0].images);
 				
 				// Data from User's Top Tracks
 				const topTracksResponse = response[3].data;
 				const topTracksArray = topTracksResponse.items;
+
+				// Data from User's Following
+				const followingResponse = response[4].data;
+				const following = followingResponse.artists.total; 
 
 				// Render Data
 				res.render('dashboard-home', {
@@ -76,9 +80,10 @@ router.get('/callback', (req, res, next) => {
 					profileSrc: profileSrc,
 					profileImage: profileImage, 
 					followers: followers,
-					playlistLength: playlistLength,
+					playlistCount: playlistCount,
 					topArtistsArray: topArtistsArray, 
-					topTracksArray: topTracksArray
+					topTracksArray: topTracksArray, 
+					following: following
 				});
 			})
 		  	.catch(function (error) {
