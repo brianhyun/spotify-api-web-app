@@ -12,9 +12,10 @@ router.get('/', (req, res, next) => {
 
 // Scopes 
 // playlist-read-private: Get a List of Current User's Playlists
+// user-top-read: Get a User's Top Artists and Tracks
 
 router.post('/login', (req, res, next) => {
-	const scopes = 'playlist-read-private user-follow-modify user-read-playback-state user-read-currently-playing playlist-read-private user-library-read user-top-read user-read-playback-position user-read-recently-played';
+	const scopes = 'playlist-read-private user-top-read user-follow-modify user-read-playback-state user-read-currently-playing playlist-read-private user-library-read user-top-read user-read-playback-position user-read-recently-played';
 	res.redirect(`${auth_endpoint}?response_type=code&client_id=${client_id}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(redirect_uri)}`);
 });
 

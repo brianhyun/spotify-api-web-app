@@ -37,28 +37,48 @@ router.get('/callback', (req, res, next) => {
 
 				const profileURL = 'https://api.spotify.com/v1/me';
 				const playlistURL = 'https://api.spotify.com/v1/me/playlists';
+				const topArtistsURL = 'https://api.spotify.com/v1/me/top/artists';
+				const topTracksURL = 'https://api.spotify.com/v1/me/top/tracks';
 
 				const profilePromise = axios.get(profileURL, options);
 				const playlistPromise = axios.get(playlistURL, options);
+				const topArtistsPromise = axios.get(topArtistsURL, options);
+				const topTracksPromise = axios.get(topTracksURL, options);
 
-				return Promise.all([profilePromise, playlistPromise]);
+				return Promise.all([profilePromise, playlistPromise, topArtistsPromise, topTracksPromise]);
 			})
 			.then(function (response) {
 				// Data from User's Profile
 				const profileResponse = response[0].data;
+				console.log(profileResponse);
+				const profileImage = profileResponse.images[0].url;
 				const displayName = profileResponse.display_name; 
+				const profileSrc = profileResponse.external_urls.spotify;
 				const followers = profileResponse.followers.total;
 
-				// Data from User's Playlise
+				// Data from User's Playlist
 				const playlistResponse = response[1].data;
 				const playlistLength = playlistResponse.items.length;
 
+				// Data from User's Top Artists
+				const topArtistsResponse = response[2].data;
+				const topArtistsArray = topArtistsResponse.items;
+				console.log(topArtistsArray[0].images);
+				
+				// Data from User's Top Tracks
+				const topTracksResponse = response[3].data;
+				const topTracksArray = topTracksResponse.items;
+
 				// Render Data
-				res.render('dashboard', {
+				res.render('dashboard-home', {
 					pageTitle: 'Dashboard',
 					username: displayName, 
+					profileSrc: profileSrc,
+					profileImage: profileImage, 
 					followers: followers,
-					playlistLength: playlistLength
+					playlistLength: playlistLength,
+					topArtistsArray: topArtistsArray, 
+					topTracksArray: topTracksArray
 				});
 			})
 		  	.catch(function (error) {

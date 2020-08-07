@@ -1,0 +1,31 @@
+<%- include('partials/header') %>
+	<main class="dashboard-home">
+		<section class="dashboard-home__profile">
+			<img class="dashboard-home__profile-picture" src=<%= profileImage %> alt="profile picture">
+			<div class="dashboard-home__profile-content">
+				<a class="dashboard-home__username-link" href=<%= profileSrc %>><h1 class="dashboard-home__username"><%= username %></h1></a>
+				<div class="dashboard-home__profile-stats">
+					<p class="dashboard-home__stats">Followers <%= followers %></p>
+					<p class="dashboard-home__stats">Playlists <%= playlistLength %></p>
+				</div>
+			</div>
+		</section>
+		<hr>
+		<section class="dashboard-home__topStats">
+			<div class="dashboard-home__menu">
+				<h1 class="dashboard-home__header-topArtists">Top Artists</h1>
+				<h1 class="dashboard-home__header-topTracks">Top Tracks</h1>
+			</div>
+			<div class="dashboard-home__topArtists-stats">
+				<% for (let i = 0; i < topArtistsArray.length; i++) { %>
+					<div class="dashboard-home__topArtists"><%= topArtistsArray[i].name %></div>
+				<% } %>
+			</div>
+			<!-- <div class="dashboard-home__topTracks-stats">
+				<% for (let i = 0; i < topTracksArray.length; i++) { %>
+					<div class="dashboard-home__topTracks"><%= topTracksArray[i].name %></div>
+				<% } %>
+			</div> -->
+		</section>
+	</main>
+<%- include('partials/footer') %>
