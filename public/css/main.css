@@ -369,7 +369,6 @@ a {
 
 .main-dash__top-tracks-container {
   display: none;
-  /* display: grid;  */
   grid-template-columns: repeat(2, 1fr);
   row-gap: 40px;
   width: 100%;
@@ -404,120 +403,13 @@ a {
   color: #9D9D9D;
 }
 
-/*
-
-.main-dash__profile-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  width: 100%;
+.main-dash__top-track-artist-link::after {
+  content: " &";
 }
 
-.main-dash__username-link {
-  margin-bottom: 3%;
+.main-dash__top-track-artist-link:last-child::after {
+  content: "";
 }
-
-.main-dash__username {
-  display: inline;
-  font-size: 4.5rem;
-}
-
-.main-dash__profile-stats {
-  display: flex;
-  width: 100%;
-}
-
-.main-dash__stats-item, .main-dash__stats {
-  color: #9D9D9D;
-  font-size: 1.5rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-hr {
-  color: #666666;
-  margin: 5% 0 3%;
-  opacity: 0.3;
-} */
-
-/* Stats Container */
-
-/* .main-dash__top-stats-container {
-  display: flex;
-} */
-
-/* Shared Styles - Top Artists and Tracks */
-
-/* .main-dash__top-artists-container, .main-dash__top-tracks-container {
-  display: flex; 
-  flex-direction: column;
-  width: 50%;
-}
-
-.main-dash__top-artists-header, .main-dash__top-tracks-header {
-  color: #ffffff;
-  font-size: 1.5rem;
-  letter-spacing: 3px;
-  margin-bottom: 2.5rem;
-  text-transform: uppercase;
-}
-
-.main-dash__top-artist, .main-dash__top-track {
-  display: flex;
-  margin-bottom: 5%;
-} */
-
-/* Top Artists Section */
-
-/* .main-dash__top-artists-container {
-  border-right: 1px solid rgba(102, 102, 102, 0.3);
-}
-
-.main-dash__top-artist-image {
-  border-radius: 100%;
-  height: 60px;
-  margin-right: 5%;
-  width: 60px;
-}
-
-.main-dash__top-artist-header {
-  font-size: 1.8rem;
-  font-weight: 500;
-}
-
-.main-dash__top-artists-container {
-  display: flex;
-  flex-direction: column;
-} */
-
-/* Top Tracks Section */
-/* .main-dash__top-tracks-container {
-  padding-left: 5%;
-}
-
-.main-dash__top-track {
-  margin-bottom: 5%;
-}
-
-.main-dash__top-track-image {
-  height: 60px;
-  margin-right: 5%;
-  width: 60px;
-}
-
-.main-dash__top-track-name {
-  font-size: 1.5rem;
-}
-
-.main-dash__top-track-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.main-dash__top-track-artist-album {
-  color: #9D9D9D;
-} */
 
 /* ==========================================================================
    Media Queries

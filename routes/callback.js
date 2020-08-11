@@ -72,18 +72,20 @@ router.get('/callback', (req, res, next) => {
 				// console.log(topTracksArray[0]);
 
 				const trackArtists = [];
-				const trackArtistsURLs = [];
 
-				// Iterate through tracks and combine artists' names into comma-separated string.
+				// Iterate through tracks and put artist's info into object and push into tracks array.
 				for (let i = 0; i < topTracksArray.length; i++) {
 					const artists = [];
-					const artistsURLs = [];
+					// For each track, make an object for each artist. 
 					for(let j = 0; j < topTracksArray[i].artists.length; j++) {
-						artists.push(topTracksArray[i].artists[j].name);
-						artistsURLs.push(topTracksArray[i].artists[j].external_urls.spotify);
+						let artist = {};
+						artist.name = topTracksArray[i].artists[j].name;
+						artist.url = topTracksArray[i].artists[j].external_urls.spotify;
+						artists.push(artist);
 					}
-					trackArtists.push(artists.join(', '));
-					trackArtistsURLs.push(artistsURLs.join(', '));
+
+					// Push artists array into artist. 
+					trackArtists.push(artists);
 				}
 
 				// Data from User's Following

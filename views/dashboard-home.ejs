@@ -68,7 +68,9 @@
 						</p>
 						<!-- Track Artist --> 
 						<p class="main-dash__top-track-artist">
-							<a class="main-dash__top-track-artist-link" href=<%= topTracksArray[i].artists[0].external_urls.spotify %> target="_blank"><%= trackArtists[i] %></a>
+							<% for (let j = 0; j < trackArtists[i].length; j++) { %>
+								<a class="main-dash__top-track-artist-link" href=<%= trackArtists[i][j].url %> target="_blank"><%= trackArtists[i][j].name %></a>
+							<% } %>
 						</p>
 					</div>
 				<% } %>

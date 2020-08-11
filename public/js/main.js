@@ -24,7 +24,7 @@ hamburgerMenu.addEventListener("click", () => {
 	navigationMenu.style.display = "flex";
 });	
 
-// Close Button 
+// Navbar Close Button 
 const closeBtn = document.getElementById("close-btn");
 
 closeBtn.addEventListener("click", () => {
