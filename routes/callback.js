@@ -69,6 +69,17 @@ router.get('/callback', (req, res, next) => {
 				const topTracksResponse = response[3].data;
 				const topTracksArray = topTracksResponse.items;
 
+				const trackArtists = [];
+
+				// Iterate through tracks and combine artists' names into comma-separated string.
+				for (let i = 0; i < topTracksArray.length; i++) {
+					const artists = [];
+					for(let j = 0; j < topTracksArray[i].artists.length; j++) {
+						artists.push(topTracksArray[i].artists[j].name);
+					}
+					trackArtists.push(artists.join(', '));
+				}
+
 				// Data from User's Following
 				const followingResponse = response[4].data;
 				const following = followingResponse.artists.total; 
@@ -83,7 +94,8 @@ router.get('/callback', (req, res, next) => {
 					playlistCount: playlistCount,
 					topArtistsArray: topArtistsArray, 
 					topTracksArray: topTracksArray, 
-					following: following
+					following: following,
+					trackArtists: trackArtists
 				});
 			})
 		  	.catch(function (error) {

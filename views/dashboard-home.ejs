@@ -1,43 +1,79 @@
 <%- include('partials/header') %>
+
 	<main class="main-dash">
 		<!-- Profile Section -->
 		<section class="main-dash__profile">
+			<!-- Image -->
 			<img class="main-dash__profile-picture" src=<%= profileImage %> alt="profile picture">
-			<div class="main-dash__profile-content">
-				<a class="main-dash__username-link" href=<%= profileSrc %> target="_blank"><h1 class="main-dash__username"><%= username %></h1></a>
-				<div class="main-dash__profile-stats">
-					<p class="main-dash__stats-item">Followers</p><span class="main-dash__stats"><%= followers %></span>
-					<div class="main-dash__stats-separator"></div>
-					<p class="main-dash__stats-item">Following</p><span class="main-dash__stats"><%= following %></span>
-					<div class="main-dash__stats-separator"></div>
-					<p class="main-dash__stats-item">Playlists</p><span class="main-dash__stats"><%= playlistCount %></span>
+
+			<!-- Username -->
+			<h1 class="main-dash__profile-username">
+				<a class="main-dash__profile-username-link" href=<%= profileSrc %> target="_blank"><%= username %></a>
+			</h1>
+
+			<!-- Stats List -->
+			<div class="main-dash__profile-stats-list">
+				<div class="main-dash__profile-stats-item">
+					<p class="main-dash__profile-stats-num"><%= followers %></p>
+					<p class="main-dash__profile-stats-label">Followers</p>
+				</div>
+				<div class="main-dash__profile-stats-item">
+					<p class="main-dash__profile-stats-num"><%= following %></p>
+					<p class="main-dash__profile-stats-label">Following</p>
+				</div>
+				<div class="main-dash__profile-stats-item">
+					<p class="main-dash__profile-stats-num"><%= playlistCount %></p>
+					<p class="main-dash__profile-stats-label">Playlists</p>
 				</div>
 			</div>
+
+			<!-- Logout Button -->
+			<form class="main-dash__profile-form" action="#" method="post">
+				<button class="main-dash__profile-form-logout-button" type="submit">Log out</button>
+			</form>
 		</section>
 
-		<hr>
+		<hr class="main-dash__hr">
 
 		<!-- Stats Container -->
 		<section class="main-dash__top-stats-container">
+			<div class="main-dash__top-stats-menu">
+				<p class="main-dash__top-stats-menu-header main-dash__top-stats-menu-header--active">Top Artists</p>
+				<p class="main-dash__top-stats-menu-header">Top Tracks</p>
+			</div>
+
 			<!-- Top Artists Section -->
 			<section class="main-dash__top-artists-container">
-				<h1 class="main-dash__top-artists-header">Top Artists</h1>
+				<!-- Top Artist -->
 				<% for (let i = 0; i < topArtistsArray.length; i++) { %>
 					<div class="main-dash__top-artist">
-						<a href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><img class="main-dash__top-artist-image" src=<%= topArtistsArray[i].images[1].url %> alt="artists profile picture"></a>
-						<a href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><h3 class="main-dash__top-artist-header"><%= topArtistsArray[i].name %></h3></a>	
+						<a href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><img class="main-dash__top-artist-image" src=<%= topArtistsArray[i].images[0].url %> alt="artists profile picture"></a>
+						<h3 class="main-dash__top-artist-name">
+							<a class="main-dash__top-artist-name-link" href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><%= topArtistsArray[i].name %></a>	
+						</h3>
 					</div>
 				<% } %>
 			</section>
+
 			<!-- Top Tracks Section -->
 			<section class="main-dash__top-tracks-container">
-				<h1 class="main-dash__top-tracks-header">Top Tracks</h1>
+				<!-- Top Track -->
 				<% for (let i = 0; i < topTracksArray.length; i++) { %>
 					<div class="main-dash__top-track">
-						<%= topTracksArray[i].name %>
+						<!-- Album Cover -->
+						<a href=""><img class="main-dash__top-track-image" src=<%= topTracksArray[i].album.images[0].url %> alt="album cover"></a>
+						<!-- Track Name -->
+						<p class="main-dash__top-track-name">
+							<a class="main-dash__top-track-name-link" href=""><%= topTracksArray[i].name %></a>
+						</p>
+						<!-- Track Artist --> 
+						<p class="main-dash__top-track-artist">
+							<a class="main-dash__top-track-artist-link" href=""><%= trackArtists[i] %></a>
+						</p>
 					</div>
 				<% } %>
 			</section>
 		</section>
 	</main>
+
 <%- include('partials/footer') %>
