@@ -39,11 +39,9 @@ router.get('/callback', (req, res, next) => {
 		axios.post(token_endpoint, data, options)
 			.then(function (response) {
 				const accessToken = response.data.access_token;
-				// const accessTokenEncoded = encodeURIComponent(accessToken);
 				// Set Cookie and Redirect to Profile Router
 				res.cookie('auth_code', authCode, { maxAge: 900000, httpOnly: true });
 				res.cookie('access_token', accessToken, { maxAge: 900000, httpOnly: true });
-				// res.redirect('/profile?token=' + accessTokenEncoded);
 				res.redirect('/profile');
 			})
 			.catch(function (error) {

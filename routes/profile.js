@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.get('/profile', (req, res, next) => {
 	const access_token = req.cookies['access_token'];
-	// const access_token = req.query.token;
 	
 	const options = {
 		headers: {'Authorization': `Bearer ${access_token}`}
