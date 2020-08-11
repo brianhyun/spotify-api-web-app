@@ -61,14 +61,14 @@
 				<% for (let i = 0; i < topTracksArray.length; i++) { %>
 					<div class="main-dash__top-track">
 						<!-- Album Cover -->
-						<a href=""><img class="main-dash__top-track-image" src=<%= topTracksArray[i].album.images[0].url %> alt="album cover"></a>
+						<a href=<%= topTracksArray[i].album.external_urls.spotify %> target="_blank"><img class="main-dash__top-track-image" src=<%= topTracksArray[i].album.images[0].url %> alt="album cover"></a>
 						<!-- Track Name -->
 						<p class="main-dash__top-track-name">
-							<a class="main-dash__top-track-name-link" href=""><%= topTracksArray[i].name %></a>
+							<a class="main-dash__top-track-name-link" href=<%= topTracksArray[i].external_urls.spotify %> target="_blank"><%= topTracksArray[i].name %></a>
 						</p>
 						<!-- Track Artist --> 
 						<p class="main-dash__top-track-artist">
-							<a class="main-dash__top-track-artist-link" href=""><%= trackArtists[i] %></a>
+							<a class="main-dash__top-track-artist-link" href=<%= topTracksArray[i].artists[0].external_urls.spotify %> target="_blank"><%= trackArtists[i] %></a>
 						</p>
 					</div>
 				<% } %>

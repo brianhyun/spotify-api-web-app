@@ -64,10 +64,12 @@ router.get('/callback', (req, res, next) => {
 				// Data from User's Top Artists
 				const topArtistsResponse = response[2].data;
 				const topArtistsArray = topArtistsResponse.items;
+				console.log(topArtistsArray[0]);
 				
 				// Data from User's Top Tracks
 				const topTracksResponse = response[3].data;
 				const topTracksArray = topTracksResponse.items;
+				console.log(topTracksArray[0]);
 
 				const trackArtists = [];
 
