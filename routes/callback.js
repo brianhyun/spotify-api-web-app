@@ -1,11 +1,14 @@
 const express = require('express');
 
+const cookieParser = require('cookie-parser');
 const axios = require('axios');
 const qs = require('qs');
 
 const { redirect_uri, token_endpoint, client_id, client_secret } = require('../utils/config');
 
 const router = express.Router();
+
+router.use(cookieParser());
 
 router.get('/callback', (req, res, next) => {
 	// If an error exists within the query string, then the client either denied permission or an error occurred.
@@ -36,9 +39,12 @@ router.get('/callback', (req, res, next) => {
 		axios.post(token_endpoint, data, options)
 			.then(function (response) {
 				const accessToken = response.data.access_token;
-				const accessTokenEncoded = encodeURIComponent(accessToken);
-				// Redirect to Profile Router
-				res.redirect('/profile?token=' + accessTokenEncoded);
+				// const accessTokenEncoded = encodeURIComponent(accessToken);
+				// Set Cookie and Redirect to Profile Router
+				res.cookie('auth_code', authCode, { maxAge: 900000, httpOnly: true });
+				res.cookie('access_token', accessToken, { maxAge: 900000, httpOnly: true });
+				// res.redirect('/profile?token=' + accessTokenEncoded);
+				res.redirect('/profile');
 			})
 			.catch(function (error) {
 				console.log(error);
