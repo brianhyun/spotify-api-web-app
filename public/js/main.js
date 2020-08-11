@@ -43,15 +43,40 @@ closeBtn.addEventListener("click", () => {
 
 // Main Dashboard - Toggle Artists and Tracks Display
 const headers = document.getElementsByClassName("main-dash__top-stats-menu-header");
+const topTracks = document.getElementById("top-tracks");
+const topTracksContainer = document.getElementsByClassName("main-dash__top-tracks-container");
+const topArtists = document.getElementById("top-artists");
+const topArtistsContainer = document.getElementsByClassName("main-dash__top-artists-container")
 
-for (let i = 0; i < headers.length; i++) {
-	headers[i].addEventListener("click", () => {
-		alert("Clicked!");
-	});
-}
+topTracks.addEventListener("click", () => {
+	// Remove active styling for all headers. 
+	for (let i = 0; i < headers.length; i++) {
+		headers[i].classList.remove("main-dash__top-stats-menu-header--active");
+	}
 
-	// Conditional: If header is active, then do nothing 
-	
-	// Else, 
-		// change current header styling, remove other header styling 
-		// show current header body info, remove other header body info 
+	// Add active styling for current header. 
+	topTracks.classList.add("main-dash__top-stats-menu-header--active");
+
+	// Hide Top Artists Container 
+	topTracksContainer[0].style.display = "grid";
+
+	// Show Top Tracks Container 
+	topArtistsContainer[0].style.display = "none";
+});
+
+
+topArtists.addEventListener("click", () => {
+	// Remove active styling for all headers. 
+	for (let i = 0; i < headers.length; i++) {
+		headers[i].classList.remove("main-dash__top-stats-menu-header--active");
+	}
+
+	// Add active styling for current header. 
+	topArtists.classList.add("main-dash__top-stats-menu-header--active");
+
+	// Hide Top Artists Container 
+	topTracksContainer[0].style.display = "none";
+
+	// Show Top Tracks Container 
+	topArtistsContainer[0].style.display = "grid";
+});
