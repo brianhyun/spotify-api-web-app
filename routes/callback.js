@@ -64,22 +64,26 @@ router.get('/callback', (req, res, next) => {
 				// Data from User's Top Artists
 				const topArtistsResponse = response[2].data;
 				const topArtistsArray = topArtistsResponse.items;
-				console.log(topArtistsArray[0]);
+				// console.log(topArtistsArray[0]);
 				
 				// Data from User's Top Tracks
 				const topTracksResponse = response[3].data;
 				const topTracksArray = topTracksResponse.items;
-				console.log(topTracksArray[0]);
+				// console.log(topTracksArray[0]);
 
 				const trackArtists = [];
+				const trackArtistsURLs = [];
 
 				// Iterate through tracks and combine artists' names into comma-separated string.
 				for (let i = 0; i < topTracksArray.length; i++) {
 					const artists = [];
+					const artistsURLs = [];
 					for(let j = 0; j < topTracksArray[i].artists.length; j++) {
 						artists.push(topTracksArray[i].artists[j].name);
+						artistsURLs.push(topTracksArray[i].artists[j].external_urls.spotify);
 					}
 					trackArtists.push(artists.join(', '));
+					trackArtistsURLs.push(artistsURLs.join(', '));
 				}
 
 				// Data from User's Following
