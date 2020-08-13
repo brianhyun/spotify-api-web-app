@@ -14,10 +14,14 @@ router.get('/artists', (req, res, next) => {
 
 	axios.get(topArtistsURL, options)
 		.then(function (response) {
-			console.log(response);
+
+			const topArtistsResponse = response.data;
+			const topArtistsArray = topArtistsResponse.items;
+
 			res.render('artists', {
-				page_name: 'artists', 
-				pageTitle: 'Artists'
+				path: 'artists', 
+				pageTitle: 'Artists',
+				topArtistsArray: topArtistsArray
 			})
 		})
 		.catch(function (error) {

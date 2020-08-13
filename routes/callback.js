@@ -16,7 +16,7 @@ router.get('/callback', (req, res, next) => {
 	// Otherwise, send client to personal dashboard. 
 	if (req.query.error) {
 		res.render('index', {
-			page_name: 'index',
+			path: 'index',
 			pageTitle: 'Analyzer'
 		});
 	} else {
