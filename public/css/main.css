@@ -84,7 +84,7 @@ textarea {
 }
 
 /* ==========================================================================
-   Author's custom styles
+   Custom Styles
    ========================================================================== */
 
 html {
@@ -110,6 +110,27 @@ h1, h2, h3, h4, h5, h6, p {
 
 a {
   text-decoration: none;
+}
+
+/*
+ * Site Wide Styles
+ */
+
+main {
+  align-items: center;
+  background-color: #191919;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0 3.5rem 7rem;
+  width: 100%;
+}
+
+hr {
+	border-color: #9d9d9d80;
+	margin: 6rem 0;
+  width: 100%;
 }
 
 /*
@@ -214,19 +235,8 @@ a {
 }
 
 /*
- * Main Dashboard
+ * Main Dashboard - Profile Page
  */
-
-.main-dash {
-  align-items: center;
-  background-color: #191919;
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 0 3.5rem 7rem;
-  width: 100%;
-}
 
 /* Profile Section */
 
@@ -285,14 +295,6 @@ a {
   text-transform: uppercase;
 }
 
-/* Horizontal Rule */
-
-.main-dash__hr {
-	border-color: #9d9d9d80;
-	margin: 6rem 0;
-  width: 100%;
-}
-
 /* Stats Section */
 
 .main-dash__top-stats-container {
@@ -330,9 +332,9 @@ a {
 }
 
 .main-dash__top-artist {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  text-align: center;
 }
 
 .main-dash__top-artist-image {
@@ -395,6 +397,46 @@ a {
 
 .main-dash__top-track-artist-link:last-child::after {
   content: "";
+}
+
+/*
+ * Top Artists Page
+ */
+
+.artists__header {
+  display: block;
+  /*  */
+  font-size: 3.5rem;
+  font-weight: 500;
+}
+
+.artists__container {
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 40px; 
+  width: 100%;
+}
+
+.artists__artist {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.artists__artist-image {
+  border-radius: 100%;
+  height: 140px;
+  margin-bottom: 2rem;
+  width: 140px;
+}
+
+.artists__artist-name {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.artists__artist-name-link {
+  color: #ffffff;
 }
 
 /* ==========================================================================
