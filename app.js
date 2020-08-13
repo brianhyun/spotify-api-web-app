@@ -4,6 +4,7 @@ const express = require('express');
 const loginRouter = require('./routes/login');
 const callbackRouter = require('./routes/callback');
 const profileRouter = require('./routes/profile');
+const artistsRouter = require('./routes/artists');
 const errorController = require('./controllers/error');
 const { port } = require('./utils/config');
 
@@ -18,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(loginRouter);
 app.use(callbackRouter);
 app.use(profileRouter);
+app.use(artistsRouter);
 
 // 404 Handling
 app.use(errorController);

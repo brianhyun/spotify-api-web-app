@@ -40,32 +40,32 @@
 
 			<!-- Menu Items -->
 			<p class="main-navbar__nav-menu-item">
-				<a class="main-navbar__nav-menu-item-link" href="/profile">
+				<a <% if (page_name === "profile") { %> class="main-navbar__nav-menu-item-link main-navbar__nav-menu-item-link--active" <% } else { %> class="main-navbar__nav-menu-item-link" <% } %> href="/profile">
 					Profile
 				</a>
 			</p>
 			<p class="main-navbar__nav-menu-item">
-				<a class="main-navbar__nav-menu-item-link" href="/artists">
+				<a <% if (page_name === "artists") { %> class="main-navbar__nav-menu-item-link main-navbar__nav-menu-item-link--active" <% } else { %> class="main-navbar__nav-menu-item-link" <% } %> href="/artists">
 					Top Artists
 				</a>
 			</p>
 			<p class="main-navbar__nav-menu-item">
-				<a class="main-navbar__nav-menu-item-link" href="/tracks">
+				<a <% if (page_name === "tracks") { %> class="main-navbar__nav-menu-item-link main-navbar__nav-menu-item-link--active" <% } else { %> class="main-navbar__nav-menu-item-link" <% } %> href="/tracks">
 					Top Tracks
 				</a>
 			</p>
 			<p class="main-navbar__nav-menu-item">
-				<a class="main-navbar__nav-menu-item-link" href="/playlists">
+				<a <% if (page_name === "playlists") { %> class="main-navbar__nav-menu-item-link main-navbar__nav-menu-item-link--active" <% } else { %> class="main-navbar__nav-menu-item-link" <% } %> href="/playlists">
 					Playlists
 				</a>
 			</p>
 			<p class="main-navbar__nav-menu-item">
-				<a class="main-navbar__nav-menu-item-link" href="/recent">
+				<a <% if (page_name === "recent") { %> class="main-navbar__nav-menu-item-link main-navbar__nav-menu-item-link--active" <% } else { %> class="main-navbar__nav-menu-item-link" <% } %> href="/recent">
 					Recently Played
 				</a>
 			</p>
 			<p class="main-navbar__nav-menu-item">
-				<a class="main-navbar__nav-menu-item-link" href="/analysis">
+				<a <% if (page_name === "analysis") { %> class="main-navbar__nav-menu-item-link main-navbar__nav-menu-item-link--active" <% } else { %> class="main-navbar__nav-menu-item-link" <% } %> href="/analysis">
 					Analysis
 				</a>
 			</p>

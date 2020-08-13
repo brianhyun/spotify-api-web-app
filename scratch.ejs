@@ -1,0 +1,12 @@
+		<!-- Top Artists Section -->
+		<section class="artists__container">
+			<!-- Top Artist -->
+			<% for (let i = 0; i < topArtistsArray.length; i++) { %>
+				<div class="artists__artist">
+					<a href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><img class="artists__artist-image" src=<%= topArtistsArray[i].images[0].url %> alt="artists profile picture"></a>
+					<h3 class="artists__artist-name">
+						<a class="artists__artist-name-link" href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><%= topArtistsArray[i].name %></a>	
+					</h3>
+				</div>
+			<% } %>
+		</section>

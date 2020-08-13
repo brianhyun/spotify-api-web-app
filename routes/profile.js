@@ -69,7 +69,7 @@ router.get('/profile', (req, res, next) => {
 	
 			// Render Data
 			res.render('profile', {
-				path: 'profile',
+				page_name: 'profile',
 				pageTitle: 'Dashboard',
 				username: displayName, 
 				profileSrc: profileSrc,
