@@ -1,6 +1,7 @@
 const express = require('express');
-
 const axios = require('axios');
+
+const returnArtistsInfoFrom = require('../utils/trackArtists');
 
 const router = express.Router();
 
@@ -39,29 +40,12 @@ router.get('/profile', (req, res, next) => {
 			// Data from User's Top Artists
 			const topArtistsResponse = response[2].data;
 			const topArtistsArray = topArtistsResponse.items;
-			// console.log(topArtistsArray[0]);
 			
 			// Data from User's Top Tracks
 			const topTracksResponse = response[3].data;
 			const topTracksArray = topTracksResponse.items;
-			// console.log(topTracksArray[0]);
-	
-			const trackArtists = [];
-	
-			// Iterate through tracks and put artist's info into object and push into tracks array.
-			for (let i = 0; i < topTracksArray.length; i++) {
-				const artists = [];
-				// For each track, make an object for each artist. 
-				for(let j = 0; j < topTracksArray[i].artists.length; j++) {
-					let artist = {};
-					artist.name = topTracksArray[i].artists[j].name;
-					artist.url = topTracksArray[i].artists[j].external_urls.spotify;
-					artists.push(artist);
-				}
-	
-				// Push artists array into artist. 
-				trackArtists.push(artists);
-			}
+
+			const trackArtists = returnArtistsInfoFrom(topTracksArray);
 	
 			// Data from User's Following
 			const followingResponse = response[4].data;

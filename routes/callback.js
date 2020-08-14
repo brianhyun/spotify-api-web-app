@@ -1,5 +1,4 @@
 const express = require('express');
-
 const cookieParser = require('cookie-parser');
 const axios = require('axios');
 const qs = require('qs');
@@ -12,7 +11,8 @@ router.use(cookieParser());
 
 router.get('/callback', (req, res, next) => {
 	// If an error exists within the query string, then the client either denied permission or an error occurred.
-	// If so, send them back to home page. (According to OAUTH convention, an error message must be shown.)
+		// If client denied permission, then send them back to the home page. 
+		// If an error occurred, then send them to the error page. 
 	// Otherwise, send client to personal dashboard. 
 	if (req.query.error) {
 		res.render('index', {
@@ -20,7 +20,7 @@ router.get('/callback', (req, res, next) => {
 			pageTitle: 'Analyzer'
 		});
 	} else {
-		// Grab Authorization Code
+		// Grab Auth Code from Query String
 		const authCode = req.query.code;
 
 		const data = qs.stringify({
@@ -35,7 +35,7 @@ router.get('/callback', (req, res, next) => {
 			headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		};
 
-		// Receive Access Token
+		// Send Post Request to Receive Access Token
 		axios.post(token_endpoint, data, options)
 			.then(function (response) {
 				const accessToken = response.data.access_token;

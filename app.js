@@ -5,7 +5,10 @@ const loginRouter = require('./routes/login');
 const callbackRouter = require('./routes/callback');
 const profileRouter = require('./routes/profile');
 const artistsRouter = require('./routes/artists');
+const tracksRouter = require('./routes/tracks');
+
 const errorController = require('./controllers/error');
+
 const { port } = require('./utils/config');
 
 const app = express(); 
@@ -20,6 +23,7 @@ app.use(loginRouter);
 app.use(callbackRouter);
 app.use(profileRouter);
 app.use(artistsRouter);
+app.use(tracksRouter);
 
 // 404 Handling
 app.use(errorController);

@@ -15,8 +15,7 @@ router.get('/artists', (req, res, next) => {
 	axios.get(topArtistsURL, options)
 		.then(function (response) {
 
-			const topArtistsResponse = response.data;
-			const topArtistsArray = topArtistsResponse.items;
+			const topArtistsArray = response.data.items;
 
 			res.render('artists', {
 				path: 'artists', 
