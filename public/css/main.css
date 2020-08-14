@@ -322,64 +322,14 @@ hr {
   padding-bottom: 0.7rem;
 }
 
-/* Top Artists Section */
-
-.main-dash__top-artists-container {
-  display: grid; 
-  grid-template-columns: repeat(2, 1fr);
-  row-gap: 40px; 
-  width: 100%; 
-}
-
-.main-dash__top-artist {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.main-dash__top-artist-image {
-  border-radius: 100%;
-  height: 100px;
-  margin-bottom: 1.8rem;
-  width: 100px;
-}
-
-.main-dash__top-artist-name {
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-
-.main-dash__top-artist-name-link {
-  color: #ffffff;
-}
-
 /* Top Tracks Section */
 
 .main-dash__top-tracks-container {
   display: none;
-  grid-template-columns: repeat(2, 1fr);
-  row-gap: 40px;
-  width: 100%;
-}
-
-.main-dash__top-track {
-  text-align: center;
-}
-
-.main-dash__top-track-image {
-  height: 100px;
-  margin-bottom: 1.8rem;
-  width: 100px;
 }
 
 .main-dash__top-track-name {
-  font-size: 1.2rem;
-  font-weight: 500;
   margin-bottom: 1rem;
-}
-
-.main-dash__top-track-name-link {
-  color: #ffffff;
 }
 
 .main-dash__top-track-artist {
@@ -400,43 +350,56 @@ hr {
 }
 
 /*
- * Top Artists Page
+ * Cross Page Similar Styles (for Main Dash Top Artists, Tracks, and Artists Page) 
  */
 
-.artists__header {
-  display: block;
-  /*  */
-  font-size: 3.5rem;
-  font-weight: 500;
-}
-
-.artists__container {
+.main-dash__top-artists-container, .artists__container {
   display: grid; 
-  grid-template-columns: repeat(2, 1fr);
-  row-gap: 40px; 
-  width: 100%;
 }
 
-.artists__artist {
+.main-dash__top-artists-container, .main-dash__top-tracks-container, .artists__container {
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 40px; 
+  width: 100%; 
+}
+
+.main-dash__top-artist, .main-dash__top-track, .artists__artist {
   align-items: center;
   display: flex;
   flex-direction: column;
 }
 
-.artists__artist-image {
-  border-radius: 100%;
-  height: 140px;
-  margin-bottom: 2rem;
-  width: 140px;
+.main-dash__top-artist-image, .main-dash__top-track-image, .artists__artist-image {
+  height: 100px;
+  margin-bottom: 1.8rem;
+  width: 100px;
 }
 
-.artists__artist-name {
+.main-dash__top-artist-image, .artists__artist-image {
+  border-radius: 100%;
+}
+
+.main-dash__top-artist-name-link, .main-dash__top-track-name-link, .artists__artist-name-link {
+  color: #ffffff;
+}
+
+.main-dash__top-artist-name, .main-dash__top-track-name, .artists__artist-name {
   font-size: 1.2rem;
   font-weight: 500;
 }
 
-.artists__artist-name-link {
-  color: #ffffff;
+/*
+ * Top Artists Page
+ */
+
+.artists__header-container {
+  text-align: left; 
+  width: 100%;
+}
+
+.artists__header {
+  font-size: 3.5rem;
+  font-weight: 500;
 }
 
 /* ==========================================================================
