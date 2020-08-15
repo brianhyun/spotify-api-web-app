@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 
-const returnArtistsInfoFrom = require('../utils/trackArtists');
+const library = require('../utils/library');
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ router.get('/tracks', (req, res, next) => {
 
 			const topTracksArray = response.data.items;
 
-			const trackArtists = returnArtistsInfoFrom(topTracksArray);
+			const trackArtists = library.returnArtistsInfoFrom(topTracksArray);
 
 			res.render('tracks', {
 				path: 'tracks', 

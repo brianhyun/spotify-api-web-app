@@ -332,24 +332,24 @@ hr {
  * Cross Page Similar Styles (for Main Dash Top Artists / Tracks, and Artists Page) 
  */
 
-.main-dash__top-artists-container, .artists__container, .tracks__container {
+.main-dash__top-artists-container, .artists__container, .tracks__container, .playlists__container {
   display: grid; 
 }
 
-.main-dash__top-artists-container, .main-dash__top-tracks-container, .artists__container, .tracks__container {
+.main-dash__top-artists-container, .main-dash__top-tracks-container, .artists__container, .tracks__container, .playlists__container {
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 40px; 
   width: 100%; 
 }
 
-.main-dash__top-artist, .main-dash__top-track, .artists__artist, .tracks__track {
+.main-dash__top-artist, .main-dash__top-track, .artists__artist, .tracks__track, .playlists__playlist{
   align-items: center;
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
-.main-dash__top-artist-image, .main-dash__top-track-image, .artists__artist-image, .tracks__track-image {
+.main-dash__top-artist-image, .main-dash__top-track-image, .artists__artist-image, .tracks__track-image, .playlists__playlist-image {
   height: 100px;
   margin-bottom: 1.8rem;
   width: 100px;
@@ -359,27 +359,27 @@ hr {
   border-radius: 100%;
 }
 
-.main-dash__top-artist-name, .main-dash__top-track-name, .artists__artist-name, .tracks__track-name {
+.main-dash__top-artist-name, .main-dash__top-track-name, .artists__artist-name, .tracks__track-name, .playlists__playlist-name {
   font-size: 1.2rem;
   font-weight: 500;
 }
 
-.main-dash__top-artist-name-link, .main-dash__top-track-name-link, .artists__artist-name-link, .tracks__track-name-link {
+.main-dash__top-artist-name-link, .main-dash__top-track-name-link, .artists__artist-name-link, .tracks__track-name-link, .playlists__playlist-name-link {
   color: #ffffff;
 }
 
 /* Main Dash Track Section and Tracks Page Shared Styles */
 
-.main-dash__top-track-name, .tracks__track-name {
+.main-dash__top-track-name, .tracks__track-name, .playlists__playlist-name {
   margin-bottom: 1rem;
 }
 
-.main-dash__top-track-artist, .tracks__track-artist {
+.main-dash__top-track-artist, .tracks__track-artist, .playlists__playlist-track-count {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
-.main-dash__top-track-artist-link, .tracks__track-artist-link {
+.main-dash__top-track-artist-link, .tracks__track-artist-link, .playlists__playlist-track-count {
   color: #9D9D9D;
 }
 

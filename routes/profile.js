@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 
-const returnArtistsInfoFrom = require('../utils/trackArtists');
+const library = require('../utils/library');
 
 const router = express.Router();
 
@@ -45,7 +45,7 @@ router.get('/profile', (req, res, next) => {
 			const topTracksResponse = response[3].data;
 			const topTracksArray = topTracksResponse.items;
 
-			const trackArtists = returnArtistsInfoFrom(topTracksArray);
+			const trackArtists = library.returnArtistsInfoFrom(topTracksArray);
 	
 			// Data from User's Following
 			const followingResponse = response[4].data;

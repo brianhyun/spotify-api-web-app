@@ -1,6 +1,8 @@
 const express = require('express');
 const axios = require('axios');
 
+const library = require('../utils/library');
+
 const router = express.Router();
 
 router.get('/playlists', (req, res, next) => {
@@ -14,12 +16,15 @@ router.get('/playlists', (req, res, next) => {
 
 	axios.get(playlistURL, options)
 		.then(function (response) {
-
-			console.log(response.data);
+			const playlistsArray = response.data.items;
+			
+			const playlistsImageURLs = library.returnPlaylistImageSourcesFrom(playlistsArray);
 
 			res.render('playlists', {
 				path: 'playlists', 
-				pageTitle: 'Playlists'
+				pageTitle: 'Playlists',
+				playlistsArray: playlistsArray,
+				playlistsImageURLs: playlistsImageURLs
 			});
 		})
 		.catch(function (error) {
