@@ -21,7 +21,7 @@ router.get('/tracks', (req, res, next) => {
 
 			const trackArtists = returnArtistsInfoFrom(topTracksArray);
 
-			res.render('artists', {
+			res.render('tracks', {
 				path: 'tracks', 
 				pageTitle: 'Tracks',
 				topTracksArray: topTracksArray, 

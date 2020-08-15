@@ -328,48 +328,28 @@ hr {
   display: none;
 }
 
-.main-dash__top-track-name {
-  margin-bottom: 1rem;
-}
-
-.main-dash__top-track-artist {
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.main-dash__top-track-artist-link {
-  color: #9D9D9D;
-}
-
-.main-dash__top-track-artist-link::after {
-  content: " &";
-}
-
-.main-dash__top-track-artist-link:last-child::after {
-  content: "";
-}
-
 /*
- * Cross Page Similar Styles (for Main Dash Top Artists, Tracks, and Artists Page) 
+ * Cross Page Similar Styles (for Main Dash Top Artists / Tracks, and Artists Page) 
  */
 
-.main-dash__top-artists-container, .artists__container {
+.main-dash__top-artists-container, .artists__container, .tracks__container {
   display: grid; 
 }
 
-.main-dash__top-artists-container, .main-dash__top-tracks-container, .artists__container {
+.main-dash__top-artists-container, .main-dash__top-tracks-container, .artists__container, .tracks__container {
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 40px; 
   width: 100%; 
 }
 
-.main-dash__top-artist, .main-dash__top-track, .artists__artist {
+.main-dash__top-artist, .main-dash__top-track, .artists__artist, .tracks__track {
   align-items: center;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
-.main-dash__top-artist-image, .main-dash__top-track-image, .artists__artist-image {
+.main-dash__top-artist-image, .main-dash__top-track-image, .artists__artist-image, .tracks__track-image {
   height: 100px;
   margin-bottom: 1.8rem;
   width: 100px;
@@ -379,25 +359,48 @@ hr {
   border-radius: 100%;
 }
 
-.main-dash__top-artist-name-link, .main-dash__top-track-name-link, .artists__artist-name-link {
-  color: #ffffff;
-}
-
-.main-dash__top-artist-name, .main-dash__top-track-name, .artists__artist-name {
+.main-dash__top-artist-name, .main-dash__top-track-name, .artists__artist-name, .tracks__track-name {
   font-size: 1.2rem;
   font-weight: 500;
 }
 
+.main-dash__top-artist-name-link, .main-dash__top-track-name-link, .artists__artist-name-link, .tracks__track-name-link {
+  color: #ffffff;
+}
+
+/* Main Dash Track Section and Tracks Page Shared Styles */
+
+.main-dash__top-track-name, .tracks__track-name {
+  margin-bottom: 1rem;
+}
+
+.main-dash__top-track-artist, .tracks__track-artist {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.main-dash__top-track-artist-link, .tracks__track-artist-link {
+  color: #9D9D9D;
+}
+
+.main-dash__top-track-artist-link::after, .tracks__track-artist-link::after {
+  content: " &";
+}
+
+.main-dash__top-track-artist-link:last-child::after, .tracks__track-artist-link:last-child::after {
+  content: "";
+}
+
 /*
- * Top Artists Page
+ * Top Artists Page and Top Tracks Page Shared Styles
  */
 
-.artists__header-container {
+.artists__header-container, .tracks__header-container {
   text-align: left; 
   width: 100%;
 }
 
-.artists__header {
+.artists__header, .tracks__header {
   font-size: 3.5rem;
   font-weight: 500;
 }
