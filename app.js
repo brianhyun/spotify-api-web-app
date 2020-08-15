@@ -6,6 +6,9 @@ const callbackRouter = require('./routes/callback');
 const profileRouter = require('./routes/profile');
 const artistsRouter = require('./routes/artists');
 const tracksRouter = require('./routes/tracks');
+const playlistsRouter = require('./routes/playlists');
+const recentRouter = require('./routes/recent');
+const analysisRouter = require('./routes/analysis');
 
 const errorController = require('./controllers/error');
 
@@ -24,6 +27,9 @@ app.use(callbackRouter);
 app.use(profileRouter);
 app.use(artistsRouter);
 app.use(tracksRouter);
+app.use(playlistsRouter);
+app.use(recentRouter);
+app.use(analysisRouter);
 
 // 404 Handling
 app.use(errorController);

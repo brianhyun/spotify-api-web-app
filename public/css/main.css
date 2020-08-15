@@ -395,12 +395,12 @@ hr {
  * Top Artists Page and Top Tracks Page Shared Styles
  */
 
-.artists__header-container, .tracks__header-container {
+.artists__header-container, .tracks__header-container, .playlists__header-container {
   text-align: left; 
   width: 100%;
 }
 
-.artists__header, .tracks__header {
+.artists__header, .tracks__header, .playlists__header {
   font-size: 3.5rem;
   font-weight: 500;
 }
