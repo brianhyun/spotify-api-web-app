@@ -45,7 +45,7 @@ router.get('/callback', (req, res, next) => {
 				res.redirect('/profile');
 			})
 			.catch(function (error) {
-				console.log(error);
+				console.log(error.response);
 			});
 	}
 });

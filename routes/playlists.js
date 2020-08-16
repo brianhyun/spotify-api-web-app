@@ -28,7 +28,7 @@ router.get('/playlists', (req, res, next) => {
 			});
 		})
 		.catch(function (error) {
-			console.log(error);
+			console.log(error.response);
 		});
 });
 
