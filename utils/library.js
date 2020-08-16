@@ -27,6 +27,33 @@ module.exports.returnArtistsInfoFrom = (topTracksArray) => {
 };
 
 /* 
+	Takes in an array of user's top tracks and returns an array of the tracks' times in seconds. 
+
+	The time of the tracks are posted in milliseconds. 
+	This function returns an array of each track's time in mm::ss format. 
+*/
+
+module.exports.returnTrackTimesFrom = (topTracksArray) => {
+	const trackTimes = [];
+
+	for (let i = 0; i < topTracksArray.length; i++) {
+		const timeInMilli = topTracksArray[i].duration_ms; 
+		const timeInSeconds = timeInMilli / 1000; 
+		const timeInMinutes = Math.trunc(timeInSeconds / 60); 
+		const remainingSeconds = Math.trunc(timeInSeconds % 60);
+		let timeAsString = '';
+		if (remainingSeconds < 10) {
+			timeAsString = `${timeInMinutes}:0${remainingSeconds}`;
+		} else {
+			timeAsString = `${timeInMinutes}:${remainingSeconds}`;
+		}
+		trackTimes.push(timeAsString);
+	}
+
+	return trackTimes;
+}
+
+/* 
 	Takes in the array of user's playlists and returns an array of each playlist's image urls. 
 
 	If a playlist doesn't have an image, then use personal asset as substitute. 

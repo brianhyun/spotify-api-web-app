@@ -129,7 +129,7 @@ main {
 
 hr {
 	border-color: #9d9d9d80;
-	margin: 6rem 0;
+	margin: 4rem 0;
   width: 100%;
 }
 
@@ -322,87 +322,190 @@ hr {
   padding-bottom: 0.7rem;
 }
 
-/* Top Tracks Section */
+/* Shared Styles for All Pages (Except Tracks and Recently Played Pages) */
 
 .profile__top-tracks-container {
   display: none;
 }
 
-/*
- * Shared Styles for All Pages (Except Tracks and Recently Played Pages)
- */
-
-.profile__top-artists-container, .artists__container, .playlists__container {
+.profile__top-artists-container, 
+.artists__container, 
+.playlists__container {
   display: grid; 
 }
 
-.profile__top-artists-container, .profile__top-tracks-container, .artists__container, .playlists__container {
+.profile__top-artists-container, 
+.profile__top-tracks-container, 
+.artists__container, .playlists__container {
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 40px; 
   width: 100%; 
 }
 
-.profile__top-artist, .profile__top-track, .artists__artist, .playlists__playlist {
+.profile__top-artist, 
+.profile__top-track, 
+.artists__artist, 
+.playlists__playlist {
   align-items: center;
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
-.profile__top-artist-image, .profile__top-track-image, .artists__artist-image, .playlists__playlist-image {
+.profile__top-artist-image, 
+.profile__top-track-image, 
+.artists__artist-image, 
+.playlists__playlist-image {
   height: 100px;
   margin-bottom: 1.8rem;
   width: 100px;
 }
 
-.profile__top-artist-image, .artists__artist-image {
+.profile__top-artist-image, 
+.artists__artist-image {
   border-radius: 100%;
 }
 
-.profile__top-artist-name, .profile__top-track-name, .artists__artist-name, .playlists__playlist-name {
+.profile__top-artist-name, 
+.profile__top-track-name, 
+.artists__artist-name, 
+.playlists__playlist-name {
   font-size: 1.2rem;
   font-weight: 500;
 }
 
-.profile__top-artist-name-link, .profile__top-track-name-link, .artists__artist-name-link, .playlists__playlist-name-link {
+.profile__top-artist-name-link, 
+.profile__top-track-name-link, 
+.artists__artist-name-link, 
+.playlists__playlist-name-link {
   color: #ffffff;
 }
 
 /* Shared Styles for Pages with Track Name and Artist Names */
 
-.profile__top-track-name, .playlists__playlist-name {
+.profile__top-track-name, 
+.playlists__playlist-name {
   margin-bottom: 1rem;
 }
 
-.profile__top-track-artist, .playlists__playlist-track-count {
+.profile__top-track-artist, 
+.playlists__playlist-track-count {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
-.profile__top-track-artist-link, .playlists__playlist-track-count {
+.profile__top-track-artist-link, 
+.playlists__playlist-track-count {
   color: #9D9D9D;
 }
 
-.profile__top-track-artist-link::after {
+.profile__top-track-artist-link::after, .tracks__track-artist-link::after {
   content: " &";
 }
 
-.profile__top-track-artist-link:last-child::after {
+.profile__top-track-artist-link:last-child::after, .tracks__track-artist-link:last-child::after {
   content: "";
 }
 
-/*
- * Shared Styles for Header (excluding Main Dash) 
- */
+/* Shared Styles for Header (excluding Main Dash Since No Header Exists) */
 
-.artists__header-container, .tracks__header-container, .playlists__header-container, .recent__header-container {
+.header-container {
   text-align: left; 
   width: 100%;
 }
 
-.artists__header, .tracks__header, .playlists__header, .recent__header {
-  font-size: 3rem;
+.header {
+  font-size: 3.5rem;
   font-weight: 500;
+}
+
+/*
+ * Tracks and Recently Played Page - Tracks Container Shared Styles
+ */
+
+.tracks__container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tracks__track {
+  display: flex;
+  margin-bottom: 4rem;
+  width: 100%;
+}
+
+.tracks__track-image {
+  height: 60px;
+  margin-right: 2rem; 
+  width: 60px;
+}
+
+.tracks__track-info {
+  align-items: center;
+  display: flex; 
+  font-size: 1.2rem;
+  font-weight: 500;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.tracks__track-name {
+  font-size: 1.5rem;
+}
+
+.tracks__track-name-link {
+  color: #ffffff;
+}
+
+.tracks__track-artist {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.tracks__track-artist-link, 
+.tracks__track-album-link, 
+.tracks__track-time {
+  color: #9d9d9d;
+}
+
+.tracks__track-artist-album {
+  display: flex;
+}
+
+.tracks__track-artist-album-separator,
+.tracks__track-album {
+  display: none;
+}
+
+.tracks__track-name-artist-album, 
+.tracks__track-analysis-time {
+  display: flex;
+  flex-direction: column;
+}
+
+.tracks__track-name-artist-album {
+  align-items: flex-start;
+}
+ 
+.tracks__track-analysis-time {
+  align-items: flex-end;
+}
+
+.tracks__track-name, .tracks__track-analysis-link {
+  margin-bottom: 20%;
+}
+
+.tracks__track-analysis-link {
+  border: 1px solid #ffffff;
+  border-radius: 10rem;
+  color: #ffffff;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  padding: 0.4rem 1rem;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 /* ==========================================================================

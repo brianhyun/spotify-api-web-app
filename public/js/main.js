@@ -41,7 +41,7 @@ closeBtn.addEventListener("click", () => {
 	navigationMenu.style.display = "none";
 });
 
-// Main Dashboard - Toggle Artists and Tracks Display
+// Profile Page - Toggle Artists and Tracks Display
 const headers = document.getElementsByClassName("profile__top-stats-menu-header");
 const topTracks = document.getElementById("top-tracks");
 const topTracksContainer = document.getElementsByClassName("profile__top-tracks-container");

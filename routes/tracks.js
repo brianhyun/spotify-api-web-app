@@ -20,16 +20,19 @@ router.get('/tracks', (req, res, next) => {
 			const topTracksArray = response.data.items;
 
 			const trackArtists = library.returnArtistsInfoFrom(topTracksArray);
+			const trackTimes = library.returnTrackTimesFrom(topTracksArray);
 
 			res.render('tracks', {
 				path: 'tracks', 
 				pageTitle: 'Tracks',
 				topTracksArray: topTracksArray, 
-				trackArtists: trackArtists
+				trackArtists: trackArtists,
+				trackTimes: trackTimes
 			})
 		})
 		.catch(function (error) {
 			console.log(error);
+			console.log(error.data.error);
 		});
 });
 

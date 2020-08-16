@@ -30,12 +30,14 @@ router.get('/recent', (req, res, next) => {
 			// Push tracks array into library function. 
 			// Returns an array of arrays, with each nested array holding info about the artists on each track. 
 			const trackArtists = library.returnArtistsInfoFrom(tracksArray);
+			const trackTimes = library.returnTrackTimesFrom(tracksArray);
 
 			res.render('recent', {
 				path: 'recent', 
 				pageTitle: 'Recently Played',
 				recentArray: recentArray,
-				trackArtists: trackArtists
+				trackArtists: trackArtists,
+				trackTimes: trackTimes
 			});
 		})
 		.catch(function (error) {
