@@ -31,8 +31,7 @@ router.get('/tracks', (req, res, next) => {
 			})
 		})
 		.catch(function (error) {
-			console.log(error);
-			console.log(error.data.error);
+			console.log(error.response);
 		});
 });
 

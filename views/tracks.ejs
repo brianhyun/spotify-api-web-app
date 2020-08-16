@@ -23,6 +23,7 @@
 								<a class="tracks__track-name-link" href=<%= topTracksArray[i].external_urls.spotify %> target="_blank"><%= topTracksArray[i].name %></a>
 							</p>
 
+							<!-- Track Artist and Album -->
 							<div class="tracks__track-artist-album">
 								<!-- Track Artist --> 
 								<p class="tracks__track-artist">
@@ -44,7 +45,7 @@
 						<!-- Track Analysis and Time -->
 						<div class="tracks__track-analysis-time">
 							<!-- Show Analysis Link -->
-							<a class="tracks__track-analysis-link" href="/tracks/">Analysis</a>
+							<a class="tracks__track-analysis-link" href="/tracks/<%= topTracksArray[i].id %>">Analysis</a>
 						
 							<!-- Track Time -->
 							<p class="tracks__track-time">

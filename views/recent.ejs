@@ -16,32 +16,35 @@
 					<a href=<%= recentArray[i].track.album.external_urls.spotify %> target="_blank"><img class="tracks__track-image" src=<%= recentArray[i].track.album.images[0].url %> alt="album cover"></a>
 
 					<div class="tracks__track-info">
-						<!-- Track Name and Analysis -->
+						<!-- Track Name, Artist, and Album -->
 						<div class="tracks__track-name-artist-album">
 							<!-- Track Name -->
 							<p class="tracks__track-name">
 								<a class="tracks__track-name-link" href=<%= recentArray[i].track.external_urls.spotify %> target="_blank"><%= recentArray[i].track.name %></a>
 							</p>
-
-							<!-- Track Artist --> 
-							<p class="tracks__track-artist">
-								<% for (let j = 0; j < trackArtists[i].length; j++) { %>
-									<a class="tracks__track-artist-link" href=<%= trackArtists[i][j].url %> target="_blank"><%= trackArtists[i][j].name %></a>
-								<% } %>
-							</p>
-
-							<!-- Separator -->
-							<p class="tracks__track-artist-album-separator">•</p>
-
-							<!-- Album Name -->
-							<p class="tracks__track-album">
-								<a class="tracks__track-album-link" href=<%= recentArray[i].track.album.external_urls.spotify %> target="_blank"><%= recentArray[i].track.album.name %></a>
-							</p>
-						</div>
 							
+							<div class="tracks__track-artist-album"></div>
+								<!-- Track Artist --> 
+								<p class="tracks__track-artist">
+									<% for (let j = 0; j < trackArtists[i].length; j++) { %>
+										<a class="tracks__track-artist-link" href=<%= trackArtists[i][j].url %> target="_blank"><%= trackArtists[i][j].name %></a>
+									<% } %>
+								</p>
+
+								<!-- Separator -->
+								<p class="tracks__track-artist-album-separator">•</p>
+
+								<!-- Album Name -->
+								<p class="tracks__track-album">
+									<a class="tracks__track-album-link" href=<%= recentArray[i].track.album.external_urls.spotify %> target="_blank"><%= recentArray[i].track.album.name %></a>
+								</p>
+							</div> <!-- tracks__track-artist-album -->
+						</div> <!-- tracks__track-name-artist-album -->
+						
+						<!-- Track Analysis and Time -->
 						<div class="tracks__track-analysis-time">
 							<!-- Show Analysis Link -->
-							<a class="tracks__track-analysis-link" href="/tracks/">Show Analysis</a>
+							<a class="tracks__track-analysis-link" href="/tracks/">Analysis</a>
 
 							<!-- Track Time -->
 							<p class="tracks__track-time">

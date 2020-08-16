@@ -494,7 +494,7 @@ hr {
 }
 
 .tracks__track-name, .tracks__track-analysis-link {
-  margin-bottom: 20%;
+  margin-bottom: 18px;
 }
 
 .tracks__track-analysis-link {
