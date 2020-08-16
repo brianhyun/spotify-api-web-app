@@ -42,20 +42,20 @@ closeBtn.addEventListener("click", () => {
 });
 
 // Main Dashboard - Toggle Artists and Tracks Display
-const headers = document.getElementsByClassName("main-dash__top-stats-menu-header");
+const headers = document.getElementsByClassName("profile__top-stats-menu-header");
 const topTracks = document.getElementById("top-tracks");
-const topTracksContainer = document.getElementsByClassName("main-dash__top-tracks-container");
+const topTracksContainer = document.getElementsByClassName("profile__top-tracks-container");
 const topArtists = document.getElementById("top-artists");
-const topArtistsContainer = document.getElementsByClassName("main-dash__top-artists-container")
+const topArtistsContainer = document.getElementsByClassName("profile__top-artists-container")
 
 topTracks.addEventListener("click", () => {
 	// Remove active styling for all headers. 
 	for (let i = 0; i < headers.length; i++) {
-		headers[i].classList.remove("main-dash__top-stats-menu-header--active");
+		headers[i].classList.remove("profile__top-stats-menu-header--active");
 	}
 
 	// Add active styling for current header. 
-	topTracks.classList.add("main-dash__top-stats-menu-header--active");
+	topTracks.classList.add("profile__top-stats-menu-header--active");
 
 	// Hide Top Artists Container 
 	topTracksContainer[0].style.display = "grid";
@@ -68,11 +68,11 @@ topTracks.addEventListener("click", () => {
 topArtists.addEventListener("click", () => {
 	// Remove active styling for all headers. 
 	for (let i = 0; i < headers.length; i++) {
-		headers[i].classList.remove("main-dash__top-stats-menu-header--active");
+		headers[i].classList.remove("profile__top-stats-menu-header--active");
 	}
 
 	// Add active styling for current header. 
-	topArtists.classList.add("main-dash__top-stats-menu-header--active");
+	topArtists.classList.add("profile__top-stats-menu-header--active");
 
 	// Hide Top Artists Container 
 	topTracksContainer[0].style.display = "none";
