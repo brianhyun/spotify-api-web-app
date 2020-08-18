@@ -1,56 +1,92 @@
 /* 
-	Takes in an array of user's top tracks and returns an array of arrays. 
+	Input: 
+		(1) an array of objects (array of tracks) OR
+			(a) each object stores information about a particular track 
+				and each track (which is an object) has a data member that is an array of objects, 
+				where each object stores information about a particular artist
+			(b) from track.js and recent.js 
+		(2) an object (single track)
+			(a) the object stores information about a particular track 
+			(b) from track_analysis.js
 
-	Each nested array contains one or more objects containing info (e.g. name and url) 
-	about each artist that participated on that particular track. 
+	Output: 
+		(1) an array of arrays
+			(a) Each nested array contains one or more objects containing info (e.g. name and url) 
+			about each artist that participated on that particular track. 
 */
 
-module.exports.returnArtistsInfoFrom = (topTracksArray) => {
+module.exports.returnArtistsInfoFrom = (topTracks) => {
 	const trackArtists = [];
-	
-	// Iterate through tracks and put artist's info into object and push into tracks array.
-	for (let i = 0; i < topTracksArray.length; i++) {
-		const artists = [];
-		// For each track, make an object for each artist. 
-		for(let j = 0; j < topTracksArray[i].artists.length; j++) {
+
+	// Single Track Logic: If input is not an array, but a single object...
+	if (!Array.isArray(topTracks) && (typeof topTracks) === 'object') {
+		for (let i = 0; i < topTracks.artists.length; i++) {
 			let artist = {};
-			artist.name = topTracksArray[i].artists[j].name;
-			artist.url = topTracksArray[i].artists[j].external_urls.spotify;
-			artists.push(artist);
+			artist.name = topTracks.artists[i].name;
+			artist.url = topTracks.artists[i].external_urls.spotify;
+			trackArtists.push(artist);
 		}
 
-		// Push artists array into artist. 
-		trackArtists.push(artists);
+		return trackArtists;
+	// Array of Tracks Logic: If input is an array...
+	} else if (Array.isArray(topTracks)) {	
+		// Iterate through tracks and put artist's info into object and push into tracks array.
+		for (let i = 0; i < topTracks.length; i++) {
+			const artists = [];
+			// For each track, make an object for each artist. 
+			for(let j = 0; j < topTracks[i].artists.length; j++) {
+				let artist = {};
+				artist.name = topTracks[i].artists[j].name;
+				artist.url = topTracks[i].artists[j].external_urls.spotify;
+				artists.push(artist);
+			}
+	
+			// Push artists array into artist. 
+			trackArtists.push(artists);
+		}
+	
+		return trackArtists;
 	}
-
-	return trackArtists; 
 };
 
 /* 
-	Takes in an array of user's top tracks and returns an array of the tracks' times in seconds. 
+	Spotify stores the duration of the tracks in milliseconds. 
 
-	The time of the tracks are posted in milliseconds. 
-	This function returns an array of each track's time in mm::ss format. 
+	Input: 
+		(1) an array of objects (array of user's top tracks)
+			(a) each object is a track OR
+		(2) an object 
+
+	Output: an array of each track's time in mm::ss format
 */
 
-module.exports.returnTrackTimesFrom = (topTracksArray) => {
-	const trackTimes = [];
-
-	for (let i = 0; i < topTracksArray.length; i++) {
-		const timeInMilli = topTracksArray[i].duration_ms; 
-		const timeInSeconds = timeInMilli / 1000; 
-		const timeInMinutes = Math.trunc(timeInSeconds / 60); 
-		const remainingSeconds = Math.trunc(timeInSeconds % 60);
-		let timeAsString = '';
-		if (remainingSeconds < 10) {
-			timeAsString = `${timeInMinutes}:0${remainingSeconds}`;
-		} else {
-			timeAsString = `${timeInMinutes}:${remainingSeconds}`;
-		}
-		trackTimes.push(timeAsString);
+const milliToSeconds = (milliseconds) => {
+	const timeInSeconds = timeInMilli / 1000; 
+	const timeInMinutes = Math.trunc(timeInSeconds / 60); 
+	const remainingSeconds = Math.trunc(timeInSeconds % 60);
+	let timeAsString = '';
+	if (remainingSeconds < 10) {
+		timeAsString = `${timeInMinutes}:0${remainingSeconds}`;
+	} else {
+		timeAsString = `${timeInMinutes}:${remainingSeconds}`;
 	}
+	return timeAsString; 
+};
 
-	return trackTimes;
+module.exports.returnTrackTimesFrom = (topTracks) => {
+	// Single Track Logic: Input is Object, but not Array
+	if (!Array.isArray(topTracks) && (typeof topTracks) === 'object') {
+		return milliToSeconds(topTracks.duration_ms);
+	// Array of Tracks Logic: Input is Array
+	} else if (Array.isArray(topTracks)) {
+		const trackTimes = [];
+
+		for (let i = 0; i < topTracks.length; i++) {
+			trackTimes.push(milliToSeconds(topTracks[i].duration_ms));
+		}
+	
+		return trackTimes;
+	}
 }
 
 /* 

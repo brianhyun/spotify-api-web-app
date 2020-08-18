@@ -14,9 +14,6 @@ router.get('/analysis', (req, res, next) => {
 
 	axios.get(playlistURL, options)
 		.then(function (response) {
-
-			console.log(response.data);
-
 			res.render('analysis', {
 				path: 'analysis', 
 				pageTitle: 'Analysis'

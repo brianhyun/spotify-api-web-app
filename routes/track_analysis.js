@@ -1,6 +1,8 @@
 const express = require('express');
 const axios = require('axios');
 
+const library = require('../utils/library');
+
 const router = express.Router();
 
 router.get('/tracks/:id', (req, res, next) => {
@@ -20,22 +22,26 @@ router.get('/tracks/:id', (req, res, next) => {
 	Promise.all([trackInfoPromise, trackFeaturesPromise])
 		.then(function (response) {
 			// Data from Track Info
-			const trackInfoResponse = response[0].data;
-			console.log(trackInfoResponse);
+			const trackInfo = response[0].data;
+
+			const trackArtists = library.returnArtistsInfoFrom(trackInfo);
+			const trackTime = library.returnTrackTimesFrom(trackInfo);
 
 			// Data from Track Features 
-			const trackFeaturesResponse = response[1].data;
-			console.log(trackFeaturesResponse);
+			const trackFeatures = response[1].data;
+
+			res.render('track_analysis', {
+				path: 'track_analysis', 
+				pageTitle: 'Track Analysis', 
+				trackInfo: trackInfo, 
+				trackArtists: trackArtists, 
+				trackFeatures: trackFeatures,
+				trackTime: trackTime
+			});
 		})
 		.catch(function (error) {
 			console.log(error.response);
 		});
-	
-	res.render('track_analysis', {
-		path: 'track_analysis', 
-		pageTitle: 'Track Analysis', 
-		trackID: trackID
-	});
 });
 
 module.exports = router; 
