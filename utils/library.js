@@ -61,7 +61,7 @@ module.exports.returnArtistsInfoFrom = (topTracks) => {
 */
 
 const milliToSeconds = (milliseconds) => {
-	const timeInSeconds = timeInMilli / 1000; 
+	const timeInSeconds = milliseconds / 1000; 
 	const timeInMinutes = Math.trunc(timeInSeconds / 60); 
 	const remainingSeconds = Math.trunc(timeInSeconds % 60);
 	let timeAsString = '';
@@ -112,3 +112,72 @@ module.exports.returnPlaylistImageSourcesFrom = (playlistsArray) => {
 	return playlistsImageURLs;
 };
 
+/* 
+	Translate raw audio features into understandable English. 
+
+	Spotify uses numbers to represent key and modality. 
+*/
+
+module.exports.returnTranslatedAudioFeatures = (track) => {
+	const trackFeatures = {};
+
+	// Tempo 
+	trackFeatures.tempo = Math.trunc(track.tempo);
+
+	// Time Signature 
+	trackFeatures.time_signature = track.time_signature; 
+
+	// Modality (1 for Major, 0 for Minor)
+	if (track.mode === 0) {
+		trackFeatures.mode = 'Major';
+	} else if (track.mode === 1) {
+		trackFeatures.mode = 'Minor';
+	} else {
+		trackFeatures.mode = 'No Mode Detected';
+	}
+
+	// Key 
+	switch (track.key) {
+		case 0: 
+			trackFeatures.key = 'C';
+			break;
+		case 1: 
+			trackFeatures.key = 'C Sharp';
+			break;
+		case 2: 
+			trackFeatures.key = 'D';
+			break;
+		case 3: 
+			trackFeatures.key = 'D Sharp';
+			break;
+		case 4: 
+			trackFeatures.key = 'E';
+			break;	
+		case 5: 
+			trackFeatures.key = 'F';
+			break;
+		case 6: 
+			trackFeatures.key = 'F Sharp';
+			break;
+		case 7: 
+			trackFeatures.key = 'G';
+			break;
+		case 8: 
+			trackFeatures.key = 'G Sharp';
+			break;
+		case 9: 
+			trackFeatures.key = 'A';
+			break;
+		case 10: 
+			trackFeatures.key = 'A Sharp';
+			break;
+		case 11: 
+			trackFeatures.key = 'B';
+			break;
+		case -1: 
+		default: 
+			trackFeatures.key = 'No Key Detected';
+	}
+
+	return trackFeatures;
+};

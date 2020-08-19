@@ -28,12 +28,13 @@ router.get('/tracks/:id', (req, res, next) => {
 			const trackTime = library.returnTrackTimesFrom(trackInfo);
 
 			// Data from Track Features 
-			const trackFeatures = response[1].data;
+			const rawTrackFeatures = response[1].data;
+			const trackFeatures = library.returnTranslatedAudioFeatures(rawTrackFeatures);
 
 			res.render('track_analysis', {
 				path: 'track_analysis', 
 				pageTitle: 'Track Analysis', 
-				trackInfo: trackInfo, 
+				trackInfo: trackInfo,
 				trackArtists: trackArtists, 
 				trackFeatures: trackFeatures,
 				trackTime: trackTime

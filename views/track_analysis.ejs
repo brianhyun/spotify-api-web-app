@@ -1,17 +1,17 @@
 <%- include('partials/header') %>
 	<main class="track-analysis">
-		<section class="track-analysis__track-header">
+		<section class="track-analysis__track-main">
 			<a href=<%= trackInfo.album.external_urls.spotify %> target="_blank">
-				<img src=<%= trackInfo.album.images[0].url %> alt="track album cover">
+				<img class="track-analysis__track-image" src=<%= trackInfo.album.images[0].url %> alt="track album cover">
 			</a>
 	
-			<p>
-				<a href=<%= trackInfo.external_urls.spotify %> target="_blank"><%= trackInfo.name %></a>
+			<p class="track-analysis__track-name">
+				<a class="track-analysis__track-name-link" href=<%= trackInfo.external_urls.spotify %> target="_blank"><%= trackInfo.name %></a>
 			</p>
 	
 			<% for (let i = 0; i < trackArtists.length; i++) { %> 
-				<p>
-					<a href=<%= trackArtists[i].url %> target="_blank">
+				<p class="track-analysis__track-artist">
+					<a class="track-analysis__track-artist-link1" href=<%= trackArtists[i].url %> target="_blank">
 						<%= trackArtists[i].name %>
 					</a>
 				</p>
@@ -26,7 +26,7 @@
 				<p class="track-analysis__track-info-property">Artist(s)</p>
 				<p class="track-analysis__track-info-value">
 					<% for (let i = 0; i < trackArtists.length; i++) { %> 
-							<a href=<%= trackArtists[i].url %> target="_blank">
+							<a class="track-analysis__track-artist-link2" href=<%= trackArtists[i].url %> target="_blank">
 								<%= trackArtists[i].name %>
 							</a>
 					<% } %> 
@@ -46,21 +46,11 @@
 			<h2 class="track-analysis__track-info-header">Track Analysis</h2>
 			<div class="track-analysis__track-info">
 				<p class="track-analysis__track-info-property">Duration</p>
-				<p class="track-analysis__track-info-value">
-					<% for (let i = 0; i < trackArtists.length; i++) { %> 
-							<a href=<%= trackArtists[i].url %> target="_blank">
-								<%= trackArtists[i].name %>
-							</a>
-					<% } %> 
-				</p>
+				<p class="track-analysis__track-info-value"><%= trackTime %></p>
 			</div>
 			<div class="track-analysis__track-info">
 				<p class="track-analysis__track-info-property">Key</p>
 				<p class="track-analysis__track-info-value"><%= trackInfo.album.name %></p>
-			</div>
-			<div class="track-analysis__track-info">
-				<p class="track-analysis__track-info-property">Modality</p>
-				<p class="track-analysis__track-info-value"><%= trackInfo.album.release_date %></p>
 			</div>
 		</section>
 	</main>

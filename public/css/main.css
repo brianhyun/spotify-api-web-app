@@ -508,6 +508,80 @@ hr {
   text-transform: uppercase;
 }
 
+/*
+ * Tracks Analysis Page
+ */
+
+.track-analysis__track-main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.track-analysis__track-image {
+  height: 150px;
+  width: 150px;
+}
+
+.track-analysis__track-name, .track-analysis__track-artist {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.track-analysis__track-name {
+  margin: 2.5rem 0;
+}
+
+.track-analysis__track-name-link, .track-analysis__track-artist-link2 {
+  color: #ffffff;
+}
+
+.track-analysis__track-artist {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.track-analysis__track-artist-link1 {
+  color: #9d9d9d;
+}
+
+/* Track Analysis - Info Sections */
+
+.track-analysis__track-info-container, .track-analysis__track-info {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.track-analysis__track-info-header {
+  font-size: 2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.track-analysis__track-info-container, .track-analysis__track-info-header {
+  margin-bottom: 4em;
+}
+
+.track-analysis__track-info {
+  border: 1px solid #9d9d9d;
+  padding: 2rem 0;
+}
+
+.track-analysis__track-info-property {
+  color: #9d9d9d;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.track-analysis__track-info-value {
+  color: #ffffff;
+  font-size: 1.6rem;
+}
+
 /* ==========================================================================
    Media Queries
    ========================================================================== */
