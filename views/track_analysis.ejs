@@ -1,14 +1,18 @@
 <%- include('partials/header') %>
 	<main class="track-analysis">
+		<!-- Track Main Section -->
 		<section class="track-analysis__track-main">
+			<!-- Track Album Image -->
 			<a href=<%= trackInfo.album.external_urls.spotify %> target="_blank">
 				<img class="track-analysis__track-image" src=<%= trackInfo.album.images[0].url %> alt="track album cover">
 			</a>
 	
+			<!-- Track Name -->
 			<p class="track-analysis__track-name">
 				<a class="track-analysis__track-name-link" href=<%= trackInfo.external_urls.spotify %> target="_blank"><%= trackInfo.name %></a>
 			</p>
 	
+			<!-- Track Artist(s) -->
 			<% for (let i = 0; i < trackArtists.length; i++) { %> 
 				<p class="track-analysis__track-artist">
 					<a class="track-analysis__track-artist-link1" href=<%= trackArtists[i].url %> target="_blank">
@@ -20,8 +24,12 @@
 
 		<hr>
 
+		<!-- Track Info Section -->
 		<section class="track-analysis__track-info-container">
+			<!-- Header -->
 			<h2 class="track-analysis__track-info-header">Track Info</h2>
+
+			<!-- Info -->
 			<div class="track-analysis__track-info">
 				<p class="track-analysis__track-info-property">Artist(s)</p>
 				<p class="track-analysis__track-info-value">
@@ -32,7 +40,7 @@
 					<% } %> 
 				</p>
 			</div>
-			<div class="track-analysis__track-info">
+			<div class="track-analysis__track-info track-analysis__track-album">
 				<p class="track-analysis__track-info-property">Album</p>
 				<p class="track-analysis__track-info-value"><%= trackInfo.album.name %></p>
 			</div>
@@ -42,15 +50,35 @@
 			</div>
 		</section>
 
+		<!-- Track Analysis Section -->
 		<section class="track-analysis__track-info-container">
+			<!-- Header -->
 			<h2 class="track-analysis__track-info-header">Track Analysis</h2>
+
+			<!-- Info -->
 			<div class="track-analysis__track-info">
 				<p class="track-analysis__track-info-property">Duration</p>
 				<p class="track-analysis__track-info-value"><%= trackTime %></p>
 			</div>
 			<div class="track-analysis__track-info">
 				<p class="track-analysis__track-info-property">Key</p>
-				<p class="track-analysis__track-info-value"><%= trackInfo.album.name %></p>
+				<p class="track-analysis__track-info-value"><%= trackFeatures.key %></p>
+			</div>
+			<div class="track-analysis__track-info">
+				<p class="track-analysis__track-info-property">Time Signature</p>
+				<p class="track-analysis__track-info-value"><%= trackFeatures.time_signature %></p>
+			</div>
+			<div class="track-analysis__track-info">
+				<p class="track-analysis__track-info-property">Tempo</p>
+				<p class="track-analysis__track-info-value"><%= trackFeatures.tempo %></p>
+			</div>
+			<div class="track-analysis__track-info">
+				<p class="track-analysis__track-info-property">Mode</p>
+				<p class="track-analysis__track-info-value"><%= trackFeatures.mode %></p>
+			</div>
+			<div class="track-analysis__track-info">
+				<p class="track-analysis__track-info-property">Popularity</p>
+				<p class="track-analysis__track-info-value"><%= trackInfo.popularity %>%</p>
 			</div>
 		</section>
 	</main>
