@@ -1,9 +1,12 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const axios = require('axios');
 
 const library = require('../utils/library');
 
 const router = express.Router();
+
+router.use(cookieParser());
 
 router.get('/profile', (req, res, next) => {
 	const access_token = req.cookies['access_token'];
@@ -68,6 +71,10 @@ router.get('/profile', (req, res, next) => {
 		})
 		.catch(function (error) {
 			console.log(error.response);
+
+			if (error.response.data.error.message === 'The access token expired') {
+				res.redirect('/refresh_token');
+			}
 		});
 });
 

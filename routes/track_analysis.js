@@ -1,9 +1,12 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const axios = require('axios');
 
 const library = require('../utils/library');
 
 const router = express.Router();
+
+router.use(cookieParser());
 
 router.get('/tracks/:id', (req, res, next) => {
 	const trackID = req.params.id; 
@@ -36,12 +39,17 @@ router.get('/tracks/:id', (req, res, next) => {
 				pageTitle: 'Track Analysis', 
 				trackInfo: trackInfo,
 				trackArtists: trackArtists, 
+				rawTrackFeatures: JSON.stringify(rawTrackFeatures),
 				trackFeatures: trackFeatures,
 				trackTime: trackTime
 			});
 		})
 		.catch(function (error) {
 			console.log(error.response);
+
+			if (error.response.data.error.message === 'The access token expired') {
+				res.redirect('/refresh_token');
+			}
 		});
 });
 

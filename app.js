@@ -11,7 +11,8 @@ const recentRouter = require('./routes/recent');
 const trackAnalysisRouter = require('./routes/track_analysis');
 const analysisRouter = require('./routes/analysis');
 
-const errorController = require('./controllers/error');
+const errorController = require('./controllers/errorPage');
+const refreshTokenController = require('./controllers/refreshToken');
 
 const { port } = require('./utils/config');
 
@@ -35,6 +36,7 @@ app.use(trackAnalysisRouter);
 
 // 404 Handling
 app.use(errorController);
+app.use(refreshTokenController);
 
 app.listen(process.env.PORT || port, () => {
 	console.log('Example app running on port', port);

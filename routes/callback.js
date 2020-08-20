@@ -39,9 +39,17 @@ router.get('/callback', (req, res, next) => {
 		axios.post(token_endpoint, data, options)
 			.then(function (response) {
 				const accessToken = response.data.access_token;
+				const refreshToken = response.data.refresh_token;
+
 				// Set Cookie and Redirect to Profile Router
-				res.cookie('auth_code', authCode, { maxAge: 900000, httpOnly: true });
-				res.cookie('access_token', accessToken, { maxAge: 900000, httpOnly: true });
+				const options = {
+					maxAge: 24 * 60 * 60 * 1000,
+					httpOnly: true,
+				};
+
+				res.cookie('auth_code', authCode, options);
+				res.cookie('access_token', accessToken, options);
+				res.cookie('refresh_token', refreshToken, options);
 				res.redirect('/profile');
 			})
 			.catch(function (error) {

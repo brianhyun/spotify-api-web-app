@@ -1,7 +1,10 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const axios = require('axios');
 
 const router = express.Router();
+
+router.use(cookieParser());
 
 router.get('/artists', (req, res, next) => {
 	const access_token = req.cookies['access_token'];
@@ -25,6 +28,10 @@ router.get('/artists', (req, res, next) => {
 		})
 		.catch(function (error) {
 			console.log(error.response);
+
+			if (error.response.data.error.message === 'The access token expired') {
+				res.redirect('/refresh_token');
+			}
 		});
 });
 

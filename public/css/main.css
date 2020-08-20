@@ -613,14 +613,15 @@ hr {
   text-align: center;
 }
 
-.track-analysis__track-info-header {
+.track-analysis__track-info-header, .track-analysis__feature-header {
   font-size: 2rem;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .track-analysis__track-info-container, 
-.track-analysis__track-info-header {
+.track-analysis__track-info-header,
+.track-analysis__feature-header {
   margin-bottom: 4rem;
 }
 
@@ -651,6 +652,21 @@ hr {
 .track-analysis__track-info-value {
   color: #ffffff;
   font-size: 1.8rem;
+}
+
+/* Track Analysis Graph */
+
+.track-analysis {
+  padding-bottom: 12rem;
+}
+
+.track-analysis__feature-analysis-graph {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  position: relative; 
+  width: 100%;
 }
 
 /* ==========================================================================

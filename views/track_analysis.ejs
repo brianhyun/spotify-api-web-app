@@ -81,5 +81,13 @@
 				<p class="track-analysis__track-info-value"><%= trackInfo.popularity %>%</p>
 			</div>
 		</section>
+
+		<section class="track-analysis__feature-analysis-graph">
+			<!-- Header -->
+			<h2 class="track-analysis__feature-header">Track Features</h2>
+
+			<canvas id="track-analysis__feature-analysis-graph-canvas"></canvas>
+			<div id="passed_data" data-test=<%= rawTrackFeatures %>></div>
+		</section>
 	</main>
 <%- include('partials/footer') %>
