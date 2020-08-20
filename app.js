@@ -24,6 +24,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Route Handling
+app.use(refreshTokenController);
 app.use(loginRouter);
 app.use(callbackRouter);
 app.use(profileRouter);
@@ -36,7 +37,6 @@ app.use(trackAnalysisRouter);
 
 // 404 Handling
 app.use(errorController);
-app.use(refreshTokenController);
 
 app.listen(process.env.PORT || port, () => {
 	console.log('Example app running on port', port);

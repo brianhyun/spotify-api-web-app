@@ -34,6 +34,7 @@ router.get('/refresh_token', (req, res, next) => {
 
 			res.clearCookie('access_token');
 			res.cookie('access_token', new_access_token, options);
+			console.log('New Access Token Acquired');
 			res.redirect('back');
 		})
 		.catch(function (error) {
