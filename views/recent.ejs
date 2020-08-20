@@ -44,7 +44,7 @@
 						<!-- Track Analysis and Time -->
 						<div class="tracks__track-analysis-time">
 							<!-- Show Analysis Link -->
-							<a class="tracks__track-analysis-link" href="/tracks/">Analysis</a>
+							<a class="tracks__track-analysis-link" href="/tracks/<%= recentArray[i].track.id %>">Analysis</a>
 
 							<!-- Track Time -->
 							<p class="tracks__track-time">
@@ -53,6 +53,7 @@
 						</div> <!-- tracks__track-analysis-time -->
 					</div> <!-- tracks__track-info -->
 				</div> <!-- tracks__track -->
+				<hr class="tracks__track-hr">
 			<% } %>
 		</section>
 	</main>

@@ -16,7 +16,6 @@ router.get('/tracks', (req, res, next) => {
 
 	axios.get(topTracksURL, options)
 		.then(function (response) {
-
 			const topTracksArray = response.data.items;
 
 			const trackArtists = library.returnArtistsInfoFrom(topTracksArray);

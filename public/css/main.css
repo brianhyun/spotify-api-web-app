@@ -14,7 +14,7 @@
 html {
   color: #222;
   font-size: 10px;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
 /*
@@ -123,14 +123,22 @@ main {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 0 3.5rem 7rem;
+  padding: 0 3rem 6rem;
   width: 100%;
 }
 
 hr {
 	border-color: #9d9d9d80;
-	margin: 4rem 0;
+	margin: 2.5rem 0 6rem 0;
   width: 100%;
+}
+
+/*
+ * Shared Styles
+ */
+
+.profile__hr, .track-analysis__hr {
+  margin: 5rem 0;
 }
 
 /*
@@ -193,7 +201,7 @@ hr {
   background-color: #191919;
   display: flex;
   justify-content: flex-end;
-  padding: 4.5rem 3.5rem;
+  padding: 4.5rem 3rem;
   width: 100%;
 }
 
@@ -235,7 +243,7 @@ hr {
 }
 
 /*
- * Main Dashboard - Profile Page
+ * Profile Page
  */
 
 /* Profile Section */
@@ -310,10 +318,14 @@ hr {
 
 .profile__top-stats-menu-header {
 	color: #9d9d9d;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 	font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase; 
+}
+
+.profile__top-stats-menu-header:hover {
+  cursor: pointer;
 }
 
 .profile__top-stats-menu-header--active {
@@ -323,6 +335,8 @@ hr {
 }
 
 /* Shared Styles for All Pages (Except Tracks and Recently Played Pages) */
+
+/* Grid Container Settings */
 
 .profile__top-tracks-container {
   display: none;
@@ -336,9 +350,11 @@ hr {
 
 .profile__top-artists-container, 
 .profile__top-tracks-container, 
-.artists__container, .playlists__container {
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 40px; 
+.artists__container, 
+.playlists__container {
+  grid-template-columns: 140px 140px;
+  row-gap: 50px; 
+  justify-content: space-between;
   width: 100%; 
 }
 
@@ -352,13 +368,15 @@ hr {
   text-align: center;
 }
 
+/* Image Size */
+
 .profile__top-artist-image, 
 .profile__top-track-image, 
 .artists__artist-image, 
 .playlists__playlist-image {
-  height: 100px;
-  margin-bottom: 1.8rem;
-  width: 100px;
+  height: 140px;
+  margin-bottom: 2rem;
+  width: 140px;
 }
 
 .profile__top-artist-image, 
@@ -366,11 +384,13 @@ hr {
   border-radius: 100%;
 }
 
+/* Artist, Track, and Playlist Name/Link */
+
 .profile__top-artist-name, 
 .profile__top-track-name, 
 .artists__artist-name, 
 .playlists__playlist-name {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 500;
 }
 
@@ -379,6 +399,13 @@ hr {
 .artists__artist-name-link, 
 .playlists__playlist-name-link {
   color: #ffffff;
+}
+
+/* Top Track Artist, Playlist Track Count */
+
+.profile__top-track-artist, 
+.playlists__playlist-track-count {
+  font-size: 1.3rem;
 }
 
 /* Shared Styles for Pages with Track Name and Artist Names */
@@ -432,21 +459,31 @@ hr {
 
 .tracks__track {
   display: flex;
-  margin-bottom: 4rem;
   width: 100%;
 }
 
+.tracks__track-hr {
+  border-color: #9d9d9d30;
+  margin: 3rem 0;
+}
+
+.tracks__track-hr:last-child {
+  display: none;
+}
+
+.tracks__track:last-child {
+  margin-bottom: 0;
+}
+
 .tracks__track-image {
-  height: 60px;
+  height: 70px;
   margin-right: 2rem; 
-  width: 60px;
+  width: 70px;
 }
 
 .tracks__track-info {
-  align-items: center;
   display: flex; 
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: 1rem;
   justify-content: space-between;
   width: 100%;
 }
@@ -462,6 +499,11 @@ hr {
 .tracks__track-artist {
   letter-spacing: 1px;
   text-transform: uppercase;
+}
+
+.tracks__track-artist,
+.tracks__track-time {
+  font-size: 1.3rem;
 }
 
 .tracks__track-artist-link, 
@@ -483,25 +525,29 @@ hr {
 .tracks__track-analysis-time {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+
 }
 
 .tracks__track-name-artist-album {
   align-items: flex-start;
+  width: 60%;
 }
  
 .tracks__track-analysis-time {
   align-items: flex-end;
 }
 
-.tracks__track-name, .tracks__track-analysis-link {
-  margin-bottom: 18px;
+.tracks__track-name, 
+.tracks__track-analysis-link {
+  margin-bottom: 2rem;
 }
 
 .tracks__track-analysis-link {
   border: 1px solid #ffffff;
   border-radius: 10rem;
   color: #ffffff;
-  font-size: 0.8rem;
+  font-size: 1rem;
   letter-spacing: 2px;
   padding: 0.4rem 1rem;
   text-align: center;
@@ -523,7 +569,8 @@ hr {
   width: 150px;
 }
 
-.track-analysis__track-name, .track-analysis__track-artist {
+.track-analysis__track-name, 
+.track-analysis__track-artist {
   font-size: 2rem;
   font-weight: 500;
 }
@@ -532,7 +579,8 @@ hr {
   margin: 2.5rem 0;
 }
 
-.track-analysis__track-name-link, .track-analysis__track-artist-link2 {
+.track-analysis__track-name-link, 
+.track-analysis__track-artist-link2 {
   color: #ffffff;
 }
 
@@ -547,7 +595,8 @@ hr {
 
 /* Track Analysis - Info Sections */
 
-.track-analysis__track-info-container, .track-analysis__track-info {
+.track-analysis__track-info-container, 
+.track-analysis__track-info {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -564,7 +613,8 @@ hr {
   text-transform: uppercase;
 }
 
-.track-analysis__track-info-container, .track-analysis__track-info-header {
+.track-analysis__track-info-container, 
+.track-analysis__track-info-header {
   margin-bottom: 4rem;
 }
 
@@ -576,11 +626,11 @@ hr {
   padding: 2rem 1.5rem;
 }
 
-.track-analysis__track-info-container .track-analysis__track-info:first-of-type {
+.track-analysis__track-info-container > .track-analysis__track-info:first-of-type {
   border-top: 2px solid #9d9d9d80;
 }
 
-.track-analysis__track-info-container .track-analysis__track-info:last-of-type {
+.track-analysis__track-info-container > .track-analysis__track-info:last-of-type {
   border-bottom: 2px solid #9d9d9d80;
 }
 
@@ -595,10 +645,6 @@ hr {
 .track-analysis__track-info-value {
   color: #ffffff;
   font-size: 1.8rem;
-}
-
-.track-analysis__track-album {
-
 }
 
 /* ==========================================================================
