@@ -277,7 +277,10 @@ hr {
 
 .profile__profile-stats-item {
   align-items: center;
-  border: 1px solid #9d9d9d80;
+  border-right: 1px solid #9d9d9d30;
+  border-left: 1px solid #9d9d9d30;
+  border-top: 2px solid #9d9d9d30;
+  border-bottom: 2px solid #9d9d9d30;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -285,9 +288,12 @@ hr {
   padding: 1.5rem 0;
 }
 
-.profile__profile-stats-item:nth-child(2) {
-  border-right: 0;
-  border-left: 0;
+.profile__profile-stats-item:nth-child(1) {
+  border-left: 2px solid #9d9d9d30;
+}
+
+.profile__profile-stats-item:nth-child(3) {
+  border-right: 2px solid #9d9d9d30;
 }
 
 .profile__profile-stats-num {
@@ -565,8 +571,8 @@ hr {
 }
 
 .track-analysis__track-image {
-  height: 150px;
-  width: 150px;
+  height: 180px;
+  width: 180px;
 }
 
 .track-analysis__track-name, 
