@@ -2,6 +2,8 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const axios = require('axios');
 
+const library = require('../utils/library');
+
 const router = express.Router();
 
 router.use(cookieParser());
@@ -20,10 +22,13 @@ router.get('/artists', (req, res, next) => {
 		.then(function (response) {
 			const topArtistsArray = response.data.items;
 
+			const topArtistsImageURLs = library.returnImageSourcesFrom(topArtistsArray);
+
 			res.render('artists', {
 				path: 'artists', 
 				pageTitle: 'Artists',
-				topArtistsArray: topArtistsArray
+				topArtistsArray: topArtistsArray,
+				topArtistsImageURLs: topArtistsImageURLs
 			})
 		})
 		.catch(function (error) {

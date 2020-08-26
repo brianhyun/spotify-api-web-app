@@ -13,7 +13,7 @@
 			<% for (let i = 0; i < recentArray.length; i++) { %>
 				<div class="tracks__track">
 					<!-- Album Cover -->
-					<a href=<%= recentArray[i].track.album.external_urls.spotify %> target="_blank"><img class="tracks__track-image" src=<%= recentArray[i].track.album.images[0].url %> alt="album cover"></a>
+					<a href=<%= recentArray[i].track.album.external_urls.spotify %> target="_blank"><img class="tracks__track-image" src=<%= trackImageURLs[i] %> alt="album cover"></a>
 
 					<div class="tracks__track-info">
 						<!-- Track Name, Artist, and Album -->

@@ -42,7 +42,7 @@
 				<!-- Top Artist -->
 				<% for (let i = 0; i < topArtistsArray.length; i++) { %>
 					<div class="profile__top-artist">
-						<a href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><img class="profile__top-artist-image" src=<%= topArtistsArray[i].images[0].url %> alt="artists profile picture"></a>
+						<a href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><img class="profile__top-artist-image" src=<%= topArtistsImageURLs[i] %> alt="artists profile picture"></a>
 						<h3 class="profile__top-artist-name">
 							<a class="profile__top-artist-name-link" href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><%= topArtistsArray[i].name %></a>	
 						</h3>
@@ -56,7 +56,7 @@
 				<% for (let i = 0; i < topTracksArray.length; i++) { %>
 					<div class="profile__top-track">
 						<!-- Album Cover -->
-						<a href=<%= topTracksArray[i].album.external_urls.spotify %> target="_blank"><img class="profile__top-track-image" src=<%= topTracksArray[i].album.images[0].url %> alt="album cover"></a>
+						<a href=<%= topTracksArray[i].album.external_urls.spotify %> target="_blank"><img class="profile__top-track-image" src=<%= topTracksImageURLs[i] %> alt="album cover"></a>
 						<!-- Track Name -->
 						<p class="profile__top-track-name">
 							<a class="profile__top-track-name-link" href=<%= topTracksArray[i].external_urls.spotify %> target="_blank"><%= topTracksArray[i].name %></a>

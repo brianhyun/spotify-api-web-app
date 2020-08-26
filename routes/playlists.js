@@ -22,7 +22,7 @@ router.get('/playlists', (req, res, next) => {
 		.then(function (response) {
 			const playlistsArray = response.data.items;
 			
-			const playlistsImageURLs = library.returnPlaylistImageSourcesFrom(playlistsArray);
+			const playlistsImageURLs = library.returnImageSourcesFrom(playlistsArray);
 
 			res.render('playlists', {
 				path: 'playlists', 

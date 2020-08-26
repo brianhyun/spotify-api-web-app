@@ -29,6 +29,7 @@ router.get('/recent', (req, res, next) => {
 				tracksArray.push(recentArray[i].track);
 			}
 
+			const trackImageURLs = library.returnImageSourcesFrom(tracksArray);
 			const trackArtists = library.returnArtistsInfoFrom(tracksArray);
 			const trackTimes = library.returnTrackTimesFrom(tracksArray);
 
@@ -37,7 +38,8 @@ router.get('/recent', (req, res, next) => {
 				pageTitle: 'Recently Played',
 				recentArray: recentArray,
 				trackArtists: trackArtists,
-				trackTimes: trackTimes
+				trackTimes: trackTimes,
+				trackImageURLs: trackImageURLs
 			});
 		})
 		.catch(function (error) {

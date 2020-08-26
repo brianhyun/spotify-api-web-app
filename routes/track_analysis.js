@@ -28,6 +28,7 @@ router.get('/tracks/:id', (req, res, next) => {
 			// Data from Track Info
 			const trackInfo = response[0].data;
 
+			const trackImage = library.returnImageSourcesFrom(trackInfo);
 			const trackArtists = library.returnArtistsInfoFrom(trackInfo);
 			const trackTime = library.returnTrackTimesFrom(trackInfo);
 
@@ -42,7 +43,8 @@ router.get('/tracks/:id', (req, res, next) => {
 				trackArtists: trackArtists, 
 				rawTrackFeatures: JSON.stringify(rawTrackFeatures),
 				trackFeatures: trackFeatures,
-				trackTime: trackTime
+				trackTime: trackTime,
+				trackImage: trackImage
 			});
 		})
 		.catch(function (error) {

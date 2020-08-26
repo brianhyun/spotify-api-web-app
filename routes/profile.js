@@ -32,7 +32,8 @@ router.get('/profile', (req, res, next) => {
 		.then(function (response) {
 			// Data from User's Profile
 			const profileResponse = response[0].data;
-			const profileImage = profileResponse.images[0].url;
+
+			const profileImage = library.returnProfileImage(profileResponse);
 			const displayName = profileResponse.display_name; 
 			const profileSrc = profileResponse.external_urls.spotify;
 			const followers = profileResponse.followers.total;
@@ -44,11 +45,14 @@ router.get('/profile', (req, res, next) => {
 			// Data from User's Top Artists
 			const topArtistsResponse = response[2].data;
 			const topArtistsArray = topArtistsResponse.items;
+
+			const topArtistsImageURLs = library.returnImageSourcesFrom(topArtistsArray);
 			
 			// Data from User's Top Tracks
 			const topTracksResponse = response[3].data;
 			const topTracksArray = topTracksResponse.items;
 
+			const topTracksImageURLs = library.returnImageSourcesFrom(topTracksArray);
 			const trackArtists = library.returnArtistsInfoFrom(topTracksArray);
 	
 			// Data from User's Following
@@ -65,7 +69,9 @@ router.get('/profile', (req, res, next) => {
 				followers: followers,
 				playlistCount: playlistCount,
 				topArtistsArray: topArtistsArray, 
-				topTracksArray: topTracksArray, 
+				topArtistsImageURLs: topArtistsImageURLs,
+				topTracksArray: topTracksArray,
+				topTracksImageURLs: topTracksImageURLs,
 				following: following,
 				trackArtists: trackArtists
 			});

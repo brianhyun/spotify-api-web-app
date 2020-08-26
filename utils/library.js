@@ -87,7 +87,7 @@ module.exports.returnTrackTimesFrom = (topTracks) => {
 	
 		return trackTimes;
 	}
-}
+};
 
 /* 
 	Takes in the array of user's playlists and returns an array of each playlist's image urls. 
@@ -96,20 +96,39 @@ module.exports.returnTrackTimesFrom = (topTracks) => {
 	Otherwise, grab the first image.  
 */
 
-module.exports.returnPlaylistImageSourcesFrom = (playlistsArray) => {
-	const playlistsImageURLs = [];
+const pushImageURLToArray = (array) => {
+	const imageURLs = [];
 
-	const noImageURLSrc = 'img/playlist-no-image.png';
-	
-	for (let i = 0; i < playlistsArray.length; i++) {
-		if (playlistsArray[i].images.length === 0) {
-			playlistsImageURLs.push(noImageURLSrc);
+	const noImageURLSrc = 'img/no-image.png';
+
+	for (let i = 0; i < array.length; i++) {
+		if (array[i].images.length === 0) {
+			imageURLs.push(noImageURLSrc);
 		} else {
-			playlistsImageURLs.push(playlistsArray[i].images[0].url);
+			imageURLs.push(array[i].images[0].url);
 		}
 	}	
 
-	return playlistsImageURLs;
+	return imageURLs;
+};
+
+module.exports.returnImageSourcesFrom = (array) => {
+	// For the Top Tracks Array, each item is an object.
+	// There is a nested object that contains the image array. 
+	if (!Array.isArray(array) && ((typeof array) === 'object')) {
+		const arrayHold = [array.album];
+		return pushImageURLToArray(arrayHold);
+	} else if ("album" in array[0]) {
+		const albumArray = [];
+
+		for (let i = 0; i < array.length; i++) {
+			albumArray.push(array[i].album);
+		}
+
+		return pushImageURLToArray(albumArray);
+	} else {
+		return pushImageURLToArray(array); 
+	}
 };
 
 /* 
@@ -180,4 +199,22 @@ module.exports.returnTranslatedAudioFeatures = (track) => {
 	}
 
 	return trackFeatures;
+};
+
+/* 
+	Check User's Profile for Profile Picture Image
+
+	If image exists, then use that. Otherwise, use personal asset (relative path to 'no-profile-picture.png').
+*/
+
+module.exports.returnProfileImage = (profileResponse) => {
+	let profileImage = '';
+
+	if (profileResponse.images[0]) {
+		profileImage = profileResponse.images[0].url;
+	} else {
+		profileImage = 'img/no-profile-picture.png';
+	}
+
+	return profileImage; 
 };

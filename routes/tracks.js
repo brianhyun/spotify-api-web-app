@@ -22,6 +22,7 @@ router.get('/tracks', (req, res, next) => {
 		.then(function (response) {
 			const topTracksArray = response.data.items;
 
+			const trackImageURLs = library.returnImageSourcesFrom(topTracksArray);
 			const trackArtists = library.returnArtistsInfoFrom(topTracksArray);
 			const trackTimes = library.returnTrackTimesFrom(topTracksArray);
 
@@ -30,7 +31,8 @@ router.get('/tracks', (req, res, next) => {
 				pageTitle: 'Tracks',
 				topTracksArray: topTracksArray, 
 				trackArtists: trackArtists,
-				trackTimes: trackTimes
+				trackTimes: trackTimes,
+				trackImageURLs: trackImageURLs
 			})
 		})
 		.catch(function (error) {

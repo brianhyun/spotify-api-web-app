@@ -10,6 +10,7 @@ const router = express.Router();
 router.use(cookieParser());
 
 router.get('/refresh_token', (req, res, next) => {
+	console.log('Old Access Token', req.cookies['access_token']);
 	// Send POST Request to Retrieve New Access Token
 	const refresh_token = req.cookies['refresh_token'];
 
