@@ -13,13 +13,13 @@
 			</p>
 	
 			<!-- Track Artist(s) -->
-			<% for (let i = 0; i < trackArtists.length; i++) { %> 
-				<p class="track-analysis__track-artist">
+			<p class="track-analysis__track-artist">
+				<% for (let i = 0; i < trackArtists.length; i++) { %> 
 					<a class="track-analysis__track-artist-link1" href=<%= trackArtists[i].url %> target="_blank">
 						<%= trackArtists[i].name %>
 					</a>
-				</p>
-			<% } %> 
+				<% } %> 
+			</p>
 		</section>
 
 		<hr class="track-analysis__hr">
@@ -34,9 +34,9 @@
 				<p class="track-analysis__track-info-property">Artist(s)</p>
 				<p class="track-analysis__track-info-value">
 					<% for (let i = 0; i < trackArtists.length; i++) { %> 
-							<a class="track-analysis__track-artist-link2" href=<%= trackArtists[i].url %> target="_blank">
-								<%= trackArtists[i].name %>
-							</a>
+						<a class="track-analysis__track-artist-link2" href=<%= trackArtists[i].url %> target="_blank">
+							<%= trackArtists[i].name %>
+						</a>
 					<% } %> 
 				</p>
 			</div>
