@@ -28,6 +28,11 @@ router.get('/analysis', (req, res, next) => {
 			if (error.response.data.error.message === 'The access token expired') {
 				console.log('Access Token Expired');
 				res.redirect('/refresh_token');
+			} else {
+				res.redirect('/#' +
+					queryString.stringify({
+						error: 'invalid_token'
+				}));
 			}
 		});
 });

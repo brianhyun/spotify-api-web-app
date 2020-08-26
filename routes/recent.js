@@ -9,6 +9,7 @@ const router = express.Router();
 router.use(cookieParser());
 
 router.get('/recent', (req, res, next) => {
+	// Send GET Request to User's Recently Played Songs
 	const access_token = req.cookies['access_token'];
 
 	const options = {
@@ -45,6 +46,11 @@ router.get('/recent', (req, res, next) => {
 			if (error.response.data.error.message === 'The access token expired') {
 				console.log('Access Token Expired');
 				res.redirect('/refresh_token');
+			} else {
+				res.redirect('/#' +
+					queryString.stringify({
+						error: 'invalid_token'
+				}));
 			}
 		});
 });

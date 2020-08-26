@@ -9,6 +9,7 @@ const router = express.Router();
 router.use(cookieParser());
 
 router.get('/playlists', (req, res, next) => {
+	// Send GET Request to User's Playlists
 	const access_token = req.cookies['access_token'];
 
 	const options = {
@@ -35,6 +36,11 @@ router.get('/playlists', (req, res, next) => {
 
 			if (error.response.data.error.message === 'The access token expired') {
 				res.redirect('/refresh_token');
+			} else {
+				res.redirect('/#' +
+					queryString.stringify({
+						error: 'invalid_token'
+				}));
 			}
 		});
 });

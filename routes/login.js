@@ -1,8 +1,12 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 
 const { auth_endpoint, client_id, redirect_uri } = require('../utils/config');
+const state = require('../utils/state');
 
 const router = express.Router();
+
+router.use(cookieParser());
 
 router.get('/', (req, res, next) => {
 	res.render('login', {
@@ -17,12 +21,18 @@ router.get('/', (req, res, next) => {
 // user-follow-read: Get User's Followed Artists
 // user-read-recently-played: Get Current User's Recently Played Tracks
 
-// Tentative Scopes
-// user-read-playback-state, user-read-currently-playing user-library-read user-read-playback-position
-
 router.post('/login', (req, res, next) => {
+	// Set Cookie for State
+	const options = {
+		maxAge: 24 * 60 * 60 * 1000,
+		httpOnly: true,
+	};
+
+	res.cookie('stateKey', state, options);
+
+	// Redirect to Callback Router (Handles Access Token Retrieving)
 	const scopes = 'playlist-read-private user-top-read user-follow-read user-read-recently-played';
-	res.redirect(`${auth_endpoint}?response_type=code&client_id=${client_id}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(redirect_uri)}`);
+	res.redirect(`${auth_endpoint}?response_type=code&client_id=${client_id}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(redirect_uri)}&state=${state}`);
 });
 
 module.exports = router; 

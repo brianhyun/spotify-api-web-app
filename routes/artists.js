@@ -7,6 +7,7 @@ const router = express.Router();
 router.use(cookieParser());
 
 router.get('/artists', (req, res, next) => {
+	// Send GET Request to User's Top Artists
 	const access_token = req.cookies['access_token'];
 
 	const options = {
@@ -17,7 +18,6 @@ router.get('/artists', (req, res, next) => {
 
 	axios.get(topArtistsURL, options)
 		.then(function (response) {
-
 			const topArtistsArray = response.data.items;
 
 			res.render('artists', {
@@ -32,6 +32,11 @@ router.get('/artists', (req, res, next) => {
 			if (error.response.data.error.message === 'The access token expired') {
 				console.log('Access Token Expired');
 				res.redirect('/refresh_token');
+			} else {
+				res.redirect('/#' +
+					queryString.stringify({
+						error: 'invalid_token'
+				}));
 			}
 		});
 });

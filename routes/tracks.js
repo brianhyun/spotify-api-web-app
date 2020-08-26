@@ -9,6 +9,7 @@ const router = express.Router();
 router.use(cookieParser());
 
 router.get('/tracks', (req, res, next) => {
+	// Send GET Request to Access Track Info
 	const access_token = req.cookies['access_token'];
 
 	const options = {
@@ -38,6 +39,11 @@ router.get('/tracks', (req, res, next) => {
 			if (error.response.data.error.message === 'The access token expired') {
 				console.log('Access Token Expired');
 				res.redirect('/refresh_token');
+			} else {
+				res.redirect('/#' +
+					queryString.stringify({
+						error: 'invalid_token'
+				}));
 			}
 		});
 });

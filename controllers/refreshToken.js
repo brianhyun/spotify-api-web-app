@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const cookieParser = require('cookie-parser');
-const qs = require('qs');
+const queryString = require('qs');
 
 const { token_endpoint, client_id, client_secret } = require('../utils/config');
 
@@ -10,9 +10,10 @@ const router = express.Router();
 router.use(cookieParser());
 
 router.get('/refresh_token', (req, res, next) => {
+	// Send POST Request to Retrieve New Access Token
 	const refresh_token = req.cookies['refresh_token'];
 
-	const data = qs.stringify({
+	const data = queryString.stringify({
 		grant_type: 'refresh_token',
 		refresh_token: refresh_token,
 		client_id: client_id,
@@ -35,10 +36,15 @@ router.get('/refresh_token', (req, res, next) => {
 			res.clearCookie('access_token');
 			res.cookie('access_token', new_access_token, options);
 			console.log('New Access Token Acquired');
+			console.log('New Access Token:', new_access_token);
 			res.redirect('back');
 		})
 		.catch(function (error) {
 			console.log(error.response);
+			res.redirect('/#' +
+				queryString.stringify({
+					error: 'invalid_refresh_token'
+			}));
 		});
 });
 

@@ -9,6 +9,7 @@ const router = express.Router();
 router.use(cookieParser());
 
 router.get('/profile', (req, res, next) => {
+	// Send GET Requests to Access User-Specific Spotify Info for Playlists, Top Artists, etc.
 	const access_token = req.cookies['access_token'];
 	
 	const options = {
@@ -75,6 +76,11 @@ router.get('/profile', (req, res, next) => {
 			if (error.response.data.error.message === 'The access token expired') {
 				console.log('Access Token Expired');
 				res.redirect('/refresh_token');
+			} else {
+				res.redirect('/#' +
+					queryString.stringify({
+						error: 'invalid_token'
+				}));
 			}
 		});
 });
