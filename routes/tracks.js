@@ -21,7 +21,7 @@ router.get('/tracks', (req, res, next) => {
 	axios.get(topTracksURL, options)
 		.then(function (response) {
 			const topTracksArray = response.data.items;
-
+			
 			const trackImageURLs = library.returnImageSourcesFrom(topTracksArray);
 			const trackArtists = library.returnArtistsInfoFrom(topTracksArray);
 			const trackTimes = library.returnTrackTimesFrom(topTracksArray);

@@ -1,4 +1,6 @@
 /* 
+	Purpose: A single track can have multiple artists, with each artist having a unique url for their Spotify page. 
+
 	Input: 
 		(1) an array of objects (array of tracks) OR
 			(a) each object stores information about a particular track 
@@ -50,12 +52,12 @@ module.exports.returnArtistsInfoFrom = (topTracks) => {
 };
 
 /* 
-	Spotify stores the duration of the tracks in milliseconds. 
+	Purpose: Spotify stores the duration of tracks in milliseconds and this function converts it into mm::ss format. 
 
-	Input: 
-		(1) an array of objects (array of user's top tracks)
-			(a) each object is a track OR
-		(2) an object 
+	Input:  
+		(1) an array of objects (array of user's top tracks) OR
+			(a) each object is a track
+		(2) an object, which stores information on a single track
 
 	Output: an array of each track's time in mm::ss format
 */
@@ -90,10 +92,20 @@ module.exports.returnTrackTimesFrom = (topTracks) => {
 };
 
 /* 
-	Takes in the array of user's playlists and returns an array of each playlist's image urls. 
+	Purpose: Some playlists and tracks don't have images, so a proper substitute must be issued to prevent a site crash. 
 
-	If a playlist doesn't have an image, then use personal asset as substitute. 
-	Otherwise, grab the first image.  
+	Input: 
+		(1) an array of user's playlists OR
+		(2) an array of users' top tracks OR 
+		(3) an object containing information about a single track 
+
+	Output: Returns an array of each playlist's, tracks', or track's image URL(s). 
+
+	The 'pushImageURLToArray' functions takes in an array. The array contains objects. Each object has an images array. 
+	The images array stores objects. Each object has a 'url' property that stores the URL at which the track or playlist image resource resides. 
+	Everything that is passed into this function must be an array of objects, with each object having an images array. 
+
+	If a playlist or track doesn't have an image, then use personal asset as substitute. Otherwise, grab the first image.  
 */
 
 const pushImageURLToArray = (array) => {
@@ -113,8 +125,6 @@ const pushImageURLToArray = (array) => {
 };
 
 module.exports.returnImageSourcesFrom = (array) => {
-	// For the Top Tracks Array, each item is an object.
-	// There is a nested object that contains the image array. 
 	if (!Array.isArray(array) && ((typeof array) === 'object')) {
 		const arrayHold = [array.album];
 		return pushImageURLToArray(arrayHold);
@@ -132,9 +142,11 @@ module.exports.returnImageSourcesFrom = (array) => {
 };
 
 /* 
-	Translate raw audio features into understandable English. 
+	Purpose: Spotify uses numbers to represent a track's audio features (i.e. key, modality, etc.), which need to be translated to understandable terms. 
 
-	Spotify uses numbers to represent key and modality. 
+	Input: object containing information about a track's audio features (e.g. modality: 0)
+
+	Output: object containing translated information about a track's audio features (e.g. modality: "Major")
 */
 
 module.exports.returnTranslatedAudioFeatures = (track) => {
@@ -202,9 +214,11 @@ module.exports.returnTranslatedAudioFeatures = (track) => {
 };
 
 /* 
-	Check User's Profile for Profile Picture Image
+	Purpose: User might not have a profile picture. If not, then replace with personal asset to prevent a site crash. 
+	
+	Input: object containing information about the user's profile
 
-	If image exists, then use that. Otherwise, use personal asset (relative path to 'no-profile-picture.png').
+	Output: string of the relative (if using personal asset) or absolute (if user has profile picture hosted on Spotify's server) path of the profile picture
 */
 
 module.exports.returnProfileImage = (profileResponse) => {

@@ -21,7 +21,6 @@ router.get('/callback', (req, res, next) => {
 				error: errorMessage
 		}));
 	} else {
-		// Grab Auth Code and State from Query String
 		const authCode = req.query.code || null;
 		const state = req.query.state || null;
 		const storedState = req.cookies ? req.cookies['stateKey'] : null;
@@ -33,7 +32,6 @@ router.get('/callback', (req, res, next) => {
 					error: 'state_mismatch'
 			}));
 		} else {
-			// Clear Cookies for State
 			res.clearCookie('stateKey');
 
 			// Send Post Request to Receive Access Token
@@ -51,11 +49,9 @@ router.get('/callback', (req, res, next) => {
 	
 			axios.post(token_endpoint, data, options)
 				.then(function (response) {
-					// Retrieve Access Token and Refresh Token
 					const accessToken = response.data.access_token;
 					const refreshToken = response.data.refresh_token;
 	
-					// Set Cookies and Redirect to Profile Router
 					const options = {
 						maxAge: 24 * 60 * 60 * 1000,
 						httpOnly: true,
