@@ -96,9 +96,9 @@ closeBtn.addEventListener("click", () => {
 // Profile Page - Toggle Artists and Tracks Display
 const headers = document.getElementsByClassName("profile__top-stats-menu-header");
 const topTracks = document.getElementById("top-tracks");
-const topTracksContainer = document.getElementsByClassName("profile__top-tracks-container");
+const topTracksContainer = document.getElementById("profile__top-tracks-container");
 const topArtists = document.getElementById("top-artists");
-const topArtistsContainer = document.getElementsByClassName("profile__top-artists-container")
+const topArtistsContainer = document.getElementById("profile__top-artists-container")
 
 topTracks.addEventListener("click", () => {
 	// Remove active styling for all headers. 
@@ -110,10 +110,10 @@ topTracks.addEventListener("click", () => {
 	topTracks.classList.add("profile__top-stats-menu-header--active");
 
 	// Hide Top Artists Container 
-	topTracksContainer[0].style.display = "grid";
+	topTracksContainer.style.display = "grid";
 
 	// Show Top Tracks Container 
-	topArtistsContainer[0].style.display = "none";
+	topArtistsContainer.style.display = "none";
 });
 
 
@@ -127,8 +127,8 @@ topArtists.addEventListener("click", () => {
 	topArtists.classList.add("profile__top-stats-menu-header--active");
 
 	// Hide Top Artists Container 
-	topTracksContainer[0].style.display = "none";
+	topTracksContainer.style.display = "none";
 
 	// Show Top Tracks Container 
-	topArtistsContainer[0].style.display = "grid";
+	topArtistsContainer.style.display = "grid";
 });

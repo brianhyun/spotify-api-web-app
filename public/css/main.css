@@ -141,6 +141,16 @@ hr {
   margin: 5rem 0;
 }
 
+.header-container {
+  text-align: left; 
+  width: 100%;
+}
+
+.header {
+  font-size: 3.5rem;
+  font-weight: 500;
+}
+
 /*
  * Login Page
  */
@@ -340,123 +350,90 @@ hr {
   padding-bottom: 0.7rem;
 }
 
-/* Shared Styles for All Pages (Except Tracks and Recently Played Pages) */
-
 /* 
-  Legend 
-
-  There are several pages that share similar styles. To consolidate styles, I've created acronyms indicating which pages the styles are shared across. 
-
-  "paa" - stands for profile-artists section & artists page
-  "ptpa" - stands for profile-tracks section & playlists and albums pages
-
+ * Shared Styles for Profile-Tracks and Profile-Artists Sections & Top Artists, Albums, Playlists Pages
 */
 
-/* Grid Container Settings */
-
-.profile__top-tracks-container {
+#profile__top-tracks-container {
   display: none;
 }
 
-.paa__container, 
-.ptpa__container {
+.container {
   display: grid; 
 }
  
-.paa__container, 
-.ptpa__container {
+.container {
   grid-template-columns: 140px 140px;
   row-gap: 50px; 
   justify-content: space-between;
   width: 100%; 
 }
 
-.paa__artist, 
-.ptpa__item {
+.item {
   align-items: center;
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
-/* Image Size */
-
-.paa__artist-image, 
-.ptpa__item-image {
+.item-image {
   height: 140px;
   margin-bottom: 2rem;
   width: 140px;
 }
 
-.paa__artist-image {
+/* pa-ar = "profile-artists section and artists page */
+.pa-ar__item-image {
   border-radius: 100%;
 }
 
-/* Artist, Track, and Playlist Name/Link */
-
-.paa__artist-name, 
-.ptpa__item-name {
+.item-name {
   font-size: 1.5rem;
   font-weight: 500;
 }
 
-.paa__artist-name-link, 
-.ptpa__item-name-link {
+.item-name-link {
   color: #ffffff;
 }
 
-/* Top Track Artists, Playlist Track Count */
-
-.ptpa__item-artists, 
-.ptpa__item-track-count {
+.item-artists, 
+.item-track-count {
   font-size: 1.3rem;
 }
 
-/* Shared Styles for Pages with Track Name and Artist Names */
+/* Shared Styles for Pages with Artist Names Under Track or Playlist Name */
 
-.ptpa__item-name {
+.item-name {
   margin-bottom: 1rem;
 }
 
-.ptpa__item-artists, 
-.ptpa__item-track-count {
+.item-artists, 
+.item-track-count {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
-.ptpa__item-artist-link, 
-.ptpa__item-track-count {
+.item-artist-link, 
+.item-track-count {
   color: #9D9D9D;
 }
 
-.ptpa__item-artist-link::after, 
+.item-artist-link::after, 
 .tracks__track-artist-link::after, 
 .track-analysis__track-artist-link1::after,
 .track-analysis__track-artist-link2::after {
   content: " &";
 }
 
-.ptpa__item-artist-link:last-child::after, 
+.item-artist-link:last-child::after, 
 .tracks__track-artist-link:last-child::after,
 .track-analysis__track-artist-link1:last-child::after,
 .track-analysis__track-artist-link2:last-child::after {
   content: "";
 }
 
-/* Shared Styles for Header (excluding Main Dash Since No Header Exists) */
-
-.header-container {
-  text-align: left; 
-  width: 100%;
-}
-
-.header {
-  font-size: 3.5rem;
-  font-weight: 500;
-}
-
 /*
- * Tracks and Recently Played Page - Tracks Container Shared Styles
+ * Tracks and Recently Played Shared Styles
  */
 
 .tracks__container {
