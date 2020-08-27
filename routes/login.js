@@ -20,6 +20,7 @@ router.get('/', (req, res, next) => {
 // user-top-read: Get a User's Top Artists and Tracks
 // user-follow-read: Get User's Followed Artists
 // user-read-recently-played: Get Current User's Recently Played Tracks
+// user-library-read: Get Current User's Saved Albums
 
 router.post('/login', (req, res, next) => {
 	// Set Cookie for State
@@ -31,7 +32,7 @@ router.post('/login', (req, res, next) => {
 	res.cookie('stateKey', state, options);
 
 	// Redirect to Callback Router (Handles Access Token Retrieving)
-	const scopes = 'playlist-read-private user-top-read user-follow-read user-read-recently-played';
+	const scopes = 'playlist-read-private user-top-read user-follow-read user-read-recently-played user-library-read';
 	res.redirect(`${auth_endpoint}?response_type=code&client_id=${client_id}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(redirect_uri)}&state=${state}`);
 });
 

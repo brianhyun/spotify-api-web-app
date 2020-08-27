@@ -9,7 +9,7 @@ const tracksRouter = require('./routes/tracks');
 const playlistsRouter = require('./routes/playlists');
 const recentRouter = require('./routes/recent');
 const trackAnalysisRouter = require('./routes/track_analysis');
-const analysisRouter = require('./routes/analysis');
+const albumsRouter = require('./routes/albums');
 
 const errorController = require('./controllers/errorPage');
 const refreshTokenController = require('./controllers/refreshToken');
@@ -32,8 +32,8 @@ app.use(artistsRouter);
 app.use(tracksRouter);
 app.use(playlistsRouter);
 app.use(recentRouter);
-app.use(analysisRouter);
 app.use(trackAnalysisRouter);
+app.use(albumsRouter);
 
 // 404 Handling
 app.use(errorController);

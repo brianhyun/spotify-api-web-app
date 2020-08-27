@@ -342,32 +342,37 @@ hr {
 
 /* Shared Styles for All Pages (Except Tracks and Recently Played Pages) */
 
+/* 
+  Legend 
+
+  There are several pages that share similar styles. To consolidate styles, I've created acronyms indicating which pages the styles are shared across. 
+
+  "paa" - stands for profile-artists section & artists page
+  "ptpa" - stands for profile-tracks section & playlists and albums pages
+
+*/
+
 /* Grid Container Settings */
 
 .profile__top-tracks-container {
   display: none;
 }
 
-.profile__top-artists-container, 
-.artists__container, 
-.playlists__container {
+.paa__container, 
+.ptpa__container {
   display: grid; 
 }
-
-.profile__top-artists-container, 
-.profile__top-tracks-container, 
-.artists__container, 
-.playlists__container {
+ 
+.paa__container, 
+.ptpa__container {
   grid-template-columns: 140px 140px;
   row-gap: 50px; 
   justify-content: space-between;
   width: 100%; 
 }
 
-.profile__top-artist, 
-.profile__top-track, 
-.artists__artist, 
-.playlists__playlist {
+.paa__artist, 
+.ptpa__item {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -376,70 +381,62 @@ hr {
 
 /* Image Size */
 
-.profile__top-artist-image, 
-.profile__top-track-image, 
-.artists__artist-image, 
-.playlists__playlist-image {
+.paa__artist-image, 
+.ptpa__item-image {
   height: 140px;
   margin-bottom: 2rem;
   width: 140px;
 }
 
-.profile__top-artist-image, 
-.artists__artist-image {
+.paa__artist-image {
   border-radius: 100%;
 }
 
 /* Artist, Track, and Playlist Name/Link */
 
-.profile__top-artist-name, 
-.profile__top-track-name, 
-.artists__artist-name, 
-.playlists__playlist-name {
+.paa__artist-name, 
+.ptpa__item-name {
   font-size: 1.5rem;
   font-weight: 500;
 }
 
-.profile__top-artist-name-link, 
-.profile__top-track-name-link, 
-.artists__artist-name-link, 
-.playlists__playlist-name-link {
+.paa__artist-name-link, 
+.ptpa__item-name-link {
   color: #ffffff;
 }
 
-/* Top Track Artist, Playlist Track Count */
+/* Top Track Artists, Playlist Track Count */
 
-.profile__top-track-artist, 
-.playlists__playlist-track-count {
+.ptpa__item-artists, 
+.ptpa__item-track-count {
   font-size: 1.3rem;
 }
 
 /* Shared Styles for Pages with Track Name and Artist Names */
 
-.profile__top-track-name, 
-.playlists__playlist-name {
+.ptpa__item-name {
   margin-bottom: 1rem;
 }
 
-.profile__top-track-artist, 
-.playlists__playlist-track-count {
+.ptpa__item-artists, 
+.ptpa__item-track-count {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
-.profile__top-track-artist-link, 
-.playlists__playlist-track-count {
+.ptpa__item-artist-link, 
+.ptpa__item-track-count {
   color: #9D9D9D;
 }
 
-.profile__top-track-artist-link::after, 
+.ptpa__item-artist-link::after, 
 .tracks__track-artist-link::after, 
 .track-analysis__track-artist-link1::after,
 .track-analysis__track-artist-link2::after {
   content: " &";
 }
 
-.profile__top-track-artist-link:last-child::after, 
+.ptpa__item-artist-link:last-child::after, 
 .tracks__track-artist-link:last-child::after,
 .track-analysis__track-artist-link1:last-child::after,
 .track-analysis__track-artist-link2:last-child::after {

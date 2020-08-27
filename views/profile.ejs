@@ -38,33 +38,38 @@
 			</div>
 
 			<!-- Top Artists Section -->
-			<section class="profile__top-artists-container">
+			<section class="paa__container">
 				<!-- Top Artist -->
 				<% for (let i = 0; i < topArtistsArray.length; i++) { %>
-					<div class="profile__top-artist">
-						<a href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><img class="profile__top-artist-image" src=<%= topArtistsImageURLs[i] %> alt="artists profile picture"></a>
-						<h3 class="profile__top-artist-name">
-							<a class="profile__top-artist-name-link" href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><%= topArtistsArray[i].name %></a>	
+					<div class="paa__artist">
+						<!-- Artist Image -->
+						<a href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><img class="paa__artist-image" src=<%= topArtistsImageURLs[i] %> alt="artists profile picture"></a>
+						
+						<!-- Artist Name -->
+						<h3 class="paa__artist-name">
+							<a class="paa__artist-name-link" href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><%= topArtistsArray[i].name %></a>	
 						</h3>
 					</div>
 				<% } %>
 			</section>
 
 			<!-- Top Tracks Section -->
-			<section class="profile__top-tracks-container">
+			<section class="ptpa__container profile__top-tracks-container">
 				<!-- Top Track -->
 				<% for (let i = 0; i < topTracksArray.length; i++) { %>
-					<div class="profile__top-track">
+					<div class="ptpa__item">
 						<!-- Album Cover -->
-						<a href=<%= topTracksArray[i].album.external_urls.spotify %> target="_blank"><img class="profile__top-track-image" src=<%= topTracksImageURLs[i] %> alt="album cover"></a>
+						<a href=<%= topTracksArray[i].album.external_urls.spotify %> target="_blank"><img class="ptpa__item-image" src=<%= topTracksImageURLs[i] %> alt="album cover"></a>
+						
 						<!-- Track Name -->
-						<p class="profile__top-track-name">
-							<a class="profile__top-track-name-link" href=<%= topTracksArray[i].external_urls.spotify %> target="_blank"><%= topTracksArray[i].name %></a>
+						<p class="ptpa__item-name">
+							<a class="ptpa__item-name-link" href=<%= topTracksArray[i].external_urls.spotify %> target="_blank"><%= topTracksArray[i].name %></a>
 						</p>
+						
 						<!-- Track Artist --> 
-						<p class="profile__top-track-artist">
+						<p class="ptpa__item-artists">
 							<% for (let j = 0; j < trackArtists[i].length; j++) { %>
-								<a class="profile__top-track-artist-link" href=<%= trackArtists[i][j].url %> target="_blank"><%= trackArtists[i][j].name %></a>
+								<a class="ptpa__item-artist-link" href=<%= trackArtists[i][j].url %> target="_blank"><%= trackArtists[i][j].name %></a>
 							<% } %>
 						</p>
 					</div>

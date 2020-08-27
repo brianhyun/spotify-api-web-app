@@ -22,9 +22,8 @@ router.get('/recent', (req, res, next) => {
 		.then(function (response) {
 			// An array of objects with a nested object that stores information about the recently played track. 
 			const recentArray = response.data.items;
-
-			console.log(recentArray);
 			
+			// Prepare Data for Library Functions
 			const tracksArray = [];
 
 			for (let i = 0; i < recentArray.length; i++) {

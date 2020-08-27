@@ -8,20 +8,20 @@
 		<hr>
 
 		<!-- Playlists Container -->
-		<section class="playlists__container">
+		<section class="ptpa__container">
 			<!-- Playlist -->
 			<% for (let i = 0; i < playlistsArray.length; i++) { %>
-				<div class="playlists__playlist">
+				<div class="ptpa__item">
 					<!-- Playlist Cover -->
-					<a href=<%= playlistsArray[i].external_urls.spotify %> target="_blank"><img class="playlists__playlist-image" src=<%= playlistsImageURLs[i] %> alt="playlist cover"></a>
+					<a href=<%= playlistsArray[i].external_urls.spotify %> target="_blank"><img class="ptpa__item-image" src=<%= playlistsImageURLs[i] %> alt="playlist cover"></a>
 					
 					<!-- Playlist Name -->
-					<p class="playlists__playlist-name">
-						<a class="playlists__playlist-name-link" href=<%= playlistsArray[i].external_urls.spotify %> target="_blank"><%= playlistsArray[i].name %></a>
+					<p class="ptpa__item-name">
+						<a class="ptpa__item-name-link" href=<%= playlistsArray[i].external_urls.spotify %> target="_blank"><%= playlistsArray[i].name %></a>
 					</p>
 
 					<!-- Playlist Track Count -->
-					<p class="playlists__playlist-track-count">
+					<p class="ptpa__item-track-count">
 						<%= playlistsArray[i].tracks.total %> Tracks
 					</p>
 				</div>

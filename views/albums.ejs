@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+	<main class="albums">
+		<!-- Header -->
+		<div class="header-container">
+			<h1 class="header">Albums</h1>
+		</div>
+
+		<hr>
+
+		<section class="ptpa__container">
+			<!-- Album -->
+			<% for (let i = 0; i < albumsArray.length; i++) { %>
+				<div class="ptpa__item">
+					<!-- Album Cover -->
+					<a href=<%= albumsArray[i].external_urls.spotify %> target="_blank"><img class="ptpa__item-image" src=<%= albumsImageURLs[i] %> alt="playlist cover"></a>
+
+					<!-- Album Name -->
+					<p class="ptpa__item-name">
+						<a class="ptpa__item-name-link" href=<%= albumsArray[i].external_urls.spotify %> target="_blank"><%= albumsArray[i].name %></a>
+					</p>
+
+					<!-- Album Artist -->
+					<p class="ptpa__item-artists">
+						<% for (let j = 0; j < albumsArtists[i].length; j++) { %>
+							<a class="ptpa__item-artist-link" href=<%= albumsArtists[i][j].url %> target="_blank"><%= albumsArtists[i][j].name %></a>
+						<% } %>
+					</p>
+				</div>
+			<% } %>
+		</section>
+	</main>
+<%- include('partials/footer') %>

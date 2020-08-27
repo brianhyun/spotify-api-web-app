@@ -1,3 +1,9 @@
+// Library-wide Functions
+
+const isObject = (item) => {
+	return (!Array.isArray(item)) && ((typeof item) === 'object'); 
+};
+
 /* 
 	Purpose: A single track can have multiple artists, with each artist having a unique url for their Spotify page. 
 
@@ -20,8 +26,8 @@
 module.exports.returnArtistsInfoFrom = (topTracks) => {
 	const trackArtists = [];
 
-	// Single Track Logic: If input is not an array, but a single object...
-	if (!Array.isArray(topTracks) && (typeof topTracks) === 'object') {
+	// Input is Object (Single Track)
+	if (isObject(topTracks)) {
 		for (let i = 0; i < topTracks.artists.length; i++) {
 			let artist = {};
 			artist.name = topTracks.artists[i].name;
@@ -30,11 +36,12 @@ module.exports.returnArtistsInfoFrom = (topTracks) => {
 		}
 
 		return trackArtists;
-	// Array of Tracks Logic: If input is an array...
-	} else if (Array.isArray(topTracks)) {	
+	// Input is Array of Top Tracks
+	} else {	
 		// Iterate through tracks and put artist's info into object and push into tracks array.
 		for (let i = 0; i < topTracks.length; i++) {
 			const artists = [];
+
 			// For each track, make an object for each artist. 
 			for(let j = 0; j < topTracks[i].artists.length; j++) {
 				let artist = {};
@@ -43,7 +50,6 @@ module.exports.returnArtistsInfoFrom = (topTracks) => {
 				artists.push(artist);
 			}
 	
-			// Push artists array into artist. 
 			trackArtists.push(artists);
 		}
 	
@@ -66,21 +72,24 @@ const milliToSeconds = (milliseconds) => {
 	const timeInSeconds = milliseconds / 1000; 
 	const timeInMinutes = Math.trunc(timeInSeconds / 60); 
 	const remainingSeconds = Math.trunc(timeInSeconds % 60);
+
 	let timeAsString = '';
+
 	if (remainingSeconds < 10) {
 		timeAsString = `${timeInMinutes}:0${remainingSeconds}`;
 	} else {
 		timeAsString = `${timeInMinutes}:${remainingSeconds}`;
 	}
+
 	return timeAsString; 
 };
 
 module.exports.returnTrackTimesFrom = (topTracks) => {
-	// Single Track Logic: Input is Object, but not Array
-	if (!Array.isArray(topTracks) && (typeof topTracks) === 'object') {
+	// Input is Object (Single Track)
+	if (isObject(topTracks)) {
 		return milliToSeconds(topTracks.duration_ms);
-	// Array of Tracks Logic: Input is Array
-	} else if (Array.isArray(topTracks)) {
+	// Input is Array of Top Tracks
+	} else {
 		const trackTimes = [];
 
 		for (let i = 0; i < topTracks.length; i++) {
@@ -114,8 +123,10 @@ const pushImageURLToArray = (array) => {
 	const noImageURLSrc = 'img/no-image.png';
 
 	for (let i = 0; i < array.length; i++) {
+		// No Images Available
 		if (array[i].images.length === 0) {
 			imageURLs.push(noImageURLSrc);
+		// Images Available
 		} else {
 			imageURLs.push(array[i].images[0].url);
 		}
@@ -125,10 +136,12 @@ const pushImageURLToArray = (array) => {
 };
 
 module.exports.returnImageSourcesFrom = (array) => {
-	if (!Array.isArray(array) && ((typeof array) === 'object')) {
+	// Input is Object (Single Track)
+	if (isObject(array)) {
 		const arrayHold = [array.album];
 		return pushImageURLToArray(arrayHold);
-	} else if ("album" in array[0]) {
+	// Input is Array of Top Tracks 
+	} else if ('album' in array[0]) {
 		const albumArray = [];
 
 		for (let i = 0; i < array.length; i++) {
@@ -136,6 +149,7 @@ module.exports.returnImageSourcesFrom = (array) => {
 		}
 
 		return pushImageURLToArray(albumArray);
+	// Input is Array of Top Playlists
 	} else {
 		return pushImageURLToArray(array); 
 	}
@@ -150,13 +164,10 @@ module.exports.returnImageSourcesFrom = (array) => {
 */
 
 module.exports.returnTranslatedAudioFeatures = (track) => {
-	const trackFeatures = {};
-
-	// Tempo 
-	trackFeatures.tempo = Math.trunc(track.tempo);
-
-	// Time Signature 
-	trackFeatures.time_signature = track.time_signature; 
+	const trackFeatures = {
+		tempo: Math.trunc(track.tempo),
+		time_signature: track.time_signature
+	};
 
 	// Modality (1 for Major, 0 for Minor)
 	if (track.mode === 0) {
@@ -221,14 +232,6 @@ module.exports.returnTranslatedAudioFeatures = (track) => {
 	Output: string of the relative (if using personal asset) or absolute (if user has profile picture hosted on Spotify's server) path of the profile picture
 */
 
-module.exports.returnProfileImage = (profileResponse) => {
-	let profileImage = '';
-
-	if (profileResponse.images[0]) {
-		profileImage = profileResponse.images[0].url;
-	} else {
-		profileImage = 'img/no-profile-picture.png';
-	}
-
-	return profileImage; 
+module.exports.returnProfileImage = (profileDataObj) => {
+	return profileDataObj.images[0] ? profileDataObj.images[0].url : 'img/no-profile-picture.png';
 };
