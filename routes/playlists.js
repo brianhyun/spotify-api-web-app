@@ -35,7 +35,10 @@ router.get('/playlists', (req, res, next) => {
 			console.log(error.response);
 
 			if (error.response.data.error.message === 'The access token expired') {
-				res.redirect('/refresh_token');
+				res.redirect('/refresh_token?' + 
+					queryString.stringify({
+						path: 'playlists'
+				}));
 			} else {
 				res.redirect('/#' +
 					queryString.stringify({

@@ -35,8 +35,10 @@ router.get('/artists', (req, res, next) => {
 			console.log(error.response);
 
 			if (error.response.data.error.message === 'The access token expired') {
-				console.log('Access Token Expired');
-				res.redirect('/refresh_token');
+				res.redirect('/refresh_token?' + 
+					queryString.stringify({
+						path: 'artists'
+				}));
 			} else {
 				res.redirect('/#' +
 					queryString.stringify({

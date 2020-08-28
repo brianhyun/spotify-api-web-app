@@ -10,7 +10,19 @@ const router = express.Router();
 router.use(cookieParser());
 
 router.get('/refresh_token', (req, res, next) => {
-	console.log('Old Access Token', req.cookies['access_token']);
+	let priorPagePath = '';
+
+	// Redirect to Tracks Page
+	if(req.query.id) {
+		priorPagePath = '/' + req.query.path + '/' + req.query.id;
+	// Redirect to All Other Pages
+	} else {
+		priorPagePath = '/' + req.query.path;
+	}
+
+	// Log priorPagePath
+	console.log('Prior Page Path', priorPagePath);
+
 	// Send POST Request to Retrieve New Access Token
 	const refresh_token = req.cookies['refresh_token'];
 
@@ -36,9 +48,7 @@ router.get('/refresh_token', (req, res, next) => {
 
 			res.clearCookie('access_token');
 			res.cookie('access_token', new_access_token, options);
-			console.log('New Access Token Acquired');
-			console.log('New Access Token:', new_access_token);
-			res.redirect('back');
+			res.redirect(priorPagePath);
 		})
 		.catch(function (error) {
 			console.log(error.response);

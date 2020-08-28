@@ -39,8 +39,10 @@ router.get('/tracks', (req, res, next) => {
 			console.log(error.response);
 
 			if (error.response.data.error.message === 'The access token expired') {
-				console.log('Access Token Expired');
-				res.redirect('/refresh_token');
+				res.redirect('/refresh_token?' + 
+					queryString.stringify({
+						path: 'tracks'
+				}));
 			} else {
 				res.redirect('/#' +
 					queryString.stringify({
