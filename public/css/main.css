@@ -42,12 +42,12 @@ html {
  */
 
 hr {
-  display: block;
   height: 1px;
   border: 0;
   border-top: 1px solid #9d9d9d80;
-  margin: 1em 0;
+  margin: 2.5rem 0 6rem 0;
   padding: 0;
+  width: 100%;
 }
 
 /*
@@ -124,12 +124,6 @@ main {
   flex-direction: column;
   min-height: 100vh;
   padding: 0 3rem 6rem;
-  width: 100%;
-}
-
-hr {
-	border-color: #9d9d9d80;
-	margin: 2.5rem 0 6rem 0;
   width: 100%;
 }
 
@@ -448,14 +442,24 @@ hr {
   width: 100%;
 }
 
+.tracks__track-hr-container {
+  display: flex; 
+  flex-direction: column;
+  width: 100%;
+}
+
 .tracks__track-hr {
   border-color: #9d9d9d30;
   margin: 3rem 0;
 }
 
-.tracks__track-hr:last-child {
+.tracks__track:last-child hr {
   display: none;
 }
+
+/* .tracks__track-hr:last-child {
+  display: none;
+} */
 
 .tracks__track:last-child {
   margin-bottom: 0;

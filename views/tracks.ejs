@@ -15,47 +15,49 @@
 					<!-- Album Cover -->
 					<a href=<%= topTracksArray[i].album.external_urls.spotify %> target="_blank"><img class="tracks__track-image" src=<%= trackImageURLs[i] %> alt="album cover"></a>
 
-					<!-- Track Info -->
-					<div class="tracks__track-info">
-						<!-- Track Name, Artist, and Album -->
-						<div class="tracks__track-name-artist-album">
-							<!-- Track Name -->
-							<p class="tracks__track-name">
-								<a class="tracks__track-name-link" href=<%= topTracksArray[i].external_urls.spotify %> target="_blank"><%= topTracksArray[i].name %></a>
-							</p>
-
-							<!-- Track Artist and Album -->
-							<div class="tracks__track-artist-album">
-								<!-- Track Artist --> 
-								<p class="tracks__track-artist">
-									<% for (let j = 0; j < trackArtists[i].length; j++) { %>
-										<a class="tracks__track-artist-link" href=<%= trackArtists[i][j].url %> target="_blank"><%= trackArtists[i][j].name %></a>
-									<% } %>
+					<div class="tracks__track-hr-container">
+						<!-- Track Info -->
+						<div class="tracks__track-info">
+							<!-- Track Name, Artist, and Album -->
+							<div class="tracks__track-name-artist-album">
+								<!-- Track Name -->
+								<p class="tracks__track-name">
+									<a class="tracks__track-name-link" href=<%= topTracksArray[i].external_urls.spotify %> target="_blank"><%= topTracksArray[i].name %></a>
 								</p>
 
-								<!-- Separator -->
-								<p class="tracks__track-artist-album-separator">•</p>
+								<!-- Track Artist and Album -->
+								<div class="tracks__track-artist-album">
+									<!-- Track Artist --> 
+									<p class="tracks__track-artist">
+										<% for (let j = 0; j < trackArtists[i].length; j++) { %>
+											<a class="tracks__track-artist-link" href=<%= trackArtists[i][j].url %> target="_blank"><%= trackArtists[i][j].name %></a>
+										<% } %>
+									</p>
 
-								<!-- Track Album -->
-								<p class="tracks__track-album">
-									<a class="tracks__track-album-link" href=<%= topTracksArray[i].album.external_urls.spotify %> target="_blank"><%= topTracksArray[i].album.name %></a>
+									<!-- Separator -->
+									<p class="tracks__track-artist-album-separator">•</p>
+
+									<!-- Track Album -->
+									<p class="tracks__track-album">
+										<a class="tracks__track-album-link" href=<%= topTracksArray[i].album.external_urls.spotify %> target="_blank"><%= topTracksArray[i].album.name %></a>
+									</p>
+								</div> <!-- tracks__track-artist-album -->
+							</div> <!-- tracks__track-name-artist-album -->
+
+							<!-- Track Analysis and Time -->
+							<div class="tracks__track-analysis-time">
+								<!-- Show Analysis Link -->
+								<a class="tracks__track-analysis-link" href="/tracks/<%= topTracksArray[i].id %>">Analysis</a>
+							
+								<!-- Track Time -->
+								<p class="tracks__track-time">
+									<%= trackTimes[i] %>
 								</p>
-							</div> <!-- tracks__track-artist-album -->
-						</div> <!-- tracks__track-name-artist-album -->
-
-						<!-- Track Analysis and Time -->
-						<div class="tracks__track-analysis-time">
-							<!-- Show Analysis Link -->
-							<a class="tracks__track-analysis-link" href="/tracks/<%= topTracksArray[i].id %>">Analysis</a>
-						
-							<!-- Track Time -->
-							<p class="tracks__track-time">
-								<%= trackTimes[i] %>
-							</p>
-						</div> <!-- tracks__track-analysis-time -->
-					</div> <!-- tracks__track-info -->
+							</div> <!-- tracks__track-analysis-time -->
+						</div> <!-- tracks__track-info -->
+						<hr class="tracks__track-hr">
+					</div> <!-- tracks__track-hr-container -->
 				</div> <!-- tracks__track -->
-				<hr class="tracks__track-hr">
 			<% } %>
 		</section>
 	</main>
