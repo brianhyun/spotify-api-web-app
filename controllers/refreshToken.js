@@ -3,8 +3,6 @@ const axios = require('axios');
 const cookieParser = require('cookie-parser');
 const queryString = require('qs');
 
-const { token_endpoint, client_id, client_secret } = require('../utils/config');
-
 const router = express.Router();
 
 router.use(cookieParser());
@@ -29,15 +27,15 @@ router.get('/refresh_token', (req, res, next) => {
 	const data = queryString.stringify({
 		grant_type: 'refresh_token',
 		refresh_token: refresh_token,
-		client_id: client_id,
-		client_secret: client_secret
+		client_id: process.env.CLIENT_ID,
+		client_secret: process.env.CLIENT_SECRET
 	});
 
 	const options = {
 		headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 	};
 
-	axios.post(token_endpoint, data, options)
+	axios.post(process.env.TOKEN_ENDPOINT, data, options)
 		.then(function (response) {
 			const new_access_token = response.data.access_token;
 

@@ -1,7 +1,6 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 
-const { auth_endpoint, client_id, redirect_uri } = require('../utils/config');
 const state = require('../utils/state');
 
 const router = express.Router();
@@ -33,7 +32,7 @@ router.post('/login', (req, res, next) => {
 
 	// Redirect to Callback Router (Handles Access Token Retrieving)
 	const scopes = 'playlist-read-private user-top-read user-follow-read user-read-recently-played user-library-read';
-	res.redirect(`${auth_endpoint}?response_type=code&client_id=${client_id}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(redirect_uri)}&state=${state}`);
+	res.redirect(`${process.env.AUTH_ENDPOINT}?response_type=code&client_id=${process.env.CLIENT_ID}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(process.env.REDIRECT_URI)}&state=${state}`);
 });
 
 module.exports = router; 

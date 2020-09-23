@@ -3,8 +3,6 @@ const cookieParser = require('cookie-parser');
 const axios = require('axios');
 const queryString = require('qs');
 
-const { redirect_uri, token_endpoint, client_id, client_secret } = require('../utils/config');
-
 const router = express.Router();
 
 router.use(cookieParser());
@@ -38,16 +36,16 @@ router.get('/callback', (req, res, next) => {
 			const data = queryString.stringify({
 				grant_type: 'authorization_code',
 				code: authCode,
-				redirect_uri: redirect_uri,
-				client_id: client_id,
-				client_secret: client_secret
+				redirect_uri: process.env.REDIRECT_URI,
+				client_id: process.env.CLIENT_ID,
+				client_secret: process.env.CLIENT_SECRET
 			});
 	
 			const options = {
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 			};
 	
-			axios.post(token_endpoint, data, options)
+			axios.post(process.env.TOKEN_ENDPOINT, data, options)
 				.then(function (response) {
 					const accessToken = response.data.access_token;
 					const refreshToken = response.data.refresh_token;
