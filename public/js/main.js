@@ -1,7 +1,6 @@
 // Hide Navbar on Login Page
 if (window.location.pathname === "/") {
-	const navbar = document.querySelector("nav");
-	navbar.style.display = "none";
+	$('nav').hide(); 
 }
 
 // Chart Logic 
@@ -57,78 +56,56 @@ if (regExp.test(window.location.pathname)) {
 }
 
 // Hamburger Menu Function
-const mainNav = document.getElementsByClassName("main-navbar");
-const hamburgerMenu = document.getElementById("hamburger-menu");
-const navigationMenu = document.getElementById("navigation-menu");
-const mainSection = document.getElementsByTagName("main");
-
-hamburgerMenu.addEventListener("click", () => {
-	// Hide Hamburger Menu
-	hamburgerMenu.style.display = "none";
+$('#hamburger-menu').click(function() {
+	// Hide Hamburger Menu 
+	$(this).hide(); 
 
 	// Remove Padding on Menu
-	mainNav[0].style.padding = "0";
-
-	// Hide Main Section
-	mainSection[0].style.display = "none";
+	$('.main-navbar').css('padding', '0');
 
 	// Show Nav Menu 
-	navigationMenu.style.display = "flex";
+	$('#navigation-menu').css('display', 'flex');
 });	
 
-// Navbar Close Button 
-const closeBtn = document.getElementById("close-btn");
-
-closeBtn.addEventListener("click", () => {
+// Close Button Function
+$('#close-btn').click(function() {
 	// Show Hamburger Menu 
-	hamburgerMenu.style.display = "flex";
+	$('#hamburger-menu').css('display', 'flex');
 
-	// Add Padding on Menu 
-	mainNav[0].style.padding = "4.5rem 3.5rem";
+	// Add Padding on Menu
+	$('.main-navbar').css('padding', '4.5rem 3.5rem');
 
-	// Hide Main Section
-	mainSection[0].style.display = "flex";
+	// Show Nav Menu 
+	$('#navigation-menu').hide();
+});	
 
-	// Hide Nav Menu 
-	navigationMenu.style.display = "none";
-});
+if (window.location.pathname === "/profile") {
+	// Profile Page - Toggle Artists and Tracks Display
+	$('#top-tracks').click(function() {
+		// Remove active styling for all headers. 
+		$('.profile__top-stats-menu-header').removeClass("profile__top-stats-menu-header--active");
 
-// Profile Page - Toggle Artists and Tracks Display
-const headers = document.getElementsByClassName("profile__top-stats-menu-header");
-const topTracks = document.getElementById("top-tracks");
-const topTracksContainer = document.getElementById("profile__top-tracks-container");
-const topArtists = document.getElementById("top-artists");
-const topArtistsContainer = document.getElementById("profile__top-artists-container")
+		// Add active styling for current header. 
+		$(this).addClass("profile__top-stats-menu-header--active");
 
-topTracks.addEventListener("click", () => {
-	// Remove active styling for all headers. 
-	for (let i = 0; i < headers.length; i++) {
-		headers[i].classList.remove("profile__top-stats-menu-header--active");
-	}
+		// Show Top Tracks Container 
+		$('#profile__top-tracks-container').css('display', 'grid');
 
-	// Add active styling for current header. 
-	topTracks.classList.add("profile__top-stats-menu-header--active");
+		// Hide Top Artists Container
+		$('#profile__top-artists-container').hide(); 
+	});
 
-	// Hide Top Artists Container 
-	topTracksContainer.style.display = "grid";
+	$('#top-artists').click(function() {
+		// Remove active styling for all headers. 
+		$('.profile__top-stats-menu-header').removeClass("profile__top-stats-menu-header--active");
 
-	// Show Top Tracks Container 
-	topArtistsContainer.style.display = "none";
-});
+		// Add active styling for current header. 
+		$(this).addClass("profile__top-stats-menu-header--active");
 
+		// Show Top Artists Container 
+		$('#profile__top-artists-container').css('display', 'grid');
 
-topArtists.addEventListener("click", () => {
-	// Remove active styling for all headers. 
-	for (let i = 0; i < headers.length; i++) {
-		headers[i].classList.remove("profile__top-stats-menu-header--active");
-	}
-
-	// Add active styling for current header. 
-	topArtists.classList.add("profile__top-stats-menu-header--active");
-
-	// Hide Top Artists Container 
-	topTracksContainer.style.display = "none";
-
-	// Show Top Tracks Container 
-	topArtistsContainer.style.display = "grid";
-});
+		// Hide Top Tracks Container
+		$('#profile__top-tracks-container').hide(); 
+	});
+}

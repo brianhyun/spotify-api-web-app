@@ -112,6 +112,10 @@ a {
   text-decoration: none;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 /*
  * Site Wide Styles
  */
@@ -156,7 +160,6 @@ main {
   flex-direction: column;
   height: 100vh;
   justify-content: center;
-  padding: 5%;
   width: 100%;
 }
 
@@ -166,13 +169,11 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 12%;
   text-align: center;
 }
 
 .login__content-header {
   font-size: 2.8rem;
-  margin-bottom: 8%;
 }
 
 .login__content-description {
@@ -180,6 +181,7 @@ main {
   font-weight: 300;
   letter-spacing: 1px;
   line-height: 2;
+  margin: 8% 0 12%;
   width: 80%;
 }
 
@@ -244,6 +246,10 @@ main {
   position: absolute;
     right: 3.5rem;
     top: 4.5rem;
+}
+
+.main-navbar__nav-menu-close:hover {
+  cursor: pointer; 
 }
 
 /*
@@ -655,17 +661,6 @@ main {
 }
 
 /* ==========================================================================
-   Media Queries
-   ========================================================================== */
-
-   @media only screen and (min-width: 1200px) {
-    .login__form-button:hover {
-      background-color: #19A34A;
-      cursor: pointer;
-    }
-   }
-
-/* ==========================================================================
    Helper classes
    ========================================================================== */
 
@@ -748,20 +743,28 @@ main {
 }
 
 /* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
+   Media Queries for Responsive Design.
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
-}
+@media only screen and (min-width: 1000px) {
+  html {
+    font-size: 12px;
+  }
 
-@media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */
+  /* Login */
+  .login__content-description {
+    margin: 5% 0 8%;
+    width: 100%;
+  }
+
+  .login__form-button {
+    padding: 1.5rem 3rem; 
+  }
+
+  .login__form-button:hover {
+    background-color: #19A34A;
+    cursor: pointer;
+  }
 }
 
 /* ==========================================================================

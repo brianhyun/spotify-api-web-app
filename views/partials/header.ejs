@@ -1,70 +1,66 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title><%= pageTitle %></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-	<meta charset="utf-8">
-	<title><%= pageTitle %></title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta property="og:title" content="">
+		<meta property="og:type" content="">
+		<meta property="og:url" content="">
+		<meta property="og:image" content="">
 
-	<meta property="og:title" content="">
-	<meta property="og:type" content="">
-	<meta property="og:url" content="">
-	<meta property="og:image" content="">
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+		
+		<link rel="stylesheet" href="/css/normalize.css">
+		<link rel="stylesheet" href="/css/main.css">
+	</head>
 
-	<!-- <link rel="apple-touch-icon" href="icon.png"> -->
-	<!-- Place favicon.ico in the root directory -->
-
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-	
-	<link rel="stylesheet" href="/css/normalize.css">
-	<link rel="stylesheet" href="/css/main.css">
-</head>
-
-<body>
-	<nav class="main-navbar">
-		<!-- Hamburger Menu -->
-		<div id="hamburger-menu" class="main-navbar__hamburger-menu">
-			<img src="/img/hamburger-menu-icon.png" alt="hamburger menu icon">
-		</div>
-
-		<!-- Navigation Menu -->
-		<div id="navigation-menu" class="main-navbar__nav-menu">
-			<!-- Close Button -->
-			<div id="close-btn" class="main-navbar__nav-menu-close">
-				<img src="/img/close-icon.png" alt="close icon">
+	<body>
+		<nav class="main-navbar">
+			<!-- Hamburger Menu -->
+			<div id="hamburger-menu" class="main-navbar__hamburger-menu">
+				<img src="/img/hamburger-menu-icon.png" alt="hamburger menu icon">
 			</div>
 
-			<!-- Menu Items -->
-			<p class="main-navbar__nav-menu-item">
-				<a <% if (path === "profile") { %> class="main-navbar__nav-menu-item-link main-navbar__nav-menu-item-link--active" <% } else { %> class="main-navbar__nav-menu-item-link" <% } %> href="/profile">
-					Profile
-				</a>
-			</p>
-			<p class="main-navbar__nav-menu-item">
-				<a <% if (path === "artists") { %> class="main-navbar__nav-menu-item-link main-navbar__nav-menu-item-link--active" <% } else { %> class="main-navbar__nav-menu-item-link" <% } %> href="/artists">
-					Top Artists
-				</a>
-			</p>
-			<p class="main-navbar__nav-menu-item">
-				<a <% if (path === "tracks") { %> class="main-navbar__nav-menu-item-link main-navbar__nav-menu-item-link--active" <% } else { %> class="main-navbar__nav-menu-item-link" <% } %> href="/tracks">
-					Top Tracks
-				</a>
-			</p>
-			<p class="main-navbar__nav-menu-item">
-				<a <% if (path === "playlists") { %> class="main-navbar__nav-menu-item-link main-navbar__nav-menu-item-link--active" <% } else { %> class="main-navbar__nav-menu-item-link" <% } %> href="/playlists">
-					Playlists
-				</a>
-			</p>
-			<p class="main-navbar__nav-menu-item">
-				<a <% if (path === "recent") { %> class="main-navbar__nav-menu-item-link main-navbar__nav-menu-item-link--active" <% } else { %> class="main-navbar__nav-menu-item-link" <% } %> href="/recent">
-					Recently Played
-				</a>
-			</p>
-			<p class="main-navbar__nav-menu-item">
-				<a <% if (path === "albums") { %> class="main-navbar__nav-menu-item-link main-navbar__nav-menu-item-link--active" <% } else { %> class="main-navbar__nav-menu-item-link" <% } %> href="/albums">
-					Albums
-				</a>
-			</p>
-		</div>
-	</nav>
+			<!-- Navigation Menu -->
+			<div id="navigation-menu" class="main-navbar__nav-menu">
+				<!-- Close Button -->
+				<div id="close-btn" class="main-navbar__nav-menu-close">
+					<img src="/img/close-icon.png" alt="close icon">
+				</div>
+
+				<!-- Menu Items -->
+				<p class="main-navbar__nav-menu-item">
+					<a <% if (path === "profile") { %> class="main-navbar__nav-menu-item-link main-navbar__nav-menu-item-link--active" <% } else { %> class="main-navbar__nav-menu-item-link" <% } %> href="/profile">
+						Profile
+					</a>
+				</p>
+				<p class="main-navbar__nav-menu-item">
+					<a <% if (path === "artists") { %> class="main-navbar__nav-menu-item-link main-navbar__nav-menu-item-link--active" <% } else { %> class="main-navbar__nav-menu-item-link" <% } %> href="/artists">
+						Top Artists
+					</a>
+				</p>
+				<p class="main-navbar__nav-menu-item">
+					<a <% if (path === "tracks") { %> class="main-navbar__nav-menu-item-link main-navbar__nav-menu-item-link--active" <% } else { %> class="main-navbar__nav-menu-item-link" <% } %> href="/tracks">
+						Top Tracks
+					</a>
+				</p>
+				<p class="main-navbar__nav-menu-item">
+					<a <% if (path === "playlists") { %> class="main-navbar__nav-menu-item-link main-navbar__nav-menu-item-link--active" <% } else { %> class="main-navbar__nav-menu-item-link" <% } %> href="/playlists">
+						Playlists
+					</a>
+				</p>
+				<p class="main-navbar__nav-menu-item">
+					<a <% if (path === "recent") { %> class="main-navbar__nav-menu-item-link main-navbar__nav-menu-item-link--active" <% } else { %> class="main-navbar__nav-menu-item-link" <% } %> href="/recent">
+						Recently Played
+					</a>
+				</p>
+				<p class="main-navbar__nav-menu-item">
+					<a <% if (path === "albums") { %> class="main-navbar__nav-menu-item-link main-navbar__nav-menu-item-link--active" <% } else { %> class="main-navbar__nav-menu-item-link" <% } %> href="/albums">
+						Albums
+					</a>
+				</p>
+			</div>
+		</nav>
