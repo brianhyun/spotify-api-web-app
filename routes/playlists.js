@@ -33,19 +33,12 @@ router.get('/playlists', (req, res, next) => {
 			});
 		})
 		.catch(function (error) {
-			console.log(error.response);
-
-			if (error.response.data.error.message === 'The access token expired') {
-				res.redirect('/refresh_token?' + 
-					queryString.stringify({
-						path: 'playlists'
-				}));
-			} else {
-				res.redirect('/#' +
-					queryString.stringify({
-						error: 'invalid_token'
-				}));
-			}
+			console.log(error.response); 
+			
+			res.redirect('/refresh_token?' + 
+				queryString.stringify({
+					path: 'playlists'
+			}));
 		});
 });
 

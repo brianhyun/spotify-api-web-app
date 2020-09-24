@@ -63,4 +63,44 @@
 					</a>
 				</p>
 			</div>
+
+			<!-- Sidebar Menu -->
+			<div id="sidebar-menu" class="main-navbar__sidebar-menu">
+				<!-- Logo -->
+				<img src="/img/spotify-logo.svg" alt="spotify logo">
+
+				<!-- Hyperlinks -->
+				<div class="main-navbar__sidebar-menu-list">
+					<div class="main-navbar__sidebar-menu-item">
+						<a <% if (path === "profile") { %> class="main-navbar__sidebar-menu-item-link main-navbar__sidebar-menu-item-link--active" <% } else { %> class="main-navbar__sidebar-menu-item-link" <% } %> href="/profile">
+							Profile
+						</a>
+					</div>
+					<div class="main-navbar__sidebar-menu-item">
+						<a <% if (path === "artists") { %> class="main-navbar__sidebar-menu-item-link main-navbar__sidebar-menu-item-link--active" <% } else { %> class="main-navbar__sidebar-menu-item-link" <% } %> href="/artists">
+							Top Artists
+						</a>
+					</div>
+					<div class="main-navbar__sidebar-menu-item">
+						<a <% if (path === "tracks") { %> class="main-navbar__sidebar-menu-item-link main-navbar__sidebar-menu-item-link--active" <% } else { %> class="main-navbar__sidebar-menu-item-link" <% } %> href="/tracks">
+							Top Tracks
+						</a>
+					</div>
+					<div class="main-navbar__sidebar-menu-item">
+						<a <% if (path === "playlists") { %> class="main-navbar__sidebar-menu-item-link main-navbar__sidebar-menu-item-link--active" <% } else { %> class="main-navbar__sidebar-menu-item-link" <% } %> href="/playlists">
+							Playlists
+						</a>
+					</div>
+					<div class="main-navbar__sidebar-menu-item">
+						<a <% if (path === "recent") { %> class="main-navbar__sidebar-menu-item-link main-navbar__sidebar-menu-item-link--active" <% } else { %> class="main-navbar__sidebar-menu-item-link" <% } %> href="/recent">
+							Recently Played
+						</a>
+					</div>
+					<div class="main-navbar__sidebar-menu-item">
+						<a <% if (path === "albums") { %> class="main-navbar__sidebar-menu-item-link main-navbar__sidebar-menu-item-link--active" <% } else { %> class="main-navbar__sidebar-menu-item-link" <% } %> href="/albums">
+							Albums
+						</a>
+					</div>
+				</div>
+			</div>
 		</nav>
