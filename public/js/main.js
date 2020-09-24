@@ -1,6 +1,7 @@
 // Hide Navbar on Login Page
 if (window.location.pathname === "/") {
 	$('nav').hide(); 
+	$('main').css('margin', '0');
 }
 
 // Chart Logic 

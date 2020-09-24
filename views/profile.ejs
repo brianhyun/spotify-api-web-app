@@ -6,24 +6,29 @@
 			<!-- Image -->
 			<img class="profile__profile-picture" src=<%= profileImage %> alt="profile picture">
 
-			<!-- Username -->
-			<h1 class="profile__profile-username">
-				<a class="profile__profile-username-link" href=<%= profileSrc %> target="_blank"><%= username %></a>
-			</h1>
+			<!-- Username and Stats Container (Required for Desktop Layout) -->
+			<div class="profile__username-stats-container">
+				<!-- Username -->
+				<h1 class="profile__profile-username">
+					<a class="profile__profile-username-link" href=<%= profileSrc %> target="_blank"><%= username %></a>
+				</h1>
 
-			<!-- Stats List -->
-			<div class="profile__profile-stats-list">
-				<div class="profile__profile-stats-item">
-					<p class="profile__profile-stats-num"><%= followers %></p>
-					<p class="profile__profile-stats-label">Followers</p>
-				</div>
-				<div class="profile__profile-stats-item">
-					<p class="profile__profile-stats-num"><%= following %></p>
-					<p class="profile__profile-stats-label">Following</p>
-				</div>
-				<div class="profile__profile-stats-item">
-					<p class="profile__profile-stats-num"><%= playlistCount %></p>
-					<p class="profile__profile-stats-label">Playlists</p>
+				<!-- Stats List -->
+				<div class="profile__profile-stats-list">
+					<div class="profile__profile-stats-item">
+						<p class="profile__profile-stats-num"><%= followers %></p>
+						<p class="profile__profile-stats-label">Followers</p>
+					</div>
+					<div class="profile__profile-stats-separator"></div>
+					<div class="profile__profile-stats-item">
+						<p class="profile__profile-stats-num"><%= following %></p>
+						<p class="profile__profile-stats-label">Following</p>
+					</div>
+					<div class="profile__profile-stats-separator"></div>
+					<div class="profile__profile-stats-item">
+						<p class="profile__profile-stats-num"><%= playlistCount %></p>
+						<p class="profile__profile-stats-label">Playlists</p>
+					</div>
 				</div>
 			</div>
 		</section>

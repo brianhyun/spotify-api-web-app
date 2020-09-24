@@ -49,7 +49,7 @@ router.get('/tracks/:id', (req, res, next) => {
 			});
 		})
 		.catch(function (error) {
-			console.log(error.response); 
+			console.log(error); 
 			
 			res.redirect('/refresh_token?' + 
 				queryString.stringify({
