@@ -42,10 +42,10 @@ html {
  */
 
 hr {
-  height: 1px;
+  height: 2px;
   border: 0;
-  border-top: 1px solid #9d9d9d80;
-  margin: 2.5rem 0 6rem 0;
+  border-top: 2px solid #9d9d9d38;
+  margin: 3rem 0 6rem 0;
   padding: 0;
   width: 100%;
 }
@@ -367,13 +367,10 @@ main {
 }
 
 .container {
+  column-gap: 50px;
   display: grid; 
-}
- 
-.container {
-  grid-template-columns: 140px 140px;
-  row-gap: 50px; 
-  justify-content: space-between;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  row-gap: 60px;
   width: 100%; 
 }
 
@@ -385,9 +382,9 @@ main {
 }
 
 .item-image {
-  height: 140px;
-  margin-bottom: 2rem;
-  width: 140px;
+  height: 150px;
+  margin-bottom: 3rem;
+  width: 150px;
 }
 
 /* pa-ar = "profile-artists section and artists page */
@@ -453,6 +450,7 @@ main {
 
 .tracks__track {
   display: flex;
+  margin-bottom: 10%;
   width: 100%;
 }
 
@@ -462,16 +460,17 @@ main {
   width: 100%;
 }
 
-.tracks__track-hr {
+/* .tracks__track-hr {
   border-color: #9d9d9d30;
   margin: 3rem 0;
-}
+} */
 
-.tracks__track:last-child hr {
+.tracks__track-hr {
   display: none;
+  margin: 0; 
 }
 
-/* .tracks__track-hr:last-child {
+/* .tracks__track:last-child hr {
   display: none;
 } */
 
@@ -506,7 +505,8 @@ main {
 }
 
 .tracks__track-artist,
-.tracks__track-time {
+.tracks__track-time,
+.tracks__track-album-link {
   font-size: 1.3rem;
 }
 
@@ -518,6 +518,12 @@ main {
 
 .tracks__track-artist-album {
   display: flex;
+  width: 100%;
+}
+
+.tracks__track-artist, 
+.tracks__track-artist-album-separator {
+  margin-right: 5%;
 }
 
 .tracks__track-artist-album-separator,
@@ -530,7 +536,6 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
 }
 
 .tracks__track-name-artist-album {
@@ -811,7 +816,7 @@ main {
 
   main {
     margin-left: 20vw;
-    padding: 3% 5%;
+    padding: 5% 5% 8%;
     width: 80vw;
   }
 
@@ -855,6 +860,10 @@ main {
     margin-bottom: 2%;
   }
 
+  .profile__profile-username-link:hover {
+    color: #19A34A;
+  }
+
   .profile__profile-stats-list {
     border: none;
     width: 70%;
@@ -890,7 +899,48 @@ main {
   }
 
   .profile__top-stats-menu-header {
+    font-size: 1.2rem;
     margin-right: 5%;
+  }
+
+  /* Tracks and Recently Played */
+  .tracks__track {
+    margin-bottom: 5%;
+  }
+
+  .tracks__track-hr-container {
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .tracks__track-image {
+    height: 200px;
+    margin-right: 3rem; 
+    width: 200px;
+  }
+
+  .tracks__track-name {
+    font-size: 2.5rem;
+    font-weight: 500;
+  }
+
+  .tracks__track-artist-album {
+    align-items: center;
+  }
+
+  .tracks__track-artist-album-separator,
+  .tracks__track-album {
+    display: flex;
+  }
+
+  .tracks__track-name-artist-album, 
+  .tracks__track-analysis-time {
+    justify-content: center;
+  }
+
+  .tracks__track-hr {
+    display: flex;
+    margin-top: 7%;
   }
 }
 
