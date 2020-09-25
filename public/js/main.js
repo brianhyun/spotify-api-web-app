@@ -3,9 +3,26 @@ $(window).on('load', () => {
 	$('.loader-wrapper').fadeOut('slow');
 });
 
+// When you click and close out of hamburger menu and expand to desktop version, hamburger menu shows. 
+$(window).resize(() => {
+	if (window.innerWidth > 1000) {
+		// Show Hamburger Menu 
+		$('#hamburger-menu').css('display', 'none');
+
+		// Add Padding on Menu
+		$('.main-navbar').css('padding', '0');
+	} else {
+		// Show Hamburger Menu 
+		$('#hamburger-menu').css('display', 'flex');
+
+		// Add Padding on Menu
+		$('.main-navbar').css('padding', '4.5rem 3.5rem');
+	}
+});
+
 // Hide Navbar on Login Page
 if (window.location.pathname === "/") {
-	$('nav').hide(); 
+	$('nav').hide();
 	$('main').css('margin', '0');
 }
 
