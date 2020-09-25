@@ -1128,7 +1128,7 @@ main {
   /* Show Hidden Horizonal Rule */
   .tracks__track-hr {
     display: flex;
-    margin-top: 7%;
+    margin-top: 4.3rem;
   }
 
   /* Hide Track Analysis Mobile Version, 
@@ -1140,6 +1140,11 @@ main {
 
   .track-analysis__track-main-desktop {
     display: flex;
+    width: 100%;
+  }
+
+  .track-analysis__track-main-desktop .tracks__track-name-artist-album {
+    margin-right: 0; 
     width: 100%;
   }
 
