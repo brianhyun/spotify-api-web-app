@@ -562,12 +562,16 @@ main {
 
 .track-analysis__track-name, 
 .track-analysis__track-artist {
-  font-size: 2rem;
   font-weight: 500;
 }
 
 .track-analysis__track-name {
+  font-size: 3rem;
   margin: 2.5rem 0;
+}
+
+.track-analysis__track-artist {
+  font-size: 2rem;
 }
 
 .track-analysis__track-artist-link1 {
@@ -586,6 +590,10 @@ main {
 
 /* Track Analysis - Info Sections */
 
+.track-analysis__track-info-analysis-container {
+  width: 100%;
+}
+
 .track-analysis__track-info-container, 
 .track-analysis__track-info {
   align-items: center;
@@ -602,12 +610,11 @@ main {
 .track-analysis__feature-header {
   font-size: 2rem;
   letter-spacing: 2px;
+  margin-bottom: 4rem;
   text-transform: uppercase;
 }
 
-.track-analysis__track-info-container, 
-.track-analysis__track-info-header,
-.track-analysis__feature-header {
+.track-analysis__track-info-container {
   margin-bottom: 4rem;
 }
 
@@ -638,6 +645,11 @@ main {
 .track-analysis__track-info-value {
   color: #ffffff;
   font-size: 1.8rem;
+}
+
+/* Hide Desktop Version */
+.track-analysis__track-main-desktop {
+  display: none;
 }
 
 /* Track Analysis Graph */
@@ -996,7 +1008,99 @@ main {
   /* Show Hidden Horizonal Rule */
   .tracks__track-hr {
     display: flex;
-    margin-top: 8%;
+    margin-top: 7%;
+  }
+
+  /* Hide Track Analysis Mobile Version, 
+     Display Track Analysis Desktop Version */
+  .track-analysis__track-main,
+  .track-analysis__hr {
+    display: none; 
+  }
+
+  .track-analysis__track-main-desktop {
+    display: flex;
+    width: 100%;
+  }
+
+  .tracks__track-name-link {
+    font-size: 3.5rem;
+  }
+
+  .tracks__track-artist-link, 
+  .tracks__track-artist-album-separator, 
+  .tracks__track-album-link {
+    font-size: 1.5rem;
+  }
+
+  .track-analysis__track-info-analysis-container {
+    display: flex;
+    flex-direction: row; 
+    margin: 8% 0;
+    width: 100%;
+  }
+
+  .track-analysis__track-info-container {
+    align-items: flex-start;
+    margin-right: 8%;
+  }
+
+  .track-analysis__track-info-container:last-child {
+    margin-right: 0;
+  }
+
+  .track-analysis__track-info-header, 
+  .track-analysis__feature-header {
+    font-size: 1.5rem;
+  }
+
+  .track-analysis__track-info-header {
+    margin-bottom: 3rem;
+  }
+
+  .track-analysis__track-info {
+    border-top: 1px solid #9d9d9d80;
+    border-right: 1px solid #9d9d9d80;
+    border-bottom: none;
+    border-left: 1px solid #9d9d9d80;
+    flex-direction: row; 
+    padding: 0;
+    text-align: initial;
+  }
+
+  .track-analysis__track-info p {
+    height: 100%;
+  }
+
+  .track-analysis__track-info-property,
+  .track-analysis__track-info-value {
+    align-items: center;
+    display: flex;
+    font-size: 1.4rem;
+    justify-content: center;
+    padding: 3% 5%;
+    text-align: center;
+  }
+  
+  .track-analysis__track-info-property {
+    border-right: 1px solid #9d9d9d80;
+    color: #ffffff;
+    font-weight: normal;
+    margin-bottom: 0;
+    text-transform: capitalize;
+    width: 40%;
+  }
+
+  .track-analysis__track-info-container > .track-analysis__track-info:first-of-type {
+    border-top: 1px solid #9d9d9d80;
+  }
+  
+  .track-analysis__track-info-container > .track-analysis__track-info:last-of-type {
+    border-bottom: 1px solid #9d9d9d80;
+  }
+
+  .track-analysis__track-info-value {
+    width: 60%;
   }
 }
 

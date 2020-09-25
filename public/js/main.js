@@ -9,8 +9,8 @@ const regExp = /\/tracks\/./;
 
 if (regExp.test(window.location.pathname)) {
 	const data = JSON.parse(document.getElementById('passed_data').dataset.test);
-	var ctx = document.getElementById('track-analysis__feature-analysis-graph-canvas').getContext('2d');
-	var myChart = new Chart(ctx, {
+	const ctx = document.getElementById('track-analysis__feature-analysis-graph-canvas').getContext('2d');
+	const myChart = new Chart(ctx, {
 		type: 'bar',
 		data: {
 			labels: ['Danceability', 'Energy', 'Speechiness', 'Loudness (x10^-1)', 'Acousticness', 'Instrumentalness', 'Liveness', 'Valence'],
@@ -48,9 +48,23 @@ if (regExp.test(window.location.pathname)) {
 			scales: {
 				yAxes: [{
 					ticks: {
+						fontColor: "#e7e7e7",
+						fontSize: 13,
 						beginAtZero: true
+					},
+					gridLines: {
+						color: "#9d9d9d25"
 					}
-				}]
+				}],
+				xAxes: [{
+					ticks: {
+						fontColor: "#e7e7e7",
+						fontSize: 13
+					},
+					gridLines: {
+						color: "#9d9d9d25"
+					}
+				}],
 			}
 		}
 	});
