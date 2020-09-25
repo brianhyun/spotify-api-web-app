@@ -460,19 +460,10 @@ main {
   width: 100%;
 }
 
-/* .tracks__track-hr {
-  border-color: #9d9d9d30;
-  margin: 3rem 0;
-} */
-
 .tracks__track-hr {
   display: none;
   margin: 0; 
 }
-
-/* .tracks__track:last-child hr {
-  display: none;
-} */
 
 .tracks__track:last-child {
   margin-bottom: 0;
@@ -504,26 +495,17 @@ main {
   text-transform: uppercase;
 }
 
-.tracks__track-artist,
+.tracks__track-artist-link,
 .tracks__track-time,
-.tracks__track-album-link {
-  font-size: 1.3rem;
-}
-
-.tracks__track-artist-link, 
-.tracks__track-album-link, 
-.tracks__track-time {
+.tracks__track-album-link,
+.tracks__track-artist-album-separator  {
   color: #9d9d9d;
+  font-size: 1.3rem;
 }
 
 .tracks__track-artist-album {
   display: flex;
   width: 100%;
-}
-
-.tracks__track-artist, 
-.tracks__track-artist-album-separator {
-  margin-right: 5%;
 }
 
 .tracks__track-artist-album-separator,
@@ -768,6 +750,13 @@ main {
     display: flex; 
   }
 
+  main {
+    margin-left: 20vw;
+    padding: 5% 5% 8%;
+    width: 80vw;
+  }
+
+  /* Sidebar Navigation */
   .main-navbar {
     align-items: center;
     flex-direction: column; 
@@ -786,9 +775,29 @@ main {
     width: 100%;
   }
 
-  .main-navbar__spotify-logo {
+  .main-navbar__spotify-logo-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
     height: 40vh;
-    width: 30%;
+  }
+
+  .main-navbar__spotify-logo {
+    width: 35%;
+  }
+
+  /* Hover Transitions */
+  .main-navbar__spotify-logo path,
+  .main-navbar__sidebar-menu-item {
+    transition: 0.1s linear;
+  }
+
+  .main-navbar__spotify-logo:hover path {
+    fill: #1DB954 !important;
+  }
+
+  .main-navbar__sidebar-menu-item-link:hover {
+    color: #ffffff;
   }
 
   .main-navbar__sidebar-menu-list {
@@ -814,13 +823,6 @@ main {
     color: #ffffff;
   }
 
-  main {
-    margin-left: 20vw;
-    padding: 5% 5% 8%;
-    width: 80vw;
-  }
-
-  /* Navigation */
   .main-navbar__hamburger-menu {
     display: none;
   }
@@ -861,7 +863,7 @@ main {
   }
 
   .profile__profile-username-link:hover {
-    color: #19A34A;
+    color: #1DB954;
   }
 
   .profile__profile-stats-list {
@@ -903,13 +905,22 @@ main {
     margin-right: 5%;
   }
 
+  .profile__top-stats-menu-header:hover {
+    color: #ffffff;
+  }
+
+  /* Shared Styles for Profile-Tracks and Profile-Artists Sections & Top Artists, Albums, Playlists Pages */
+  .item-image:hover {
+    outline: 5px solid #1DB954;
+    outline-offset: -5px;
+  }
+
   /* Tracks and Recently Played */
   .tracks__track {
     margin-bottom: 5%;
   }
 
   .tracks__track-hr-container {
-    align-items: center;
     justify-content: flex-end;
   }
 
@@ -918,29 +929,74 @@ main {
     margin-right: 3rem; 
     width: 200px;
   }
+  
+  .tracks__track-name-artist-album {
+    margin-right: 10%;
+  }
 
   .tracks__track-name {
     font-size: 2.5rem;
     font-weight: 500;
   }
 
-  .tracks__track-artist-album {
-    align-items: center;
+  /* Hover Transitions */
+  .item-name-link,
+  .item-artist-link,
+  .tracks__track-image,
+  .tracks__track-name-link,
+  .tracks__track-artist-link,
+  .tracks__track-album-link,
+  .tracks__track-analysis-link {
+    transition: 0.1s linear;
   }
 
+  .tracks__track-image:hover {
+    outline: 5px solid #1DB954;
+    outline-offset: -5px;
+  }
+
+  .item-name-link:hover,
+  .tracks__track-name-link:hover {
+    color: #1DB954;
+  }
+
+  .item-artist-link:hover,
+  .tracks__track-artist-link:hover,
+  .tracks__track-album-link:hover {
+    color: #ffffff;
+  }
+
+  .tracks__track-analysis-link:hover {
+    background-color: #e9e9e9;
+    color: #000000;
+    font-weight: 500;
+  }
+
+  /* Reveal Hidden Separator and Album Name */
   .tracks__track-artist-album-separator,
   .tracks__track-album {
     display: flex;
   }
 
-  .tracks__track-name-artist-album, 
-  .tracks__track-analysis-time {
-    justify-content: center;
+  .tracks__track-artist-album-separator {
+    margin: 0 5%;
   }
 
+  .tracks__track-analysis-link {
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 0.5rem 1.5rem;
+  }
+
+  .tracks__track-analysis-link::before {
+    content: "Track ";
+  }
+
+  /* Show Hidden Horizonal Rule */
   .tracks__track-hr {
     display: flex;
-    margin-top: 7%;
+    margin-top: 8%;
   }
 }
 

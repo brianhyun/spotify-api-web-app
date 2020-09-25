@@ -13,7 +13,9 @@
 			<% for (let i = 0; i < topTracksArray.length; i++) { %>
 				<div class="tracks__track">
 					<!-- Album Cover -->
-					<a href=<%= topTracksArray[i].album.external_urls.spotify %> target="_blank"><img class="tracks__track-image" src=<%= trackImageURLs[i] %> alt="album cover"></a>
+					<a href=<%= topTracksArray[i].album.external_urls.spotify %> target="_blank">
+						<img class="tracks__track-image" src=<%= trackImageURLs[i] %> alt="album cover">
+					</a>
 
 					<div class="tracks__track-hr-container">
 						<!-- Track Info -->
