@@ -121,6 +121,111 @@ a {
 }
 
 /*
+ * CSS Loader
+ */
+
+.loader-wrapper {
+  align-items: center;
+  background-color: #191919;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: absolute; 
+    top: 0; 
+    left: 0; 
+  width: 100vw; 
+  z-index: 9999;
+}
+
+.sk-folding-cube {
+  height: 40px;
+  margin: 20px auto;
+  position: relative;
+    -webkit-transform: rotateZ(45deg);
+        transform: rotateZ(45deg);
+  width: 40px;
+}
+
+.sk-folding-cube .sk-cube {
+  float: left;
+  height: 50%;
+  position: relative;
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1); 
+  width: 50%;
+}
+.sk-folding-cube .sk-cube:before {
+  background-color: #e9e9e9;
+  content: '';
+  height: 100%;
+  position: absolute;
+    top: 0;
+    left: 0;
+  width: 100%;
+  -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
+          animation: sk-foldCubeAngle 2.4s infinite linear both;
+  -webkit-transform-origin: 100% 100%;
+      -ms-transform-origin: 100% 100%;
+          transform-origin: 100% 100%;
+}
+.sk-folding-cube .sk-cube2 {
+  -webkit-transform: scale(1.1) rotateZ(90deg);
+          transform: scale(1.1) rotateZ(90deg);
+}
+.sk-folding-cube .sk-cube3 {
+  -webkit-transform: scale(1.1) rotateZ(180deg);
+          transform: scale(1.1) rotateZ(180deg);
+}
+.sk-folding-cube .sk-cube4 {
+  -webkit-transform: scale(1.1) rotateZ(270deg);
+          transform: scale(1.1) rotateZ(270deg);
+}
+.sk-folding-cube .sk-cube2:before {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+.sk-folding-cube .sk-cube3:before {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s; 
+}
+.sk-folding-cube .sk-cube4:before {
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+@-webkit-keyframes sk-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0; 
+  } 25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1; 
+  } 90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0; 
+  } 
+}
+
+@keyframes sk-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0; 
+  } 25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1; 
+  } 90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0; 
+  }
+}
+
+/*
  * Site Wide Styles
  */
 
@@ -139,8 +244,12 @@ main {
  * Shared Styles
  */
 
-.profile__hr, .track-analysis__hr {
+.profile__hr {
   margin: 5rem 0;
+}
+
+.track-analysis__hr {
+  margin: 4rem 0;
 }
 
 .header-container {
@@ -243,7 +352,7 @@ main {
 
 .main-navbar__nav-menu-item-link--active {
 	color: #ffffff;
-	border-bottom: 3px solid #1DB954;
+  border-bottom: 3px solid #1DB954;
 }
 
 .main-navbar__nav-menu-close {
@@ -768,6 +877,11 @@ main {
     width: 80vw;
   }
 
+  .loader-wrapper {
+    left: 20vw; 
+    width: 80vw; 
+  }
+
   /* Sidebar Navigation */
   .main-navbar {
     align-items: center;
@@ -860,7 +974,7 @@ main {
     flex-direction: row;  
   }
 
-  .profile__profile-picture {
+  .profile__profile-picture-link {
     margin-right: 4%;
   }
 
@@ -929,7 +1043,7 @@ main {
 
   /* Tracks and Recently Played */
   .tracks__track {
-    margin-bottom: 5%;
+    margin-bottom: 6%;
   }
 
   .tracks__track-hr-container {
@@ -938,7 +1052,7 @@ main {
 
   .tracks__track-image {
     height: 200px;
-    margin-right: 3rem; 
+    margin-right: 4rem; 
     width: 200px;
   }
   
@@ -947,8 +1061,14 @@ main {
   }
 
   .tracks__track-name {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     font-weight: 500;
+  }
+
+  .tracks__track-artist-link, 
+  .tracks__track-artist-album-separator, 
+  .tracks__track-album-link {
+    font-size: 1.5rem;
   }
 
   /* Hover Transitions */
@@ -1023,16 +1143,6 @@ main {
     width: 100%;
   }
 
-  .tracks__track-name-link {
-    font-size: 3.5rem;
-  }
-
-  .tracks__track-artist-link, 
-  .tracks__track-artist-album-separator, 
-  .tracks__track-album-link {
-    font-size: 1.5rem;
-  }
-
   .track-analysis__track-info-analysis-container {
     display: flex;
     flex-direction: row; 
@@ -1076,7 +1186,7 @@ main {
   .track-analysis__track-info-value {
     align-items: center;
     display: flex;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     justify-content: center;
     padding: 3% 5%;
     text-align: center;
@@ -1084,10 +1194,8 @@ main {
   
   .track-analysis__track-info-property {
     border-right: 1px solid #9d9d9d80;
-    color: #ffffff;
     font-weight: normal;
     margin-bottom: 0;
-    text-transform: capitalize;
     width: 40%;
   }
 

@@ -1,3 +1,8 @@
+// Fade Out CSS Loader on Page Load
+$(window).on('load', () => {
+	$('.loader-wrapper').fadeOut('slow');
+});
+
 // Hide Navbar on Login Page
 if (window.location.pathname === "/") {
 	$('nav').hide(); 
