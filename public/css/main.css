@@ -607,7 +607,9 @@ main {
 .tracks__track-artist-link,
 .tracks__track-time,
 .tracks__track-album-link,
-.tracks__track-artist-album-separator  {
+.tracks__track-artist-album-separator,
+.track-analysis__track-artist-album-separator,
+.track-analysis__track-album-link {
   color: #9d9d9d;
   font-size: 1.3rem;
 }
@@ -663,6 +665,7 @@ main {
   align-items: center;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .track-analysis__track-image {
@@ -670,18 +673,21 @@ main {
   width: 180px;
 }
 
-.track-analysis__track-name, 
-.track-analysis__track-artist {
-  font-weight: 500;
-}
-
 .track-analysis__track-name {
   font-size: 3rem;
+  font-weight: 500;
   margin: 2.5rem 0;
 }
 
-.track-analysis__track-artist {
+.track-analysis__track-artist,
+.track-analysis__track-artist-album-separator,
+.track-analysis__track-album {
   font-size: 2rem;
+}
+
+.track-analysis__track-artist-album-separator,
+.track-analysis__track-album {
+  display: none;
 }
 
 .track-analysis__track-artist-link1 {
@@ -691,11 +697,6 @@ main {
 .track-analysis__track-name-link, 
 .track-analysis__track-artist-link2 {
   color: #ffffff;
-}
-
-.track-analysis__track-artist {
-  letter-spacing: 2px;
-  text-transform: uppercase;
 }
 
 /* Track Analysis - Info Sections */
@@ -710,10 +711,6 @@ main {
   display: flex;
   flex-direction: column;
   width: 100%;
-}
-
-.track-analysis__track-info {
-  text-align: center;
 }
 
 .track-analysis__track-info-header, 
@@ -734,6 +731,7 @@ main {
   border-top: 1px solid #9d9d9d80;
   border-bottom: 1px solid #9d9d9d80;
   padding: 2rem 1.5rem;
+  text-align: center;
 }
 
 .track-analysis__track-info-container > .track-analysis__track-info:first-of-type {
@@ -878,11 +876,15 @@ main {
   .tracks__track-name-link,
   .tracks__track-artist-link,
   .tracks__track-album-link,
-  .tracks__track-analysis-link {
+  .tracks__track-analysis-link,
+  .track-analysis__track-album-link,  
+  .track-analysis__track-name-link,
+  .track-analysis__track-image,
+  .track-analysis__track-artist-link1 {
     transition: 0.1s linear;
   }
-
   .tracks__track-image:hover,
+  .track-analysis__track-image:hover,
   .item-image:hover {
     outline: 5px solid #1DB954;
     outline-offset: -5px;
@@ -890,13 +892,16 @@ main {
 
   .profile__profile-username-link:hover,
   .item-name-link:hover,
-  .tracks__track-name-link:hover {
+  .tracks__track-name-link:hover,
+  .track-analysis__track-name-link:hover {
     color: #1DB954;
   }
 
   .item-artist-link:hover,
   .tracks__track-artist-link:hover,
   .tracks__track-album-link:hover,
+  .track-analysis__track-album-link:hover,
+  .track-analysis__track-artist-link1:hover,
   .profile__top-stats-menu-header:hover {
     color: #ffffff;
   }
@@ -909,10 +914,13 @@ main {
 
   /* Reveal Hidden Separator and Album Name */
   .tracks__track-artist-album-separator,
-  .tracks__track-album {
+  .tracks__track-album,
+  .track-analysis__track-artist-album-separator,
+  .track-analysis__track-album {
     display: flex;
   }
 
+  .track-analysis__track-artist-album-separator,
   .tracks__track-artist-album-separator {
     margin: 0 5%;
   }
@@ -936,12 +944,12 @@ main {
   .track-analysis__track-info-analysis-container {
     display: flex;
     flex-direction: row;
-    margin: 8% 0;
     width: 100%;
   }
 
   .track-analysis__track-info-container {
     align-items: flex-start;
+    margin-bottom: 0;
     margin-right: 8%;
   }
 
@@ -1045,6 +1053,22 @@ main {
   .tracks__track-name-artist-album, 
   .tracks__track-analysis-time {
     justify-content: center;
+  }
+
+  .track-analysis__track-artist-album {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .track-analysis__track-artist-album-separator,
+  .track-analysis__track-album-link {
+    font-size: 2rem;
+  }
+
+  .track-analysis__track-info-analysis-container {
+    margin-bottom: 8%;
   }
 }
 
@@ -1261,6 +1285,10 @@ main {
   .track-analysis__track-main-desktop {
     display: flex;
     width: 100%;
+  }
+
+  .track-analysis__track-info-analysis-container {
+    margin: 6% 0;
   }
 }
 

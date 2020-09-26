@@ -12,14 +12,25 @@
 				<a class="track-analysis__track-name-link" href=<%= trackInfo.external_urls.spotify %> target="_blank"><%= trackInfo.name %></a>
 			</p>
 	
-			<!-- Track Artist(s) -->
-			<p class="track-analysis__track-artist">
-				<% for (let i = 0; i < trackArtists.length; i++) { %> 
-					<a class="track-analysis__track-artist-link1" href=<%= trackArtists[i].url %> target="_blank">
-						<%= trackArtists[i].name %>
-					</a>
-				<% } %> 
-			</p>
+			<div class="track-analysis__track-artist-album">
+				<!-- Track Artist(s) -->
+				<p class="track-analysis__track-artist">
+					<!-- Track Artists -->
+					<% for (let i = 0; i < trackArtists.length; i++) { %> 
+						<a class="track-analysis__track-artist-link1" href=<%= trackArtists[i].url %> target="_blank">
+							<%= trackArtists[i].name %>
+						</a>
+					<% } %> 
+				</p>
+
+				<!-- Separator -->
+				<p class="track-analysis__track-artist-album-separator">•</p>
+
+				<!-- Track Album -->
+				<p class="track-analysis__track-album">
+					<a class="track-analysis__track-album-link" href=<%= trackInfo.album.external_urls.spotify %> target="_blank"><%= trackInfo.album.name %></a>
+				</p>
+			</div>
 		</section>
 
 		<hr class="track-analysis__hr">
