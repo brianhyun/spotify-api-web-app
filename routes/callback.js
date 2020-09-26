@@ -13,6 +13,8 @@ router.get('/callback', (req, res, next) => {
 	// Otherwise, send client to personal dashboard. 
 	const errorMessage = req.query.error;
 
+	console.log(req.query.error);
+
 	if (errorMessage) {
 		res.redirect('/#' +
 			queryString.stringify({
