@@ -1,6 +1,6 @@
 {
-  "name": "Analyzer",
   "version": "1.0.0",
+  "name": "spotify_profile_analyzer",
   "description": "A dashboard displaying statistics relating to your Spotify profile.",
   "main": "app.js",
   "scripts": {

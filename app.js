@@ -1,28 +1,27 @@
-if (process.env.NODE_ENV !== 'production') {
-	require('dotenv').config();
-}
+if (process.env.NODE_ENV !== "production") require("dotenv").config();
 
-const bodyParser = require('body-parser');
-const express = require('express');
+const path = require("path");
+const express = require("express");
+const bodyParser = require("body-parser");
 
-const loginRouter = require('./routes/login');
-const callbackRouter = require('./routes/callback');
-const profileRouter = require('./routes/profile');
-const artistsRouter = require('./routes/artists');
-const tracksRouter = require('./routes/tracks');
-const playlistsRouter = require('./routes/playlists');
-const recentRouter = require('./routes/recent');
-const trackAnalysisRouter = require('./routes/track_analysis');
-const albumsRouter = require('./routes/albums');
+const loginRouter = require("./routes/login");
+const tracksRouter = require("./routes/tracks");
+const albumsRouter = require("./routes/albums");
+const recentRouter = require("./routes/recent");
+const profileRouter = require("./routes/profile");
+const artistsRouter = require("./routes/artists");
+const callbackRouter = require("./routes/callback");
+const playlistsRouter = require("./routes/playlists");
+const trackAnalysisRouter = require("./routes/track_analysis");
 
-const errorController = require('./controllers/errorPage');
-const refreshTokenController = require('./controllers/refreshToken');
+const errorController = require("./controllers/errorPage");
+const refreshTokenController = require("./controllers/refreshToken");
 
-const app = express(); 
+const app = express();
 
-app.set('view engine', 'ejs');
-
-app.use(express.static('public'));
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Route Handling
@@ -40,6 +39,6 @@ app.use(albumsRouter);
 // 404 Handling
 app.use(errorController);
 
-app.listen(process.env.PORT || 3000, () => {
-	console.log('Example app running on port', 3000);
-});
+app.listen(process.env.PORT || 3000, () =>
+  console.log("App running on port", 3000)
+);
