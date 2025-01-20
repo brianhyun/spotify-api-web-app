@@ -1,31 +1,46 @@
 <%- include('partials/header') %>
-	<main class="playlists">
-		<!-- Header -->
-		<div class="header-container">
-			<h1 class="header">Playlists</h1>
-		</div>
+<main class="playlists">
+  <!-- Header -->
+  <div class="header-container">
+    <h1 class="header">Playlists</h1>
+  </div>
 
-		<hr>
+  <hr />
 
-		<!-- Playlists Container -->
-		<section class="container">
-			<!-- Playlist -->
-			<% for (let i = 0; i < playlistsArray.length; i++) { %>
-				<div class="item">
-					<!-- Playlist Cover -->
-					<a href=<%= playlistsArray[i].external_urls.spotify %> target="_blank"><img class="item-image" src=<%= playlistsImageURLs[i] %> alt="playlist cover"></a>
-					
-					<!-- Playlist Name -->
-					<p class="item-name">
-						<a class="item-name-link" href=<%= playlistsArray[i].external_urls.spotify %> target="_blank"><%= playlistsArray[i].name %></a>
-					</p>
+  <!-- Playlists Container -->
+  <section class="container">
+    <!-- Playlist -->
+    <% for (let i = 0; i < playlistsArray.length; i++) { %>
+    <div class="item">
+      <!-- Playlist Cover -->
+      <a href="<%" ="playlistsArray[i].external_urls.spotify" %>
+        target="_blank"><img
+          class="item-image"
+          src="<%"
+          ="playlistsImageURLs[i]"
+          %
+        />
+        alt="playlist cover"></a
+      >
 
-					<!-- Playlist Track Count -->
-					<p class="item-track-count">
-						<%= playlistsArray[i].tracks.total %> Tracks
-					</p>
-				</div>
-			<% } %>
-		</section>
-	</main>
+      <!-- Playlist Name -->
+      <p class="item-name">
+        <a
+          class="item-name-link"
+          href="<%"
+          ="playlistsArray[i].external_urls.spotify"
+          %
+        >
+          target="_blank"><%= playlistsArray[i].name %></a
+        >
+      </p>
+
+      <!-- Playlist Track Count -->
+      <p class="item-track-count">
+        <%= playlistsArray[i].tracks.total %> Tracks
+      </p>
+    </div>
+    <% } %>
+  </section>
+</main>
 <%- include('partials/footer') %>

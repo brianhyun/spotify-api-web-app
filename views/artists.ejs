@@ -1,26 +1,41 @@
 <%- include('partials/header') %>
-	<main class="artists">
-		<!-- Header -->
-		<div class="header-container">
-			<h1 class="header">Top Artists</h1>
-		</div>
+<main class="artists">
+  <!-- Header -->
+  <div class="header-container">
+    <h1 class="header">Top Artists</h1>
+  </div>
 
-		<hr>
+  <hr />
 
-		<!-- Top Artists Section -->
-		<section class="container">
-			<!-- Top Artist -->
-			<% for (let i = 0; i < topArtistsArray.length; i++) { %>
-				<div class="item">
-					<!-- Artist Image -->
-					<a href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><img class="item-image pa-ar__item-image" src=<%= topArtistsImageURLs[i] %> alt="artists profile picture"></a>
-					
-					<!-- Artist Name -->
-					<h3 class="item-name">
-						<a class="item-name-link" href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><%= topArtistsArray[i].name %></a>	
-					</h3>
-				</div>
-			<% } %>
-		</section>
-	</main>
+  <!-- Top Artists Section -->
+  <section class="container">
+    <!-- Top Artist -->
+    <% for (let i = 0; i < topArtistsArray.length; i++) { %>
+    <div class="item">
+      <!-- Artist Image -->
+      <a href="<%" ="topArtistsArray[i].external_urls.spotify" %>
+        target="_blank"><img
+          class="item-image pa-ar__item-image"
+          src="<%"
+          ="topArtistsImageURLs[i]"
+          %
+        />
+        alt="artists profile picture"></a
+      >
+
+      <!-- Artist Name -->
+      <h3 class="item-name">
+        <a
+          class="item-name-link"
+          href="<%"
+          ="topArtistsArray[i].external_urls.spotify"
+          %
+        >
+          target="_blank"><%= topArtistsArray[i].name %></a
+        >
+      </h3>
+    </div>
+    <% } %>
+  </section>
+</main>
 <%- include('partials/footer') %>

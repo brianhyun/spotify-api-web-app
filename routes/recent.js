@@ -1,57 +1,60 @@
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const axios = require('axios');
-const queryString = require('qs');
+const express = require("express");
+const cookieParser = require("cookie-parser");
+const axios = require("axios");
+const queryString = require("qs");
 
-const library = require('../utils/library');
+const library = require("../utils/library");
 
 const router = express.Router();
 
 router.use(cookieParser());
 
-router.get('/recent', (req, res, next) => {
-	// Send GET Request to User's Recently Played Songs
-	const access_token = req.cookies['access_token'];
+router.get("/recent", (req, res, next) => {
+  // Send GET Request to User's Recently Played Songs
+  const access_token = req.cookies["access_token"];
 
-	const options = {
-		headers: {'Authorization': `Bearer ${access_token}`}
-	};
+  const options = {
+    headers: { Authorization: `Bearer ${access_token}` },
+  };
 
-	const recentURL = 'https://api.spotify.com/v1/me/player/recently-played';
+  const recentURL = "https://api.spotify.com/v1/me/player/recently-played";
 
-	axios.get(recentURL, options)
-		.then(function (response) {
-			// An array of objects with a nested object that stores information about the recently played track. 
-			const recentArray = response.data.items;
-			
-			// Prepare Data for Library Functions
-			const tracksArray = [];
+  axios
+    .get(recentURL, options)
+    .then(function (response) {
+      // An array of objects with a nested object that stores information about the recently played track.
+      const recentArray = response.data.items;
 
-			for (let i = 0; i < recentArray.length; i++) {
-				tracksArray.push(recentArray[i].track);
-			}
+      // Prepare Data for Library Functions
+      const tracksArray = [];
 
-			const trackImageURLs = library.returnImageSourcesFrom(tracksArray);
-			const trackArtists = library.returnArtistsInfoFrom(tracksArray);
-			const trackTimes = library.returnTrackTimesFrom(tracksArray);
+      for (let i = 0; i < recentArray.length; i++) {
+        tracksArray.push(recentArray[i].track);
+      }
 
-			res.render('recent', {
-				path: 'recent', 
-				pageTitle: 'Recently Played',
-				recentArray: recentArray,
-				trackArtists: trackArtists,
-				trackTimes: trackTimes,
-				trackImageURLs: trackImageURLs
-			});
-		})
-		.catch(function (error) {
-			console.log(error); 
-			
-			res.redirect('/refresh_token?' + 
-				queryString.stringify({
-					path: 'recent'
-			}));
-		});
+      const trackImageURLs = library.returnImageSourcesFrom(tracksArray);
+      const trackArtists = library.returnArtistsInfoFrom(tracksArray);
+      const trackTimes = library.returnTrackTimesFrom(tracksArray);
+
+      res.render("recent", {
+        path: "recent",
+        pageTitle: "Recently Played",
+        recentArray: recentArray,
+        trackArtists: trackArtists,
+        trackTimes: trackTimes,
+        trackImageURLs: trackImageURLs,
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+
+      res.redirect(
+        "/refresh_token?" +
+          queryString.stringify({
+            path: "recent",
+          })
+      );
+    });
 });
 
-module.exports = router; 
+module.exports = router;

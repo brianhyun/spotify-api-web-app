@@ -1,88 +1,129 @@
 <%- include('partials/header') %>
 
-	<main class="profile">
-		<!-- Profile Section -->
-		<section class="profile__profile">
-			<!-- Image -->
-			<a class="profile__profile-picture-link" href=<%= profileSrc %> target="_blank">
-				<img class="profile__profile-picture" src=<%= profileImage %> alt="profile picture">
-			</a>
+<main class="profile">
+  <!-- Profile Section -->
+  <section class="profile__profile">
+    <!-- Image -->
+    <a class="profile__profile-picture-link" href="<%" ="profileSrc" %>
+      target="_blank">
+      <img class="profile__profile-picture" src="<%" ="profileImage" % />
+      alt="profile picture">
+    </a>
 
-			<!-- Username and Stats Container (Required for Desktop Layout) -->
-			<div class="profile__username-stats-container">
-				<!-- Username -->
-				<h1 class="profile__profile-username">
-					<a class="profile__profile-username-link" href=<%= profileSrc %> target="_blank"><%= username %></a>
-				</h1>
+    <!-- Username and Stats Container (Required for Desktop Layout) -->
+    <div class="profile__username-stats-container">
+      <!-- Username -->
+      <h1 class="profile__profile-username">
+        <a class="profile__profile-username-link" href="<%" ="profileSrc" %>
+          target="_blank"><%= username %></a
+        >
+      </h1>
 
-				<!-- Stats List -->
-				<div class="profile__profile-stats-list">
-					<div class="profile__profile-stats-item">
-						<p class="profile__profile-stats-num"><%= followers %></p>
-						<p class="profile__profile-stats-label">Followers</p>
-					</div>
-					<div class="profile__profile-stats-separator"></div>
-					<div class="profile__profile-stats-item">
-						<p class="profile__profile-stats-num"><%= following %></p>
-						<p class="profile__profile-stats-label">Following</p>
-					</div>
-					<div class="profile__profile-stats-separator"></div>
-					<div class="profile__profile-stats-item">
-						<p class="profile__profile-stats-num"><%= playlistCount %></p>
-						<p class="profile__profile-stats-label">Playlists</p>
-					</div>
-				</div>
-			</div>
-		</section>
+      <!-- Stats List -->
+      <div class="profile__profile-stats-list">
+        <div class="profile__profile-stats-item">
+          <p class="profile__profile-stats-num"><%= followers %></p>
+          <p class="profile__profile-stats-label">Followers</p>
+        </div>
+        <div class="profile__profile-stats-separator"></div>
+        <div class="profile__profile-stats-item">
+          <p class="profile__profile-stats-num"><%= following %></p>
+          <p class="profile__profile-stats-label">Following</p>
+        </div>
+        <div class="profile__profile-stats-separator"></div>
+        <div class="profile__profile-stats-item">
+          <p class="profile__profile-stats-num"><%= playlistCount %></p>
+          <p class="profile__profile-stats-label">Playlists</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-		<hr class="profile__hr">
+  <hr class="profile__hr" />
 
-		<!-- Stats Container -->
-		<section class="profile__top-stats-container">
-			<div class="profile__top-stats-menu">
-				<p id="top-artists" class="profile__top-stats-menu-header profile__top-stats-menu-header--active">Top Artists</p>
-				<p id="top-tracks" class="profile__top-stats-menu-header">Top Tracks</p>
-			</div>
+  <!-- Stats Container -->
+  <section class="profile__top-stats-container">
+    <div class="profile__top-stats-menu">
+      <p
+        id="top-artists"
+        class="profile__top-stats-menu-header profile__top-stats-menu-header--active"
+      >
+        Top Artists
+      </p>
+      <p id="top-tracks" class="profile__top-stats-menu-header">Top Tracks</p>
+    </div>
 
-			<!-- Top Artists Section -->
-			<div id="profile__top-artists-container" class="container">
-				<!-- Top Artist -->
-				<% for (let i = 0; i < topArtistsArray.length; i++) { %>
-					<div class="item">
-						<!-- Artist Image -->
-						<a href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><img class="item-image pa-ar__item-image" src=<%= topArtistsImageURLs[i] %> alt="artists profile picture"></a>
-						
-						<!-- Artist Name -->
-						<h3 class="item-name">
-							<a class="item-name-link" href=<%= topArtistsArray[i].external_urls.spotify %> target="_blank"><%= topArtistsArray[i].name %></a>	
-						</h3>
-					</div>
-				<% } %>
-			</div>
+    <!-- Top Artists Section -->
+    <div id="profile__top-artists-container" class="container">
+      <!-- Top Artist -->
+      <% for (let i = 0; i < topArtistsArray.length; i++) { %>
+      <div class="item">
+        <!-- Artist Image -->
+        <a href="<%" ="topArtistsArray[i].external_urls.spotify" %>
+          target="_blank"><img
+            class="item-image pa-ar__item-image"
+            src="<%"
+            ="topArtistsImageURLs[i]"
+            %
+          />
+          alt="artists profile picture"></a
+        >
 
-			<!-- Top Tracks Section -->
-			<div id="profile__top-tracks-container" class="container">
-				<!-- Top Track -->
-				<% for (let i = 0; i < topTracksArray.length; i++) { %>
-					<div class="item">
-						<!-- Album Cover -->
-						<a href=<%= topTracksArray[i].album.external_urls.spotify %> target="_blank"><img class="item-image" src=<%= topTracksImageURLs[i] %> alt="album cover"></a>
-						
-						<!-- Track Name -->
-						<p class="item-name">
-							<a class="item-name-link" href=<%= topTracksArray[i].external_urls.spotify %> target="_blank"><%= topTracksArray[i].name %></a>
-						</p>
-						
-						<!-- Track Artist --> 
-						<p class="item-artists">
-							<% for (let j = 0; j < trackArtists[i].length; j++) { %>
-								<a class="item-artist-link" href=<%= trackArtists[i][j].url %> target="_blank"><%= trackArtists[i][j].name %></a>
-							<% } %>
-						</p>
-					</div>
-				<% } %>
-			</div>
-		</section>
-	</main>
- 
+        <!-- Artist Name -->
+        <h3 class="item-name">
+          <a
+            class="item-name-link"
+            href="<%"
+            ="topArtistsArray[i].external_urls.spotify"
+            %
+          >
+            target="_blank"><%= topArtistsArray[i].name %></a
+          >
+        </h3>
+      </div>
+      <% } %>
+    </div>
+
+    <!-- Top Tracks Section -->
+    <div id="profile__top-tracks-container" class="container">
+      <!-- Top Track -->
+      <% for (let i = 0; i < topTracksArray.length; i++) { %>
+      <div class="item">
+        <!-- Album Cover -->
+        <a href="<%" ="topTracksArray[i].album.external_urls.spotify" %>
+          target="_blank"><img
+            class="item-image"
+            src="<%"
+            ="topTracksImageURLs[i]"
+            %
+          />
+          alt="album cover"></a
+        >
+
+        <!-- Track Name -->
+        <p class="item-name">
+          <a
+            class="item-name-link"
+            href="<%"
+            ="topTracksArray[i].external_urls.spotify"
+            %
+          >
+            target="_blank"><%= topTracksArray[i].name %></a
+          >
+        </p>
+
+        <!-- Track Artist -->
+        <p class="item-artists">
+          <% for (let j = 0; j < trackArtists[i].length; j++) { %>
+          <a class="item-artist-link" href="<%" ="trackArtists[i][j].url" %>
+            target="_blank"><%= trackArtists[i][j].name %></a
+          >
+          <% } %>
+        </p>
+      </div>
+      <% } %>
+    </div>
+  </section>
+</main>
+
 <%- include('partials/footer') %>

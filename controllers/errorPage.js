@@ -1,12 +1,12 @@
-const express = require('express');
+const express = require("express");
 
 const router = express.Router();
 
 router.use((req, res, next) => {
-	res.render('404', {
-		path: '404', 
-		pageTitle: 'Page Not Found'
-	});
+  res.render("404", {
+    path: "404",
+    pageTitle: "Page Not Found",
+  });
 });
 
-module.exports = router; 
+module.exports = router;
