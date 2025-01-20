@@ -1,49 +1,32 @@
 <%- include('partials/header') %>
-<main class="albums">
-  <!-- Header -->
-  <div class="header-container">
-    <h1 class="header">Albums</h1>
-  </div>
+	<main class="albums">
+		<!-- Header -->
+		<div class="header-container">
+			<h1 class="header">Albums</h1>
+		</div>
 
-  <hr />
+		<hr>
 
-  <section class="container">
-    <!-- Album -->
-    <% for (let i = 0; i < albumsArray.length; i++) { %>
-    <div class="item">
-      <!-- Album Cover -->
-      <a href="<%" ="albumsArray[i].external_urls.spotify" %>
-        target="_blank"><img
-          class="item-image"
-          src="<%"
-          ="albumsImageURLs[i]"
-          %
-        />
-        alt="playlist cover"></a
-      >
+		<section class="container">
+			<!-- Album -->
+			<% for (let i = 0; i < albumsArray.length; i++) { %>
+				<div class="item">
+					<!-- Album Cover -->
+					<a href=<%= albumsArray[i].external_urls.spotify %> target="_blank"><img class="item-image" src=<%= albumsImageURLs[i] %> alt="playlist cover"></a>
 
-      <!-- Album Name -->
-      <p class="item-name">
-        <a
-          class="item-name-link"
-          href="<%"
-          ="albumsArray[i].external_urls.spotify"
-          %
-        >
-          target="_blank"><%= albumsArray[i].name %></a
-        >
-      </p>
+					<!-- Album Name -->
+					<p class="item-name">
+						<a class="item-name-link" href=<%= albumsArray[i].external_urls.spotify %> target="_blank"><%= albumsArray[i].name %></a>
+					</p>
 
-      <!-- Album Artist -->
-      <p class="item-artists">
-        <% for (let j = 0; j < albumsArtists[i].length; j++) { %>
-        <a class="item-artist-link" href="<%" ="albumsArtists[i][j].url" %>
-          target="_blank"><%= albumsArtists[i][j].name %></a
-        >
-        <% } %>
-      </p>
-    </div>
-    <% } %>
-  </section>
-</main>
+					<!-- Album Artist -->
+					<p class="item-artists">
+						<% for (let j = 0; j < albumsArtists[i].length; j++) { %>
+							<a class="item-artist-link" href=<%= albumsArtists[i][j].url %> target="_blank"><%= albumsArtists[i][j].name %></a>
+						<% } %>
+					</p>
+				</div>
+			<% } %>
+		</section>
+	</main>
 <%- include('partials/footer') %>

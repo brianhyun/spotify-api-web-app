@@ -1,97 +1,66 @@
 <%- include('partials/header') %>
-<main class="recent">
-  <!-- Header -->
-  <div class="header-container">
-    <h1 class="header">Recently Played Tracks</h1>
-  </div>
+	<main class="recent">
+		<!-- Header -->
+		<div class="header-container">
+			<h1 class="header">Recently Played Tracks</h1>
+		</div>
 
-  <hr />
+		<hr>
 
-  <!-- Recent Container -->
-  <section class="tracks__container">
-    <!-- Recently Played Track -->
-    <% for (let i = 0; i < recentArray.length; i++) { %>
-    <div class="tracks__track">
-      <!-- Album Cover -->
-      <a href="<%" ="recentArray[i].track.album.external_urls.spotify" %>
-        target="_blank">
-        <img class="tracks__track-image" src="<%" ="trackImageURLs[i]" % />
-        alt="album cover">
-      </a>
+		<!-- Recent Container -->
+		<section class="tracks__container">
+			<!-- Recently Played Track -->
+			<% for (let i = 0; i < recentArray.length; i++) { %>
+				<div class="tracks__track">
+					<!-- Album Cover -->
+					<a href=<%= recentArray[i].track.album.external_urls.spotify %> target="_blank">
+						<img class="tracks__track-image" src=<%= trackImageURLs[i] %> alt="album cover">
+					</a>
 
-      <div class="tracks__track-hr-container">
-        <!-- Track Info -->
-        <div class="tracks__track-info">
-          <!-- Track Name, Artist, and Album -->
-          <div class="tracks__track-name-artist-album">
-            <!-- Track Name -->
-            <p class="tracks__track-name">
-              <a
-                class="tracks__track-name-link"
-                href="<%"
-                ="recentArray[i].track.external_urls.spotify"
-                %
-              >
-                target="_blank"><%= recentArray[i].track.name %></a
-              >
-            </p>
+					<div class="tracks__track-hr-container">
+						<!-- Track Info -->
+						<div class="tracks__track-info">
+							<!-- Track Name, Artist, and Album -->
+							<div class="tracks__track-name-artist-album">
+								<!-- Track Name -->
+								<p class="tracks__track-name">
+									<a class="tracks__track-name-link" href=<%= recentArray[i].track.external_urls.spotify %> target="_blank"><%= recentArray[i].track.name %></a>
+								</p>
+								
+								<!-- Track Artist and Album -->
+								<div class="tracks__track-artist-album">
+									<!-- Track Artist --> 
+									<p class="tracks__track-artist">
+										<% for (let j = 0; j < trackArtists[i].length; j++) { %>
+											<a class="tracks__track-artist-link" href=<%= trackArtists[i][j].url %> target="_blank"><%= trackArtists[i][j].name %></a>
+										<% } %>
+									</p>
 
-            <!-- Track Artist and Album -->
-            <div class="tracks__track-artist-album">
-              <!-- Track Artist -->
-              <p class="tracks__track-artist">
-                <% for (let j = 0; j < trackArtists[i].length; j++) { %>
-                <a
-                  class="tracks__track-artist-link"
-                  href="<%"
-                  ="trackArtists[i][j].url"
-                  %
-                >
-                  target="_blank"><%= trackArtists[i][j].name %></a
-                >
-                <% } %>
-              </p>
+									<!-- Separator -->
+									<p class="tracks__track-artist-album-separator">•</p>
 
-              <!-- Separator -->
-              <p class="tracks__track-artist-album-separator">•</p>
+									<!-- Album Name -->
+									<p class="tracks__track-album">
+										<a class="tracks__track-album-link" href=<%= recentArray[i].track.album.external_urls.spotify %> target="_blank"><%= recentArray[i].track.album.name %></a>
+									</p>
+								</div> <!-- tracks__track-artist-album -->
+							</div> <!-- tracks__track-name-artist-album -->
+							
+							<!-- Track Analysis and Time -->
+							<div class="tracks__track-analysis-time">
+								<!-- Show Analysis Link -->
+								<a class="tracks__track-analysis-link" href="/tracks/<%= recentArray[i].track.id %>">Analysis</a>
 
-              <!-- Album Name -->
-              <p class="tracks__track-album">
-                <a
-                  class="tracks__track-album-link"
-                  href="<%"
-                  ="recentArray[i].track.album.external_urls.spotify"
-                  %
-                >
-                  target="_blank"><%= recentArray[i].track.album.name %></a
-                >
-              </p>
-            </div>
-            <!-- tracks__track-artist-album -->
-          </div>
-          <!-- tracks__track-name-artist-album -->
-
-          <!-- Track Analysis and Time -->
-          <div class="tracks__track-analysis-time">
-            <!-- Show Analysis Link -->
-            <a
-              class="tracks__track-analysis-link"
-              href="/tracks/<%= recentArray[i].track.id %>"
-              >Analysis</a
-            >
-
-            <!-- Track Time -->
-            <p class="tracks__track-time"><%= trackTimes[i] %></p>
-          </div>
-          <!-- tracks__track-analysis-time -->
-        </div>
-        <!-- tracks__track-info -->
-        <hr class="tracks__track-hr" />
-      </div>
-      <!-- tracks__track-hr-container -->
-    </div>
-    <!-- tracks__track -->
-    <% } %>
-  </section>
-</main>
+								<!-- Track Time -->
+								<p class="tracks__track-time">
+									<%= trackTimes[i] %>
+								</p>
+							</div> <!-- tracks__track-analysis-time -->
+						</div> <!-- tracks__track-info -->
+						<hr class="tracks__track-hr">
+					</div> <!-- tracks__track-hr-container -->
+				</div> <!-- tracks__track -->
+			<% } %>
+		</section>
+	</main>
 <%- include('partials/footer') %>
